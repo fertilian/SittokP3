@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/panah"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <ImageView
+        android:id="@+id/imageView46"
+        android:layout_width="67dp"
+        android:layout_height="46dp"
+        app:srcCompat="@drawable/gambar3"
+        tools:layout_editor_absoluteX="118dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <ImageView
+        android:id="@+id/imageView47"
+        android:layout_width="141dp"
+        android:layout_height="46dp"
+        app:srcCompat="@drawable/gambar2"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="39dp" />
+
+    <ImageView
+        android:id="@+id/imageView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/rec3"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="113dp" />
+
+    <ImageView
+        android:id="@+id/imageView49"
+        android:layout_width="391dp"
+        android:layout_height="68dp"
+        app:srcCompat="@drawable/rec45"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="171dp" />
+
+    <ImageView
+        android:id="@+id/imageView50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/rec45_1"
+        tools:layout_editor_absoluteX="28dp"
+        tools:layout_editor_absoluteY="703dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
