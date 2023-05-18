@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index()
     {
         $users=user::orderBy('created_at', 'DESC')->get();
-        return view('Admin.user.list', compact('users'));
+        return view('Admin.user.index', compact('users'));
     }
 
     /**
@@ -58,8 +58,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $users = user::findOrFail($id);
+
+        $users->delete();
+
+        return redirect()->route('user.index')->with('success', 'Data Berhasil Dihapus');
     }
 }

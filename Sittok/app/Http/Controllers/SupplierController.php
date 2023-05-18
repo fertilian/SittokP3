@@ -12,7 +12,7 @@ class SupplierController extends Controller
     public function index()
     {
         $suppliers=supplier::orderBy('created_at', 'DESC')->get();
-        return view('Admin.supplier.list', compact('suppliers'));
+        return view('Admin.supplier.index', compact('suppliers'));
     }
 
     /**
@@ -20,7 +20,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        return view('Admin.kategori.input');
+        return view('Admin.supplier.create');
     }
 
     /**
@@ -30,7 +30,7 @@ class SupplierController extends Controller
     {
         supplier::create($request->all());
 
-        return redirect()->route('supplier')->with('success', 'Kategori berhasil ditambahkan');
+        return redirect()->route('supplier.index')->with('success', 'Data Supplier Berhasil Ditambahkan');
     }
 
     /**

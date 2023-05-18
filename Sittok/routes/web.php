@@ -37,32 +37,20 @@ Route::get('/Admin/indexadmin', function () {
     return view('Admin.indexadmin');
 });
 
-Route::get('Admin/user/list', function () {
-    return view('Admin.user.list');
-});
+
 
 Route::get('Admin/jual/list', function () {
     return view('Admin.jual.list');
 });
 
-Route::resource('Admin/user/list', UserController::class);
-Route::resource('Admin/supplier/list', SupplierController::class);
-Route::resource('Admin/kategori/list', KategoriController::class);
+Route::resource('/user', UserController::class);
+Route::resource('/supplier', SupplierController::class);
+Route::resource('/kategori', KategoriController::class);
 
-Route::controller(KategoriController::class)->group(function () {
-    Route::get('kategori', 'create')->name('kategori');
-    Route::post('kategori', 'store')->name('kategori');
-    Route::get('kategori', 'index')->name('kategori');
-});
 Route::get('Admin/barang/list', function () {
     return view('Admin.barang.list');
 });
 
 Route::get('Admin/customers/list', function () {
     return view('Admin.customers.list');
-});
-
-
-Route::get('Admin/kategori/input', function () {
-    return view('Admin.supplier.list');
 });

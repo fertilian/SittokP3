@@ -12,7 +12,7 @@ class KategoriController extends Controller
     public function index()
     {
         $kategoris=kategori::orderBy('created_at', 'DESC')->get();
-        return view('Admin.kategori.list', compact('kategoris'));
+        return view('Admin.kategori.index', compact('kategoris'));
     }
 
     /**
@@ -20,7 +20,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('adminn.kategori.input');
+        return view('Admin.kategori.create');
     }
 
     /**
@@ -31,7 +31,7 @@ class KategoriController extends Controller
        
         kategori::create($request->all());
 
-        return redirect()->route('Admin/kategori/list')->with('success', 'Kategori berhasil ditambahkan');
+        return redirect()->route('kategori.index')->with('success', 'Data Kategori Berhasil Ditambahkan');
     }
 
     /**
@@ -39,7 +39,9 @@ class KategoriController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $kategoris = kategori::findOrFail($id);
+
+        return view('Admin.kategori.show', compact('kategoris'));
     }
 
     /**
@@ -47,16 +49,23 @@ class KategoriController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $kategoris = kategori::findOrFail($id);
+
+        return view('Admin.kategori.edit', compact('kategoris'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id_kategori)
     {
-        //
+        $kategoris = kategori::findOrFail($id_kategori);
+
+        $kategoris->update($request->all());
+
+        return redirect()->route('kategori.index')->with('success', 'Data Kategori Berhasil Diupdate');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -67,6 +76,6 @@ class KategoriController extends Controller
 
         $kategoris->delete();
 
-        return redirect()->route('book.index')->with('success', 'Book deleted successfully');
+        return redirect()->route('kategori.index')->with('success', 'Data Kategori Berhasil Dihapus');
     }
 }
