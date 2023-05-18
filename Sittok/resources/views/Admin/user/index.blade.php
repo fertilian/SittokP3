@@ -82,6 +82,11 @@
                 <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                @if(Session::has('success'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ Session::get('success') }}
+                                    </div>
+                                @endif  
                                     <thead>
                                         <tr>
                                             <th>No</th>
@@ -100,8 +105,13 @@
                                           <td class="align-middle">{{ $user->email}}</td> 
                                           <td class="align-middle">{{ $user->password}}</td>
                                           <td>
-                                            <a href="" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
-                                            <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="" method="POST" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
+                                          
+                                            <a href="{{ route('user.edit', $user->id)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
+                                            <form action="{{ route('user.destroy', $user->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger m-0"><i class="fas fa-trash"></i></button>
+                                            </form>
                                           </td> 
                                         </tr>
                                       @endforeach

@@ -44,15 +44,21 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $users = user::findOrFail($id);
+
+        return view('Admin.user.edit', compact('users'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $users = user::findOrFail($id);
+
+        $users->update($request->all());
+
+        return redirect()->route('user.index')->with('success', 'Data User Berhasil Diupdate');
     }
 
     /**
@@ -64,6 +70,6 @@ class UserController extends Controller
 
         $users->delete();
 
-        return redirect()->route('user.index')->with('success', 'Data Berhasil Dihapus');
+        return redirect()->route('user.index')->with('success', 'Data User Berhasil Dihapus');
     }
 }

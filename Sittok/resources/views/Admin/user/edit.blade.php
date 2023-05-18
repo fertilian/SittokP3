@@ -96,38 +96,34 @@
                   <h6 class="m-0 font-weight-bold text-primary">Form Basic</h6>
                 </div>
                 <div class="card-body">
-                  <form method="post" action="edit.php" enctype="multipart/form-data">
-                    <div class="form-group" hidden>
-                      <label for="exampleInputEmail1">Id Barang</label>
-                      <input type="text" name= "id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo $u['id_barang']; ?>">
+             
+                  <form method="POST" action="{{ route('user.update', $user->id)}}" enctype="multipart/form-data">
+                  @csrf
+                  @method('PUT')   
+                  <div class="form-group" hidden>
+                      <label for="exampleInputEmail1">ID User</label>
+                      <input type="text" name= "id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{ $user->id }}">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Merk Barang</label>
-                      <input type="text" name="merk" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="<?php echo $u['merk_barang']; ?>">
+                      <label for="exampleInputEmail1">Email</label>
+                      <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $user->email }}">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Jumlah Barang</label>
-                      <input type="text" name="jml" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jumlah Barang" value="<?php echo $u['jumlah_barang']; ?>">
+                      <label for="exampleInputEmail1">Password</label>
+                      <input type="text" name="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jumlah Barang" value="{{ $user->password }}">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Harga</label>
-                      <input type="text" name="harga" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="<?php echo $u['harga']; ?>">
+                      <label for="exampleInputEmail1">User Fullname</label>
+                      <input type="text" name="user_fullname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $user->user_fullname }}">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Deskripsi</label>
-                      <input type="text" name= "desc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="<?php echo $u['deskripsi']; ?>">
+                      <label for="exampleInputEmail1">Alamat</label>
+                      <input type="text" name= "alamat" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $user->alamat }}">
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Gambar</label>
-                      <input type="file" name="gbr" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Gambar" value="">
-                      <input type="hidden" name="old" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Gambar" value="<?php echo $u['gbr']; ?>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Id Kategori</label>
-                      <input type="text" name="idkt" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Id Kategori" value="<?php echo $u['id_kategori']; ?>">
-                    </div>
+                    
                     <button type="submit" name= "update" class="btn btn-primary">Submit</button>
                   </form>
+             
                 </div>
               </div>
         <!-- <Form Basic> -->
