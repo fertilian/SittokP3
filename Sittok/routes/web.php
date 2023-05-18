@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\KategoriController;
 use App\Models\User;
+use App\Models\Supplier;
+use App\Models\Kategori;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,19 +46,23 @@ Route::get('Admin/jual/list', function () {
 });
 
 Route::resource('Admin/user/list', UserController::class);
+Route::resource('Admin/supplier/list', SupplierController::class);
+Route::resource('Admin/kategori/list', KategoriController::class);
 
-Route::get('Admin/supplier/list', function () {
-    return view('Admin.supplier.list');
+Route::controller(KategoriController::class)->group(function () {
+    Route::get('kategori', 'create')->name('kategori');
+    Route::post('kategori', 'store')->name('kategori');
+    Route::get('kategori', 'index')->name('kategori');
 });
-
-Route::get('Admin/kategori/list', function () {
-    return view('Admin.kategori.list');
-});
-
 Route::get('Admin/barang/list', function () {
     return view('Admin.barang.list');
 });
 
 Route::get('Admin/customers/list', function () {
     return view('Admin.customers.list');
+});
+
+
+Route::get('Admin/kategori/input', function () {
+    return view('Admin.supplier.list');
 });

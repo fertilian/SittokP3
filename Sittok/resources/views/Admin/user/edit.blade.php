@@ -17,7 +17,7 @@
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
-    @include(Admin.sidebar)
+    @include('Admin.sidebar')
     <!-- Sidebar -->
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">

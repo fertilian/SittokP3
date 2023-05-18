@@ -107,7 +107,7 @@
                                       @endforeach
                                       @else
                                       <tr>
-                                        <td class="text-center" colspan="5">User not found</td>
+                                        <td class="text-center" colspan="5">Data User tidak ditemukan</td>
                                       </tr>
                                       @endif
                                     </tbody>

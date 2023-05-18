@@ -77,7 +77,7 @@
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Kategori</h6>
-                  <a href = "" class = "btn btn-outline-primary btn-xs mb-0">+</a>
+                  <a href = "/Admin/kategori/input" class = "btn btn-outline-primary btn-xs mb-0">+</a>
                 </div>
                 <div class="card-body">
                             <div class="table-responsive">
@@ -90,17 +90,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    
+                                      @if($kategoris->count() > 0)
+                                      @foreach($kategoris as $kategori)
                                         <tr>
-                                            <td></td>
-                                            <td></td>
+                                            <td class="align-middle">{{ $loop->iteration}}</td>
+                                            <td class="align-middle">{{ $kategori->nama_kategori}}</td>
                       
                                             <td>
                                             <a href="" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
                                             <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
                                             </td>
                                         </tr>
-                                      
+                                      @endforeach
+                                      @else
+                                      <tr>
+                                        <td class="text-center" colspan="5">Data Kategori tidak ditemukan</td>
+                                      </tr>
+                                      @endif 
                                     </tbody>
                                 </table>
 
