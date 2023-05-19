@@ -7,11 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link href="assets/img/logo/logo.png" rel="icon">
+  <link href="/assets/img/logo/sittok-gambar.png" rel="icon">
   <title>SITTOK</title>
-  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="../assets/css/ruang-admin.min.css" rel="stylesheet">
+  <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/ruang-admin.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -80,7 +80,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Master Barang</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data User</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -93,17 +93,14 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Form Basic</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Form Edit Data User</h6>
                 </div>
                 <div class="card-body">
              
                   <form method="POST" action="{{ route('user.update', $user->id)}}" enctype="multipart/form-data">
                   @csrf
                   @method('PUT')   
-                  <div class="form-group" hidden>
-                      <label for="exampleInputEmail1">ID User</label>
-                      <input type="text" name= "id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{ $user->id }}">
-                    </div>
+                  
                     <div class="form-group">
                       <label for="exampleInputEmail1">Email</label>
                       <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $user->email }}">
@@ -138,10 +135,10 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <script src="../assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="../assets/js/ruang-admin.min.js"></script>
-  <script src="../assets/vendor/chart.js/Chart.min.js"></script>
-  <script src="../assets/js/demo/chart-area-demo.js"></script>  
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/assets/js/ruang-admin.min.js"></script>
+  <script src="/assets/vendor/chart.js/Chart.min.js"></script>
+  <script src="/assets/js/demo/chart-area-demo.js"></script>  
 </body>

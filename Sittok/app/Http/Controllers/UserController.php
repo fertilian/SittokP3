@@ -44,9 +44,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $users = user::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        return view('Admin.user.edit', compact('users'));
+        return view('Admin.user.edit', compact('user'));
     }
 
     /**
@@ -54,9 +54,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $users = user::findOrFail($id);
+        $user = User::findOrFail($id);
 
-        $users->update($request->all());
+        $user->update($request->all());
 
         return redirect()->route('user.index')->with('success', 'Data User Berhasil Diupdate');
     }

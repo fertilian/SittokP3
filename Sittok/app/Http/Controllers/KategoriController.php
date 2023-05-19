@@ -70,9 +70,9 @@ class KategoriController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id_kategori)
+    public function destroy(string $id)
     {
-        $kategoris = kategori::findOrFail($id_kategori);
+        $kategoris = kategori::findOrFail($id);
 
         $kategoris->delete();
 
