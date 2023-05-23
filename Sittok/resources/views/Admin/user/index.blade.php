@@ -119,7 +119,7 @@
                                       @endforeach
                                       @else
                                       <tr>
-                                        <td class="text-center" colspan="5">Data User tidak ditemukan</td>
+                                        <td class="text-center" colspan="6">Data User Tidak Ditemukan</td>
                                       </tr>
                                       @endif
                                     </tbody>

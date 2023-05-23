@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link href="assets/img/logo/logo.png" rel="icon">
+  <link href="/assets/img/logo/sittok-gambar.png" rel="icon">
   <title>SITTOK</title>
   <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -63,7 +63,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Master Barang</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Master Customers</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -76,7 +76,7 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Master Barang</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Data Master Customers</h6>
                   <a href = "input.php" class = "btn btn-outline-primary btn-xs mb-0">+</a>
                 </div>
                 <div class="card-body">

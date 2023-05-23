@@ -24,9 +24,9 @@
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sittok</h6>
-            <a class="collapse-item" href="/Admin/barang/list">Barang</a>
+            <a class="collapse-item" href="{{ route('barang.index')}}">Barang</a>
             <a class="collapse-item" href="{{ route('kategori.index')}}">Kategori</a>
-            <a class="collapse-item" href="/Admin/customers/list">Customers</a>
+            <a class="collapse-item" href="/Admin/customers/index">Customers</a>
             <a class="collapse-item" href="{{ route('supplier.index')}}">Supplier</a>
           </div>
         </div>
