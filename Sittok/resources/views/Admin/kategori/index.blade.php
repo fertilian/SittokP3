@@ -102,8 +102,8 @@
                                             <td class="align-middle">{{ $kategori->nama_kategori}}</td>
                       
                                             <td>
-                                            <a href="" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
-                                            <form action="{{ route('kategori.destroy', $kategoris->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
+                                            <a href="{{ route('kategori.edit', $kategori->id_kategori)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
+                                            <form action="{{ route('kategori.destroy', $kategori->id_kategori) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger m-0"><i class="fas fa-trash"></i></button>

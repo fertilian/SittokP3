@@ -14,4 +14,6 @@ class Supplier extends Model
         'no_telp_supplier',
         'alamat',
     ];
+
+    protected $primaryKey = 'id_supplier';
 }

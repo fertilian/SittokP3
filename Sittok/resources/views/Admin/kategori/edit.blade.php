@@ -7,11 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link href="img/logo/logo.png" rel="icon">
+  <link href="/assets/img/logo/sittok-gambar.png" rel="icon">
   <title>SITTOK</title>
-  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="../assets/css/ruang-admin.min.css" rel="stylesheet">
+  <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/ruang-admin.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -96,11 +96,13 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Kategori</h6>            
                 </div>
                 <div class="card-body">
-                  <form action="edit.php" method="POST" class="user">
-                  <input type="hidden" class="form-control" name="txt_id" placeholder="" value="<?php echo $u['id_kategori']; ?>">
+                  <form action="{{ route('kategori.update', $kategori->id_kategori)}}" method="POST" class="user">
+                  @csrf
+                  @method('PUT')   
+                  
                     <div class="form-group">
                       <label for="txt_nama">Nama Kategori</label>
-                      <input type="text" class="form-control" name="txt_nama" placeholder="Masukkan Nama Kategori" value="<?php echo $u['nama_kategori']; ?>">
+                      <input type="text" class="form-control" name="nama_kategori" placeholder="Masukkan Nama Kategori" value="{{ $kategori->nama_kategori }}">
                     </div>
                     <button type="submit" name="update" class="btn btn-primary">Submit</button>
                   </form>
@@ -116,12 +118,12 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-  <script src="../assets/vendor/jquery/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="../assets/js/ruang-admin.min.js"></script>
-  <script src="../assets/vendor/chart.js/Chart.min.js"></script>
-  <script src="../assets/js/demo/chart-area-demo.js"></script>  
+  <script src="/assets/vendor/jquery/jquery.min.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="/assets/js/ruang-admin.min.js"></script>
+  <script src="/assets/vendor/chart.js/Chart.min.js"></script>
+  <script src="/assets/js/demo/chart-area-demo.js"></script>  
 </body>
 
 </html>

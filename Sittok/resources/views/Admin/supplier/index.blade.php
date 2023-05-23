@@ -104,7 +104,7 @@
                                             <td class="align-middle">{{ $supplier->no_telp_supplier}}</td>
                                             <td class="align-middle">{{ $supplier->alamat}}</td>
                                             <td>
-                                            <a href="" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
+                                            <a href="{{ route('supplier.edit', $supplier->id_supplier)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
                                             <form action="{{ route('supplier.destroy', $supplier->id_supplier) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
                                                 @csrf
                                                 @method('DELETE')

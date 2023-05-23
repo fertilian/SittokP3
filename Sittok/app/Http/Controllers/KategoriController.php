@@ -47,21 +47,21 @@ class KategoriController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id_kategori)
     {
-        $kategoris = kategori::findOrFail($id);
+        $kategori = Kategori::findOrFail($id_kategori);
 
-        return view('Admin.kategori.edit', compact('kategoris'));
+        return view('Admin.kategori.edit', compact('kategori'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id_kategori)
+    public function update(Request $request, $id_kategori)
     {
-        $kategoris = kategori::findOrFail($id_kategori);
+        $kategori = Kategori::findOrFail($id_kategori);
 
-        $kategoris->update($request->all());
+        $kategori->update($request->all());
 
         return redirect()->route('kategori.index')->with('success', 'Data Kategori Berhasil Diupdate');
     }
@@ -70,9 +70,9 @@ class KategoriController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id_kategori)
     {
-        $kategoris = kategori::findOrFail($id);
+        $kategoris = kategori::findOrFail($id_kategori);
 
         $kategoris->delete();
 
