@@ -88,7 +88,7 @@
                                 
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th>No</th>
                                             <th>Nama</th>
                                             <th>No Telp</th>
                                             <th>Alamat</th>
@@ -115,7 +115,7 @@
                                       @endforeach
                                       @else
                                       <tr>
-                                        <td class="text-center" colspan="5">Data Supplier tidak ditemukan</td>
+                                        <td class="text-center" colspan="5">Data Supplier Tidak Ditemukan</td>
                                       </tr>
                                       @endif
                                     </tbody>

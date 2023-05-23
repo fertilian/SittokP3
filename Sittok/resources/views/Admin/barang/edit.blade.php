@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,7 +36,7 @@
                 <form class="navbar-search">
                   <div class="input-group">
                     <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
-                      aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
+                      aria-label="Search" aria-describedby="basic-addon2" style="border-color: #810CA8;">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
@@ -52,7 +51,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">Kresna Tampan</span>
+                <span class="ml-2 d-none d-lg-inline text-white small">Maman Ketoprak</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -69,8 +68,8 @@
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="logoutadmin.php" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" 
-                                    class="dropdown-item">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>>Logout</a>
+                    class="dropdown-item">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>>Logout</a>
               </div>
             </li>
           </ul>
@@ -80,7 +79,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Master Supplier</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Master Barang</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -93,30 +92,45 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Master Supplier</h6>            
+                  <h6 class="m-0 font-weight-bold text-primary">Data Master Barang</h6>
                 </div>
                 <div class="card-body">
-                  <form action="{{ route('supplier.store')}}" method="POST" class="user">
-                    @csrf
+                  <form method="post" action="{{ route('barang.update', $barang->id_barang)}}" enctype="multipart/form-data">
+                  @csrf
+                  @method('PUT') 
+                
                     <div class="form-group">
-                      <label for="txt_nama">Nama Supplier</label>
-                      <input type="text" class="form-control" name="nama_supplier" placeholder="Masukkan Nama Supplier">
+                      <label for="exampleInputEmail1">Merk Barang</label>
+                      <input type="text" name="merk_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $barang->merk_barang }}">
                     </div>
                     <div class="form-group">
-                      <label for="txt_nama">No Telepon Supplier</label>
-                      <input type="tel" class="form-control" name="no_telp_supplier" placeholder="Masukkan No Telepon Supplier">
+                      <label for="exampleInputEmail1">Jumlah Barang</label>
+                      <input type="text" name="jumlah_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jumlah Barang" value="{{ $barang->jumlah_barang }}>">
                     </div>
                     <div class="form-group">
-                      <label for="txt_nama">Alamat Supplier</label>
-                      <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat">
+                      <label for="exampleInputEmail1">Harga</label>
+                      <input type="text" name="harga" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $barang->harga }}">
                     </div>
-                    <button type="submit" name="create" class="btn btn-primary">Submit</button>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Deskripsi</label>
+                      <input type="text" name= "deskripsi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $barang->deskripsi }}">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Gambar</label>
+                      <input type="file" name="gbr" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Gambar" value="">
+                      <input type="hidden" name="old" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Gambar" value="{{ $barang->gambar }}">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">ID Kategori</label>
+                      <input type="text" name="id_kategori" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Id Kategori" value="{{ $barang->id_kategori }}">
+                    </div>
+                    <button type="submit" name= "update" class="btn btn-primary">Submit</button>
                   </form>
                 </div>
               </div>
-          </div>
-            
         <!-- <Form Basic> -->
+
+
       </div>
     </div>
   </div>
@@ -133,5 +147,3 @@
   <script src="/assets/vendor/chart.js/Chart.min.js"></script>
   <script src="/assets/js/demo/chart-area-demo.js"></script>  
 </body>
-
-</html>

@@ -5,9 +5,11 @@ use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\BarangController;
 use App\Models\User;
 use App\Models\Supplier;
 use App\Models\Kategori;
+use App\Models\Barang;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,11 +48,8 @@ Route::get('Admin/jual/list', function () {
 Route::resource('/user', UserController::class);
 Route::resource('/supplier', SupplierController::class);
 Route::resource('/kategori', KategoriController::class);
+Route::resource('/barang', BarangController::class);
 
-Route::get('Admin/barang/list', function () {
-    return view('Admin.barang.list');
-});
-
-Route::get('Admin/customers/list', function () {
-    return view('Admin.customers.list');
+Route::get('Admin/customers/index', function () {
+    return view('Admin.customers.index');
 });

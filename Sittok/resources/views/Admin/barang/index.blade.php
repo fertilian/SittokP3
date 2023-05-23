@@ -8,11 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link href="assets/img/logo/logo.png" rel="icon">
+  <link href="/assets/img/logo/sittok-gambar.png" rel="icon">
   <title>SITTOK</title>
-  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="../assets/css/ruang-admin.min.css" rel="stylesheet">
+  <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/ruang-admin.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -77,40 +77,54 @@
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Barang</h6>
-                  <a href = "input.php" class = "btn btn-outline-primary btn-xs mb-0">+</a>
+                  <a href = "{{ route('barang.create')}}" class = "btn btn-outline-primary btn-xs mb-0">+</a>
                 </div>
                 <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
+                                @if(Session::has('success'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ Session::get('success') }}
+                                    </div>
+                                @endif 
+                                <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th>No</th>
                                             <th>Merk Barang</th>
                                             <th>Jumlah Barang</th>
                                             <th>Harga</th>
                                             <th>Deskripsi</th>
-                                            <th>Id Kategori</th>
+                                            <th>ID Kategori</th>
                                             <th>Gambar</th>
-                                            <th style=" width: 100px;">Aksi</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    
+                                      @if($barangs->count() > 0)
+                                      @foreach($barangs as $barang)
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td> 
+                                            <td class="align-middle">{{ $loop->iteration}}</td>
+                                            <td class="align-middle">{{ $barang->merk_barang}}</td>
+                                            <td class="align-middle">{{ $barang->jumlah_barang}}</td>
+                                            <td class="align-middle">{{ $barang->harga}}</td>
+                                            <td class="align-middle">{{ $barang->deskripsi}}</td>
+                                            <td class="align-middle">{{ $barang->id_kategori}}</td>
+                                            <td class="align-middle">{{ $barang->gambar}}</td> 
                                             <td>
-                                            <a href="" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
-                                            
-                                            <a onclick="return confirm('Anda Yakin Ingin Menghapus Y/N')" href="" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>
-                                            </td>
+                                            <a href="{{ route('barang.edit', $barang->id_barang)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
+                                            <form action="{{ route('barang.destroy', $barang->id_barang) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger m-0"><i class="fas fa-trash"></i></button>
+                                            </form>
+                                          </td> 
                                         </tr>
-                                
+                                        @endforeach
+                                      @else
+                                      <tr>
+                                        <td class="text-center" colspan="8">Data Barang Tidak Ditemukan</td>
+                                      </tr>
+                                      @endif
                                     </tbody>
                                 </table>
 
