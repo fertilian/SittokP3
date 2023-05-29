@@ -14,6 +14,7 @@ class Barang extends Model
         'jumlah_barang',
         'harga',
         'deskripsi',
+        'id_kategori',
         'gambar',
     ];
 

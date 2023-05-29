@@ -52,6 +52,11 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Selamat Datang di Sittok!</h1>
                                     </div>
+                                    @if(Session::has('success'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ Session::get('success') }}
+                                    </div>
+                                    @endif
                                     @if(Session::has('error'))
                                     <div class="alert alert-danger" role="alert">
                                         {{ Session::get('error') }}

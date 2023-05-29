@@ -27,7 +27,7 @@ class CustomAuthController extends Controller
 
         $user->save();
          
-        return back()->with('success', 'Register Berhasil');
+        return redirect('loginn')->with('success', 'Register Berhasil');
     }
 
     public function loginn()
