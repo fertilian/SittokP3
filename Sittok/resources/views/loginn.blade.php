@@ -68,24 +68,24 @@
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="txt_email" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address" name="email" autocomplete="off">
+                                                placeholder="Masukkan Alamat Email" name="email" autocomplete="off">
                                         </div>
                                     
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="txt_pass" placeholder="Password" name="password" autocomplete="off">
+                                                id="txt_pass" placeholder="Masukkan Password" name="password" autocomplete="off">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="show_password" name="show_password">
-                                                <label class="custom-control-label" for="show_password">Show Password</label>
+                                                <label class="custom-control-label" for="show_password">Tampilkan Password</label>
                                             </div>
                                         </div>
                                         <button type="submit" name="login" class="btn-user btn-block" style="background-color:#d2afff;">Login</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('register')}}">Create an Account!</a>
+                                        <a class="small" href="{{ route('register')}}">Buat Akun Baru!</a>
                                     </div>
                                 </div>
                             </div>
