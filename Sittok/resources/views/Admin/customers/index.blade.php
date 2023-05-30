@@ -87,7 +87,7 @@
                                             <th>Id</th>
                                             <th>Nama</th>
                                             <th>No Telp</th>
-                                            <th>skhdksjd</th>
+                                            <th>Alamat</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>

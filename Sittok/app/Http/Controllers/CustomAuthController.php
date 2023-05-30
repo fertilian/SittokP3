@@ -37,13 +37,13 @@ class CustomAuthController extends Controller
 
     public function loginPost(Request $request)
     {
-        $credetials = [
+        $credentials = [
             'email' => $request->email,
             'password'  => $request->password,
         ];
 
-        if (Auth::attempt($credetials)) {
-            return redirect('Admin.indexadmin')->with('success', 'Login Berhasil');
+        if (Auth::attempt($credentials)) {
+            return redirect('/Admin.indexadmin')->with('success', 'Login Berhasil');
 
         }return back()->with('error', 'Email or Password salah');
     }
