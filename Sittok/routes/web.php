@@ -1,15 +1,15 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomAuthController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\BarangController;
-use App\Models\User;
-use App\Models\Supplier;
-use App\Models\Kategori;
+use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UserController;
 use App\Models\Barang;
+use App\Models\Kategori;
+use App\Models\Supplier;
+use App\Models\User;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
