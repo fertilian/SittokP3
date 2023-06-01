@@ -100,15 +100,6 @@
                   <form method="POST" action="{{ route('user.update', $user->id)}}" enctype="multipart/form-data">
                   @csrf
                   @method('PUT')   
-                  
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email</label>
-                      <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $user->email }}">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Password</label>
-                      <input type="text" name="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jumlah Barang" value="{{ $user->password }}">
-                    </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">User Fullname</label>
                       <input type="text" name="user_fullname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $user->user_fullname }}">
