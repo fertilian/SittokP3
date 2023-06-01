@@ -73,9 +73,9 @@
                   Activity Log
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="logoutadmin.php" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" 
+                <a href="{{ route('loginn')}}" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" 
                   class="dropdown-item">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>>Logout</a>
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a>
               </div>
             </li>
           </ul>
@@ -87,7 +87,7 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="./">Home</a></li>
+              <li class="breadcrumb-item"><a href="/Admin/indexadmin">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
             </ol>
           </div>
