@@ -95,7 +95,7 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Barang</h6>
                 </div>
                 <div class="card-body">
-                  <form method="post" action="{{ route('barang.update', $barang->id_barang)}}" enctype="multipart/form-data">
+                  <form method="POST" action="{{ route('barang.update', $barang->id_barang)}}" enctype="multipart/form-data">
                   @csrf
                   @method('PUT') 
                 
@@ -105,11 +105,11 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Jumlah Barang</label>
-                      <input type="text" name="jumlah_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jumlah Barang" value="{{ $barang->jumlah_barang }}>">
+                      <input type="number" name="jumlah_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jumlah Barang" value="{{ $barang->jumlah_barang }}">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Harga</label>
-                      <input type="text" name="harga" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $barang->harga }}">
+                      <input type="number" name="harga" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $barang->harga }}">
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Deskripsi</label>
@@ -117,12 +117,17 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Gambar</label>
-                      <input type="file" name="gbr" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Gambar" value="">
-                      <input type="hidden" name="old" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Gambar" value="{{ $barang->gambar }}">
+                      <input type="file" name="gambar" class="form-control" placeholder="image" value="{{ $barang->gambar }}">
+                      <img src="/images/{{ $barang->gambar}}" width="300px">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">ID Kategori</label>
-                      <input type="text" name="id_kategori" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Id Kategori" value="{{ $barang->id_kategori }}">
+                    <label for="exampleInputEmail1">ID Kategori</label>
+                      <select name="id_kategori" class="form-control">
+                        <option value="{{ $barang->id_kategori }}">{{ $barang->id_kategori }}</option>
+                        @foreach ($kategoris as $item)
+                        <option value="{{ $item->id_kategori}}">{{$item->id_kategori}} | {{$item->nama_kategori}}</option>
+                        @endforeach
+                      </select>
                     </div>
                     <button type="submit" name= "update" class="btn btn-primary">Submit</button>
                   </form>

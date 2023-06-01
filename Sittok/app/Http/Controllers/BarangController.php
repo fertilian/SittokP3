@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Barang;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -20,7 +21,8 @@ class BarangController extends Controller
      */
     public function create()
     {
-        return view('Admin.barang.create');
+        $kategoris=kategori::orderBy('created_at', 'DESC')->get();
+        return view('Admin.barang.create', compact('kategoris'));
     }
 
     /**
@@ -28,7 +30,25 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        barang::create($request->all());
+        $request->validate([
+            'merk_barang' => 'required',
+            'jumlah_barang' => 'required',
+            'harga' => 'required',
+            'deskripsi' => 'required',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'id_kategori' => 'required',
+        ]);
+
+        $input = $request->all();
+
+        if ($image = $request->file('gambar')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') .".".$image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['gambar'] = "$profileImage";
+        }
+
+        barang::create($input);
 
         return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Ditambahkan');
     }
@@ -47,8 +67,9 @@ class BarangController extends Controller
     public function edit(string $id_barang)
     {
         $barang = Barang::findOrFail($id_barang);
+        $kategoris=kategori::orderBy('created_at', 'DESC')->get();
 
-        return view('Admin.barang.edit', compact('barang'));
+        return view('Admin.barang.edit', compact('barang', 'kategoris'));
     }
 
     /**
@@ -57,9 +78,25 @@ class BarangController extends Controller
     public function update(Request $request, string $id_barang)
     {
         $barang = Barang::findOrFail($id_barang);
+        $request->validate([
+            'merk_barang' => 'required',
+            'jumlah_barang' => 'required',
+            'harga' => 'required',
+            'deskripsi' => 'required',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'id_kategori' => 'required',
+        ]);
 
-        $barang->update($request->all());
+        $input = $request->all();
 
+        if ($image = $request->file('gambar')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') .".".$image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['gambar'] = "$profileImage";
+        }
+
+        $barang->update($input);
         return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Diupdate');
     }
 

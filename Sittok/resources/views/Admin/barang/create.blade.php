@@ -115,11 +115,16 @@
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Gambar</label>
-                      <input type="file" name="gambar" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Id Supp">
+                      <input type="file" name="gambar" class="form-control" placeholder="image">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">ID Kategori</label>
-                      <input type="text" name="id_kategori" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan ID Kategori">
+                    <label for="exampleInputEmail1">ID Kategori</label>
+                      <select name="id_kategori" class="form-control">
+                        <option value="">- Pilih -</option>
+                        @foreach ($kategoris as $item)
+                        <option value="{{ $item->id_kategori}}">{{$item->id_kategori}} | {{$item->nama_kategori}}</option>
+                        @endforeach
+                      </select>
                     </div>
                     <button type="submit" name= "simpan" class="btn btn-primary">Submit</button>
                   </form>
