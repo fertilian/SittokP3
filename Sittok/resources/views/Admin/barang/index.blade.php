@@ -92,12 +92,12 @@
                                 <thead>
                                 
                                         <tr>
-                                            <th width="50px">No</th>
-                                            <th>Merk Barang</th>
-                                            <th>Jumlah Barang</th>
+                                            <th>No</th>
+                                            <th>Merk</th>
+                                            <th>Jumlah</th>
                                             <th>Harga</th>
                                             <th>Deskripsi</th>
-                                            <th>ID Kategori</th>
+                                            <th>IDKategori</th>
                                             <th>Gambar</th>
                                             <th width="150px">Aksi</th>
                                         </tr>
@@ -112,7 +112,7 @@
                                             <td class="align-middle">{{ $barang->harga}}</td>
                                             <td class="align-middle">{{ $barang->deskripsi}}</td>
                                             <td class="align-middle">{{ $barang->id_kategori}}</td>
-                                            <td class="align-middle"><img src="/images/{{ $barang->gambar}}" width="60px" ></td> 
+                                            <td class="align-middle"><img src="/images/{{ $barang->gambar}}" width="75px" ></td> 
                                             <td>
                                             <a href="{{ route('barang.edit', $barang->id_barang)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
                                             <form action="{{ route('barang.destroy', $barang->id_barang) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">

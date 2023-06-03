@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('merk_barang');
             $table->integer('jumlah_barang');
             $table->integer('harga');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->string('gambar');
             $table->unsignedBigInteger('id_kategori');
             $table->foreign('id_kategori')->references('id_kategori')->on('kategoris');
