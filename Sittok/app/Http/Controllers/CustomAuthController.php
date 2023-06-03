@@ -43,7 +43,7 @@ class CustomAuthController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-            return redirect('/Admin.indexadmin')->with('success', 'Login Berhasil');
+            return redirect('/Admin/indexadmin')->with('success', 'Login Berhasil');
 
         }return back()->with('error', 'Email or Password salah');
     }

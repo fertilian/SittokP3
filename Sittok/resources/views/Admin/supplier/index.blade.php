@@ -81,18 +81,18 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 @if(Session::has('success'))
-                                    <div class="alert alert-success" role="alert">
+                                    <div class="alert alert-primary" role="alert">
                                         {{ Session::get('success') }}
                                     </div>
                                 @endif 
                                 
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th width="50px">No</th>
                                             <th>Nama</th>
                                             <th>No Telp</th>
                                             <th>Alamat</th>
-                                            <th>Aksi</th>
+                                            <th width="150px">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
