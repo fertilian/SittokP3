@@ -33,7 +33,7 @@
 
 </head>
 
-<body style="background-color: #d2afff">
+<body style="background-image: url('assets/img/bg.png');">
 
     <div class="container">
 

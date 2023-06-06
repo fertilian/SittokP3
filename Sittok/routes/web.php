@@ -3,6 +3,7 @@
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
@@ -26,16 +27,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('loginn');
-});
+Route::get('/', [LandingController::class, 'index'])->name('landing');
+
+//Route::get('/', function () {
+    //return view('loginn');
+//});
 
 Route::controller(CustomAuthController::class)->group(function () {
     Route::get('register', 'register')->name('register');
     Route::post('register', 'registerPost')->name('register');
 
     Route::get('loginn', 'loginn')->name('loginn');
-    Route::post('loginn', 'loginPost')->name('loginn');
+    Route::post('loginn', 'loginPost');
 });
 
 
