@@ -34,7 +34,7 @@
                 <div class="row">
                     
 
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-5" class="text-center" ><img src="/assets/img/logo/sittok-gambar.png" style="margin-top: 120px;" style="margin-right: 5px;" align="center" class="mx-auto d-block" width="300px" ></div>
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
@@ -60,8 +60,8 @@
                       <input type="text" class="form-control" name="user_fullname" placeholder="Masukkan Nama">
                     </div>
                     <div class="form-group">
-                      <label for="txt_alamat">Alamat</label>
-                      <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat">
+                      <label for="txt_alamat">No Telp</label>
+                      <input type="text" class="form-control" name="telp" placeholder="Masukkan No Telp">
                     </div>
                     <button type="submit" name="create" class="btn btn-primary">Submit</button>
                   </form>

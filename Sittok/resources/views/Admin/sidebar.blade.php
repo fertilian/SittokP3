@@ -26,7 +26,7 @@
             <h6 class="collapse-header">Sittok</h6>
             <a class="collapse-item" href="{{ route('barang.index')}}">Barang</a>
             <a class="collapse-item" href="{{ route('kategori.index')}}">Kategori</a>
-            <a class="collapse-item" href="/Admin/customers/index">Customers</a>
+            <a class="collapse-item" href="{{ route('customers.index')}}">Customers</a>
             <a class="collapse-item" href="{{ route('supplier.index')}}">Supplier</a>
           </div>
         </div>
@@ -45,7 +45,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sittok</h6>
             <a class="collapse-item" href="{{ route('user.index')}}">User</a>
-            <a class="collapse-item" href="/Admin/jual/list">Jual</a>
+            <a class="collapse-item" href="{{ route('jual.index')}}">Jual</a>
           </div>
         </div>
       </li>

@@ -37,7 +37,7 @@
                 <form class="navbar-search">
                   <div class="input-group">
                     <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
-                      aria-label="Search" aria-describedby="basic-addon2" style="border-color: #810CA8;">
+                      aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
@@ -52,7 +52,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">Maman Ketoprak</span>
+                <span class="ml-2 d-none d-lg-inline text-white small">Kresna Tampan</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -69,8 +69,8 @@
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="logoutadmin.php" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" 
-                    class="dropdown-item">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>>Logout</a>
+                                    class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>>Logout</a>
               </div>
             </li>
           </ul>
@@ -80,7 +80,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data User</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Master Customers</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -93,30 +93,31 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Form Edit Data User</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Data Master Customers</h6>            
                 </div>
                 <div class="card-body">
-             
-                  <form method="POST" action="{{ route('user.update', $user->id)}}" enctype="multipart/form-data">
-                  @csrf
-                  @method('PUT')   
+                <form action="{{ route('customers.update', $customer->id_customer)}}" method="POST" class="user">
+                @csrf
+                  @method('PUT')     
                     <div class="form-group">
-                      <label for="exampleInputEmail1">User Fullname</label>
-                      <input type="text" name="user_fullname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $user->user_fullname }}">
+                      <label for="txt_nama">Nama Customer</label>
+                      <input type="text" class="form-control" name="nama_supplier" placeholder="Masukkan Nama Customer" value="{{ $customer->nama_customer }}">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">No Telp</label>
-                      <input type="text" name= "telp" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $user->telp }}">
+                      <label for="txt_nama">No Telepon Customer</label>
+                      <input type="text" class="form-control" name="no_telp_supplier" placeholder="Masukkan No Telepon Customer" value="{{ $customer->no_telp_customer }}">
                     </div>
-                    
-                    <button type="submit" name= "update" class="btn btn-primary">Submit</button>
+                    <div class="form-group">
+                      <label for="txt_nama">Alamat Customer</label>
+                      <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat" value="{{ $customer->alamat }}">
+                    </div>
+                    <button type="submit" name="update" class="btn btn-primary">Submit</button>
                   </form>
-             
                 </div>
               </div>
+          </div>
+            
         <!-- <Form Basic> -->
-
-
       </div>
     </div>
   </div>
@@ -133,3 +134,5 @@
   <script src="/assets/vendor/chart.js/Chart.min.js"></script>
   <script src="/assets/js/demo/chart-area-demo.js"></script>  
 </body>
+
+</html>

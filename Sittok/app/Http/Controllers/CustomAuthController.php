@@ -23,7 +23,7 @@ class CustomAuthController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->user_fullname = $request->user_fullname;
-        $user->alamat = $request->alamat;
+        $user->telp = $request->telp;
 
         $user->save();
          

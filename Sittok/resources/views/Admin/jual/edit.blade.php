@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -80,7 +79,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data User</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Master Barang</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -93,25 +92,55 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Form Edit Data User</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Data Jual</h6>
                 </div>
                 <div class="card-body">
-             
-                  <form method="POST" action="{{ route('user.update', $user->id)}}" enctype="multipart/form-data">
+                  <form method="POST" action="{{ route('jual.update', $jual->id_jual)}}" enctype="multipart/form-data">
                   @csrf
-                  @method('PUT')   
+                  @method('PUT') 
+                
                     <div class="form-group">
-                      <label for="exampleInputEmail1">User Fullname</label>
-                      <input type="text" name="user_fullname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $user->user_fullname }}">
+                      <label for="exampleInputEmail1">Tanggal Jual</label>
+                      <input type="date" name="tanggal_jual" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $jual->merk_barang }}">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">No Telp</label>
-                      <input type="text" name= "telp" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $user->telp }}">
+                    <label for="exampleInputEmail1">ID Barang</label>
+                      <select name="id_barang" class="form-control">
+                        <option value="{{ $barang->id_kategori }}">{{ $barang->id_kategori }}</option>
+                        @foreach ($kategoris as $item)
+                        <option value="{{ $item->id_kategori}}">{{$item->id_kategori}} | {{$item->nama_kategori}}</option>
+                        @endforeach
+                      </select>
                     </div>
-                    
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">No Pesanan</label>
+                      <input type="text" name="no_pesanan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $barang->harga }}">
+                    </div>
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">ID Customer</label>
+                      <select name="id_kategori" class="form-control">
+                        <option value="{{ $jual->id_kategori }}">{{ $jual->id_kategori }}</option>
+                        @foreach ($barangs as $item)
+                        <option value="{{ $item->id_barang}}">{{$item->id_barang}} | {{$item->merk_barang}}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Total Harga</label>
+                      <input type="number" name="total_harga" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $barang->harga }}">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Status Pesanan</label>
+                      <input type="text" name= "status_pesanan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $barang->deskripsi }}">
+                    </div>
+                   
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Bukti Pembayaran</label>
+                      <input type="file" name="gambar" class="form-control" placeholder="image" value="{{ $jual->gambar }}">
+                      <img src="/images/{{ $jual->gambar}}" width="300px">
+                    </div>
                     <button type="submit" name= "update" class="btn btn-primary">Submit</button>
                   </form>
-             
                 </div>
               </div>
         <!-- <Form Basic> -->

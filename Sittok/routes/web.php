@@ -5,10 +5,14 @@ use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\JualController;
 use App\Models\Barang;
 use App\Models\Kategori;
 use App\Models\Supplier;
 use App\Models\User;
+use App\Models\Customer;
+use App\Models\Jual;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,17 +43,9 @@ Route::get('/Admin/indexadmin', function () {
     return view('Admin.indexadmin');
 });
 
-
-
-Route::get('Admin/jual/list', function () {
-    return view('Admin.jual.list');
-});
-
 Route::resource('/user', UserController::class);
 Route::resource('/supplier', SupplierController::class);
 Route::resource('/kategori', KategoriController::class);
 Route::resource('/barang', BarangController::class);
-
-Route::get('Admin/customers/index', function () {
-    return view('Admin.customers.index');
-});
+Route::resource('/customers', CustomerController::class);
+Route::resource('/jual', JualController::class);

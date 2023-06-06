@@ -10,9 +10,9 @@
   <meta name="author" content="">
   <link href="/assets/img/logo/sittok-gambar.png" rel="icon">
   <title>SITTOK</title>
-  <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="../assets/css/ruang-admin.min.css" rel="stylesheet">
+  <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/ruang-admin.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -63,7 +63,8 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Master Customers</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Jual</h1>
+           
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -76,42 +77,57 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Master Customers</h6>
-                  <a href = "{{ route('customers.create')}}" class = "btn btn-outline-primary btn-xs mb-0">+</a>
+                  <h6 class="m-0 font-weight-bold text-primary">Data Jual</h6>
+                  
+                  
                 </div>
                 <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
+                                @if(Session::has('success'))
+                                  <div class="alert alert-primary" role="alert">
+                                    {{ Session::get('success') }}
+                                  </div>
+                                @endif
+                                <thead>
+                                
                                         <tr>
-                                            <th width="50px">No</th>
-                                            <th>Nama</th>
-                                            <th>No Telp</th>
-                                            <th>Alamat</th>
+                                            <th>No</th>
+                                            <th>Tanggal</th>
+                                            <th>ID Barang</th>
+                                            <th>No Pesanan</th>
+                                            <th>ID Customer</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                            <th>Bukti Bayar</th>
                                             <th width="150px">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @if($customers->count() > 0)
-                                      @foreach($customers as $customer)
+                                      @if($juals->count() > 0)
+                                      @foreach($juals as $jual)
                                         <tr>
                                             <td class="align-middle">{{ $loop->iteration}}</td>
-                                            <td class="align-middle">{{ $customer->nama_customer}}</td>
-                                            <td class="align-middle">{{ $customer->no_telp_customer}}</td>
-                                            <td class="align-middle">{{ $customer->alamat}}</td>
+                                            <td class="align-middle">{{ $jual->tanggal_jual}}</td>
+                                            <td class="align-middle">{{ $jual->id_barang}}</td>
+                                            <td class="align-middle">{{ $jual->no_pesanan}}</td>
+                                            <td class="align-middle">{{ $jual->id_customer}}</td>
+                                            <td class="align-middle">{{ $jual->total}}</td>
+                                            <td class="align-middle">{{ $jual->status}}</td>
+                                            <td class="align-middle"><a href="{{ $jual->bukti_bayar}}" class="btn btn-warning btn-circle ">Lihat</i></a></td> 
                                             <td>
-                                            <a href="{{ route('customers.edit', $customer->id_customer)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
-                                            <form action="{{ route('customers.destroy', $customer->id_customer) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
+                                            <a href="{{ route('jual.edit', $jual->id_jual)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
+                                            <form action="{{ route('jual.destroy', $jual->id_jual) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger m-0"><i class="fas fa-trash"></i></button>
                                             </form>
-                                            </td>
+                                          </td> 
                                         </tr>
-                                      @endforeach
+                                        @endforeach
                                       @else
                                       <tr>
-                                        <td class="text-center" colspan="5">Data Customer Tidak Ditemukan</td>
+                                        <td class="text-center" colspan="9">Data Jual Tidak Ditemukan</td>
                                       </tr>
                                       @endif
                                     </tbody>

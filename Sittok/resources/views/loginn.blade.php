@@ -46,8 +46,8 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6" class="text-center"><img src="/assets/img/logo/sittok-gambar.png" style="margin-top: 50px;" style="margin-right: 5px;" align="center" class="mx-auto d-block" width="300px" ></div>
+                            
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Selamat Datang di Sittok!</h1>

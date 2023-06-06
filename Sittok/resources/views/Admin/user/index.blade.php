@@ -92,8 +92,8 @@
                                             <th>No</th>
                                             <th>Username</th>
                                             <th>Email</th>
-                                            <th>Password</th>
-                                            <th>Alamat</th>
+                                           
+                                            <th>No Telp</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -104,8 +104,8 @@
                                           <td class="align-middle">{{ $loop->iteration}}</td>
                                           <td class="align-middle">{{ $user->user_fullname}}</td>
                                           <td class="align-middle">{{ $user->email}}</td> 
-                                          <td class="align-middle">{{ $user->password}}</td>
-                                          <td class="align-middle">{{ $user->alamat}}</td>
+                            
+                                          <td class="align-middle">{{ $user->telp}}</td>
                                           <td>
                                           
                                             <a href="{{ route('user.edit', $user->id)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
@@ -119,7 +119,7 @@
                                       @endforeach
                                       @else
                                       <tr>
-                                        <td class="text-center" colspan="6">Data User Tidak Ditemukan</td>
+                                        <td class="text-center" colspan="5">Data User Tidak Ditemukan</td>
                                       </tr>
                                       @endif
                                     </tbody>
