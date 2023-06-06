@@ -10,10 +10,6 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
 
     <title>Sittok</title>
-<!--
-SOFTY PINKO
-https://templatemo.com/tm-535-softy-pinko
--->
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="landing/css/bootstrap.min.css">
