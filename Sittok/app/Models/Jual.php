@@ -14,10 +14,10 @@ class Jual extends Model
         'id_barang',
         'no_pesanan',
         'id_customer',
-        'total_harga',
-        'status_pesanan',
-        'bukti_pembayaran'
+        'total',
+        'status',
+        'bukti_bayar'
     ];
 
-    protected $primaryKey = 'id_barang';
+    protected $primaryKey = 'id_jual';
 }

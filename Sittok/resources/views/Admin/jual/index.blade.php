@@ -112,7 +112,7 @@
                                             <td class="align-middle">{{ $jual->id_barang}}</td>
                                             <td class="align-middle">{{ $jual->no_pesanan}}</td>
                                             <td class="align-middle">{{ $jual->id_customer}}</td>
-                                            <td class="align-middle">{{ $jual->total}}</td>
+                                            <td class="align-middle">Rp.{{ $jual->total}}</td>
                                             <td class="align-middle">{{ $jual->status}}</td>
                                             <td class="align-middle"><a href="{{ $jual->bukti_bayar}}" class="btn btn-warning btn-circle ">Lihat</i></a></td> 
                                             <td>

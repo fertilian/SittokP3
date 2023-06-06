@@ -109,7 +109,7 @@
                                             <td class="align-middle">{{ $loop->iteration}}</td>
                                             <td class="align-middle">{{ $barang->merk_barang}}</td>
                                             <td class="align-middle">{{ $barang->jumlah_barang}}</td>
-                                            <td class="align-middle">{{ $barang->harga}}</td>
+                                            <td class="align-middle">Rp.{{ $barang->harga}}</td>
                                             <td class="align-middle">{{ $barang->deskripsi}}</td>
                                             <td class="align-middle">{{ $barang->id_kategori}}</td>
                                             <td class="align-middle"><img src="/images/{{ $barang->gambar}}" width="75px" ></td> 
