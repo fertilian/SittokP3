@@ -34,7 +34,7 @@
                 <div class="row">
                     
 
-                    <div class="col-lg-5" class="text-center" ><img src="/assets/img/logo/sittok-gambar.png" style="margin-top: 120px;" style="margin-right: 5px;" align="center" class="mx-auto d-block" width="300px" ></div>
+                    <div class="col-lg-5" class="text-center" ><img src="/assets/img/logo/sittok-gambar.png" style="margin-top: 120px;" style="margin-right: 5px;" align="center" class="mx-auto d-block" width="250px" ></div>
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
@@ -88,5 +88,4 @@
     <script src="login/js/sb-admin-2.min.js"></script>
 
 </body>
-
 </html>

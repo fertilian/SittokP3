@@ -15,11 +15,7 @@ class LandingController extends Controller
      */
     public function index()
     {
-        $usercount = User::count();
-        $barangCount = Barang::count();
-        $kategoriCount = Kategori::count();
-        $supplierCount = supplier::count();
-        return view('landing', compact('usercount', 'barangCount', 'supplierCount'));
+        return view('landing');
     }
 
     /**
