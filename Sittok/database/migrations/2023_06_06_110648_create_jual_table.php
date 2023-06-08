@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('no_pesanan');
             $table->unsignedBigInteger('id_customer');
             $table->foreign('id_customer')->references('id_customer')->on('customers');
+            $table->unsignedBigInteger('id');
+            $table->foreign('id')->references('id')->on('users');
             $table->integer('total');
             $table->string('status');
            

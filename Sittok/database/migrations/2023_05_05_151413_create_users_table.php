@@ -19,6 +19,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->string('user_fullname')->nullable();
             $table->string('telp')->nullable();
+            $table->integer('level')->nullable();
             $table->timestamps();
         });
     }

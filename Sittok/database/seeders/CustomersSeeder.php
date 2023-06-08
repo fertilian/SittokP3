@@ -24,6 +24,7 @@ class CustomersSeeder extends Seeder
     			'nama_customer' => $faker->name,
     			'no_telp_customer' => $faker->phoneNumber,
     			'alamat' => $faker->address,
+                'email' => $faker->email,
     		]);
     }
 }
