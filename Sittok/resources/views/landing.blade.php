@@ -71,7 +71,7 @@
                     <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12">
                         <h1> Selamat datang di website <strong>Sittok</strong></h1>
                         <p>Sittok merupakan sistem informasi toko komputer yang menyediakan serta melayani penjualan Komputer, Laptop, Spare Part, dan Aksesoris untuk komputer kesayangan anda.</p>
-                        <a href="#features" class="main-button-slider">Discover More</a>
+                        <a href="#features" class="main-button-slider">LIHAT KITA LEBIH BANYAK</a>
                     </div>
                 </div>
             </div>
@@ -133,15 +133,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-12 col-sm-12 align-self-center" data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-                    <img src="landing/images/left-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
+                    <img src="assets/img/barang/laptop-hp.jpg" class="rounded img-fluid d-block mx-auto" alt="App">
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-6 col-md-12 col-sm-12 align-self-center mobile-top-fix">
                     <div class="left-heading">
-                        <h2 class="section-title">Let’s discuss about you project</h2>
+                        <h2 class="section-title">Laptop HP Core i3 11th Gen</h2>
                     </div>
                     <div class="left-text">
-                        <p>Nullam sit amet purus libero. Etiam ullamcorper nisl ut augue blandit, at finibus leo efficitur. Nam gravida purus non sapien auctor, ut aliquam magna ullamcorper.</p>
+                        <p>Dengan menggunakan dapur pacu Intel Core i3 Generasi 11 Processor, siap untuk menunjang kebutuhan produktifitas anda tanpa lelet</p>
                     </div>
                 </div>
             </div>
@@ -160,15 +160,15 @@
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-sm-12 align-self-center mobile-bottom-fix">
                     <div class="left-heading">
-                        <h2 class="section-title">We can help you to grow your business</h2>
+                        <h2 class="section-title">ASUS VivoBook Intel Core i7 10th Gen with NVIDIA VGA</h2>
                     </div>
                     <div class="left-text">
-                        <p>Aenean pretium, ipsum et porttitor auctor, metus ipsum iaculis nisi, a bibendum lectus libero vitae urna. Sed id leo eu dolor luctus congue sed eget ipsum. Nunc nec luctus libero. Etiam quis dolor elit.</p>
+                        <p>Dengan dapur pacu Intel Core i7 Generasi 10, teknologi processor terbaru dan kartu grafis NVIDIA RTX, siap diajak bermain game berat dengan performa dan grafis terbaik </p>
                     </div>
                 </div>
                 <div class="col-lg-1"></div>
                 <div class="col-lg-5 col-md-12 col-sm-12 align-self-center mobile-bottom-fix-big" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
-                    <img src="landing/images/right-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
+                    <img src="assets/img/barang/laptop-asus.jpg" class="rounded img-fluid d-block mx-auto" alt="App">
                 </div>
             </div>
         </div>
@@ -182,54 +182,40 @@
                 <div class="row">
                     <div class="offset-lg-3 col-lg-6">
                         <div class="info">
-                            <h1>Work Process</h1>
-                            <p>Aenean nec tempor metus. Maecenas ligula dolor, commodo in imperdiet interdum, vehicula ut ex. Donec ante diam.</p>
+                            <h1>Pelayanan Kami</h1>
+                            <p>Kami siap melayani dengan sepenuh hati untuk menjawab kebutuhan anda seperti :</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- ***** Mini Box Start ***** -->
                 <div class="row">
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                <div class="col-lg-15 col-md-3 col-sm-6 col-6">
                         <a href="#" class="mini-box">
                             <i><img src="landing/images/work-process-item-01.png" alt=""></i>
-                            <strong>Get Ideas</strong>
-                            <span>Godard pabst prism fam cliche.</span>
+                            <strong>Penjualan Produk Terbaik</strong>
+                            <span>Kami hanya melayani penjualan produk-produk berkualitas demi keamanan dan kenyamanan anda saat menggunakan produk kami</span>
                         </a>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                    <div class="col-lg-15 col-md-3 col-sm-6 col-6">
                         <a href="#" class="mini-box">
                             <i><img src="landing/images/work-process-item-01.png" alt=""></i>
-                            <strong>Sketch Up</strong>
-                            <span>Godard pabst prism fam cliche.</span>
+                            <strong>Suku Cadang/Aksesoris Lengkap</strong>
+                            <span>Kami menyediakan suku cadang/spare part dan aksesoris untuk perangkat kesayangan anda</span>
                         </a>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                    <div class="col-lg-15 col-md-3 col-sm-6 col-6">
                         <a href="#" class="mini-box">
                             <i><img src="landing/images/work-process-item-01.png" alt=""></i>
-                            <strong>Discuss</strong>
-                            <span>Godard pabst prism fam cliche.</span>
+                            <strong>Konsultasi</strong>
+                            <span>Kami dapat membantu anda untuk menentukan keputusan dalam memilih Laptop,PC, maupun aksesoris sesuai kebutuhan anda.<span>
                         </a>
                     </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
+                    <div class="col-lg-15 col-md-3 col-sm-6 col-6">
                         <a href="#" class="mini-box">
                             <i><img src="landing/images/work-process-item-01.png" alt=""></i>
-                            <strong>Revise</strong>
-                            <span>Godard pabst prism fam cliche.</span>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="#" class="mini-box">
-                            <i><img src="landing/images/work-process-item-01.png" alt=""></i>
-                            <strong>Approve</strong>
-                            <span>Godard pabst prism fam cliche.</span>
-                        </a>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-6 col-6">
-                        <a href="#" class="mini-box">
-                            <i><img src="landing/images/work-process-item-01.png" alt=""></i>
-                            <strong>Launch</strong>
-                            <span>Godard pabst prism fam cliche.</span>
+                            <strong>Jaminan</strong>
+                            <span>Kami akan memberikan jaminan garansi setiap pembelian produk pada toko kami</span>
                         </a>
                     </div>
                 </div>
