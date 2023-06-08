@@ -21,7 +21,7 @@ class LoginController extends Controller
         if ($customer) {
             $response = array(
                 'success' => true,
-                'message' => 'Logged in successfully',
+                'message' => 'Selamat Datang ' .$customer->nama_customer,
                 'id_customer' => $customer->id_customer,
                 'nama_customer' => $customer->nama_customer,
                 'email' => $customer->email,
