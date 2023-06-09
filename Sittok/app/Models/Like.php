@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Like extends Model
 {
+    use HasFactory;
+    public $table = "Likes";
     use HasFactory;
 
     protected $fillable = [
