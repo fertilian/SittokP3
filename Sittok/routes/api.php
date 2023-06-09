@@ -20,8 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('login', [AuthController::class, 'login']);
+<<<<<<< HEAD
 Route::post('register', [AuthController::class, 'register']);
 Route::post('getDataBarang', [AuthController::class, 'getDataBarang']);
 Route::post('getDataKategori', [AuthController::class, 'getDataKategori']);
 Route::post('addData', [AuthController::class, 'addData']);
 Route::post('getDataKeranjang', [AuthController::class, 'getDataKeranjang']);
+=======
+>>>>>>> ffec979ad0a52cde8e5970c5d6d69f8999c75244
