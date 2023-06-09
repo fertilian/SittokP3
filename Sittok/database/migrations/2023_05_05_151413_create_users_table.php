@@ -19,7 +19,9 @@ return new class extends Migration
             $table->rememberToken();
             $table->string('user_fullname')->nullable();
             $table->string('telp')->nullable();
-            $table->integer('level')->nullable();
+            $table->string('alamat')->nullable();
+            $table->unsignedBigInteger('id_level');
+            $table->foreign('id_level')->references('id_level')->on('levels');
             $table->timestamps();
         });
     }

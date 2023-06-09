@@ -11,21 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('juals', function (Blueprint $table) {
+        Schema::create('sells', function (Blueprint $table) {
             $table->id('id_jual');
+            $table->string('no_pesanan');
             $table->date('tanggal_jual');
             $table->unsignedBigInteger('id_barang');
-            $table->foreign('id_barang')->references('id_barang')->on('barangs');
-            $table->string('no_pesanan');
+            $table->foreign('id_barang')->references('id_barang')->on('goods');
+            $table->integer('harga');
+            $table->integer('qty');
+            $table->integer('total');
+            $table->integer('harga_bayar');
             $table->unsignedBigInteger('id_customer');
             $table->foreign('id_customer')->references('id_customer')->on('customers');
+            $table->string('alamat');
+            $table->string('nohp');
+            $table->string('bukti_bayar');
+            $table->string('status');
             $table->unsignedBigInteger('id');
             $table->foreign('id')->references('id')->on('users');
-            $table->integer('total');
-            $table->string('status');
-           
-            $table->string('bukti_bayar');
-            
+            $table->string('nama_lengkap');
             $table->timestamps();
         });
     }

@@ -11,15 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('goods', function (Blueprint $table) {
-            $table->id('id_barang');
+        Schema::create('baskets', function (Blueprint $table) {
+            $table->id('id_keranjang');
+            $table->unsignedBigInteger('id_customer');
+            $table->foreign('id_customer')->references('id_customer')->on('customers');
+            $table->unsignedBigInteger('id_barang');
+            $table->foreign('id_barang')->references('id_barang')->on('goods');
             $table->string('merk_barang');
-            $table->integer('jumlah_barang');
+            $table->integer('qty');
             $table->integer('harga');
-            $table->text('deskripsi');
             $table->string('gambar');
-            $table->unsignedBigInteger('id_kategori');
-            $table->foreign('id_kategori')->references('id_kategori')->on('categories');
+            
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('barang');
+        Schema::dropIfExists('keranjang');
     }
 };
