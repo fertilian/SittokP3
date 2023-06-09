@@ -16,40 +16,44 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function login(Request $request)
-    {
-        $email = $request->input('email');
-        $password = $request->input('password');
-    
-        $customer = DB::table('customers')
-            ->where('email', $email)
-            ->first();
-    
-        if ($customer) {
-            if (Hash::check($password, $customer->password)) {
-                $response = array(
-                    'success' => true,
-                    'message' => 'Selamat Datang ' . $customer->nama_customer,
-                    'data' => array(
-                        'id_customer' => $customer->id_customer,
-                        'nama_customer' => $customer->nama_customer,
-                        'email' => $customer->email,
-                        'no_telp_customer' => $customer->no_telp_customer,
-                        'alamat' => $customer->alamat
-                    )
-                );
-                return response()->json($response);
-            }
-        }
-    
-        $response = array(
-            'success' => false,
-            'message' => 'User not found or incorrect password',
-        );
-        return response()->json($response);
-    }
-    
-  
+{
+    $email = $request->input('email');
+    $password = $request->input('password');
 
+    $customer = DB::table('customers')
+        ->where('email', $email)
+        ->first();
+
+    if ($customer) {
+        if (Hash::check($password, $customer->password)) {
+            $response = array(
+                'success' => true,
+                'message' => 'Selamat Datang ' . $customer->nama_customer,
+                'data' => array(
+                    'id_customer' => $customer->id_customer,
+                    'nama_customer' => $customer->nama_customer,
+                    'email' => $customer->email,
+                    'no_telp_customer' => $customer->no_telp_customer,
+                    'alamat' => $customer->alamat
+                )
+            );
+            return response()->json($response);
+        } else {
+            $response = array(
+                'success' => false,
+                'message' => 'Incorrect password',
+            );
+            return response()->json($response, 404);
+        }
+    }
+
+    $response = array(
+        'success' => false,
+        'message' => 'User not found',
+    );
+    return response()->json($response, 404);
+}
+    
     public function register(Request $request)
     {
         $email = $request->input('email');
