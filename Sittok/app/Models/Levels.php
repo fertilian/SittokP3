@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Levels extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nama_customer',
-        'no_telp_customer',
-        'alamat',
-        'email',
-        'password',
+        'ket',
     ];
 
-    protected $primaryKey = 'id_customer';
+    protected $primaryKey = 'id_level';
 }

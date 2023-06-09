@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('baskets', function (Blueprint $table) {
+        Schema::create('keranjang', function (Blueprint $table) {
             $table->id('id_keranjang');
             $table->unsignedBigInteger('id_customer');
-            $table->foreign('id_customer')->references('id_customer')->on('customers');
             $table->unsignedBigInteger('id_barang');
-            $table->foreign('id_barang')->references('id_barang')->on('goods');
             $table->string('merk_barang');
             $table->integer('qty');
             $table->integer('harga');
             $table->string('gambar');
-            
             $table->timestamps();
+
+            $table->foreign('id_customer')->references('id_customer')->on('customers');
+            $table->foreign('id_barang')->references('id_barang')->on('barang');
         });
     }
 

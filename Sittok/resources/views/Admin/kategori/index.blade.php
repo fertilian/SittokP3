@@ -95,8 +95,8 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      @if($kategoris->count() > 0)
-                                      @foreach($kategoris as $kategori)
+                                      @if($kategori->count() > 0)
+                                      @foreach($kategori as $kategori)
                                         <tr>
                                             <td class="align-middle">{{ $loop->iteration}}</td>
                                             <td class="align-middle">{{ $kategori->nama_kategori}}</td>

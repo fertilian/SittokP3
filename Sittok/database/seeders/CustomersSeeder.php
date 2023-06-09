@@ -15,17 +15,50 @@ class CustomersSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Faker::create('id_ID');
- 
-    	for($i = 1; $i <= 50; $i++){
- 
-    	      
-    		\App\Models\Customer::create([
-    			'nama_customer' => $faker->name,
-    			'no_telp_customer' => $faker->phoneNumber,
-    			'alamat' => $faker->address,
-                'email' => $faker->email,
-    		]);
+        \App\Models\Customer::create([
+            'nama_customer' => 'Ria',
+            'email' => 'ria@gmail.com',
+            'no_telp_customer' => ' 081234582780',
+            'alamat' => 'Jember',
+            'password' => bcrypt('ria'),
+            
+        ]);
+
+        \App\Models\Customer::create([
+            'nama_customer' => 'Sindi',
+            'email' => 'sindi@gmail.com',
+            'no_telp_customer' => ' 081234582780',
+            'alamat' => 'Jember',
+            'password' => bcrypt('sindi'),
+            
+        ]);
+
+        \App\Models\Customer::create([
+            'nama_customer' => 'Karina',
+            'email' => 'karina@gmail.com',
+            'no_telp_customer' => ' 081234582780',
+            'alamat' => 'Jember',
+            'password' => bcrypt('karina'),
+            
+        ]);
+
+        \App\Models\Customer::create([
+            'nama_customer' => 'Fertilian',
+            'email' => 'fertilia@gmail.com',
+            'no_telp_customer' => ' 081234582780',
+            'alamat' => 'Jember',
+            'password' => bcrypt('fertilia'),
+            
+        ]);
+
+        \App\Models\Customer::create([
+            'nama_customer' => 'Nizar',
+            'email' => 'nizar@gmail.com',
+            'no_telp_customer' => ' 081234582780',
+            'alamat' => 'Jember',
+            'password' => bcrypt('nizar'),
+            
+        ]);
+
     }
-}
 }
