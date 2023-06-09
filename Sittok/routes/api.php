@@ -19,4 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('login', [LoginController::class, 'login']);
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+Route::post('getDataBarang', [AuthController::class, 'getDataBarang']);
+Route::post('getDataKategori', [AuthController::class, 'getDataKategori']);
+Route::post('addData', [AuthController::class, 'addData']);
+Route::post('getDataKeranjang', [AuthController::class, 'getDataKeranjang']);

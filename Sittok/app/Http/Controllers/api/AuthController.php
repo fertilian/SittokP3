@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Models\Kategori;
+use App\Models\Keranjang;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -137,5 +138,51 @@ class AuthController extends Controller
         }
 
         return response()->json($response);
+    }
+    public function addData(Request $request)
+    {
+        $data = $request->validate([
+            'id_customer' => 'required',
+            'id_barang' => 'required',
+            'merk_barang' => 'required',
+            'qty' => 'required',
+            'harga' => 'required',
+            'gambar' => 'required',
+        ]);
+
+        $keranjang = Keranjang::create($data);
+
+        return response()->json([
+            'message' => 'Data added successfully',
+            'data' => $keranjang
+        ], 201);
+    }
+
+    public function getDataKeranjang(Request $request)
+    {
+        $data = $request->validate([
+            'id_customer' => 'required',
+            'id_barang' => 'required',
+        ]);
+
+        $keranjang = Keranjang::join('barang', 'keranjang.id_barang', '=', 'barang.id_barang')
+            ->where('keranjang.id_customer', $data['id_customer'])
+            ->where('keranjang.id_barang', $data['id_barang'])
+            ->select('keranjang.*', 'barang.harga')
+            ->first();
+
+        if (!$keranjang) {
+            return response()->json([
+                'message' => 'Data not found'
+            ], 404);
+        }
+
+        $jumlah = $keranjang->harga * $keranjang->qty;
+        $keranjang->jumlah = $jumlah;
+
+        return response()->json([
+            'message' => 'Data retrieved successfully',
+            'data' => $keranjang
+        ], 200);
     }
 }
