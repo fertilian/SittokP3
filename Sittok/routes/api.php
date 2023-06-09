@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\api\LoginController;
 
 /*
@@ -25,3 +26,4 @@ Route::post('getDataBarang', [AuthController::class, 'getDataBarang']);
 Route::post('getDataKategori', [AuthController::class, 'getDataKategori']);
 Route::post('addData', [AuthController::class, 'addData']);
 Route::post('getDataKeranjang', [AuthController::class, 'getDataKeranjang']);
+Route::put('/customer/{id}', [CustomerController::class, 'updateData']);

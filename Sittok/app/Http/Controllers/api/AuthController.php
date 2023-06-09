@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Models\Kategori;
 use App\Models\Keranjang;
+use App\Models\Customer;
 use App\Models\Like;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
@@ -188,7 +189,7 @@ class AuthController extends Controller
     }
     public function getDataLikes(Request $request)
     {
-        $likes = Like::all();
+        $likes = Like ::all();
 
         if ($likes->isEmpty()) {
             $response = array(
@@ -205,5 +206,30 @@ class AuthController extends Controller
         }
 
         return response()->json($response);
+    }
+    public function updateData(Request $request, $id)
+    {
+        $data = $request->validate([
+            'nama_customer' => 'required',
+            'no_telp_customer' => 'required',
+            'alamat' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $customer = Customer::find($id);
+
+        if (!$customer) {
+            return response()->json([
+                'message' => 'Customer not found'
+            ], 404);
+        }
+
+        $customer->update($data);
+
+        return response()->json([
+            'message' => 'Data updated successfully',
+            'data' => $customer
+        ], 200);
     }
 }
