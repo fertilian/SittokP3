@@ -2,39 +2,60 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
-class LoginController extends Controller
+class RegisterController extends Controller
 {
-    public function register(Request $request)
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke(Request $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
+        //set validation
+        $validator = Validator::make($request->all(), [
+            'id_customer'      => 'required',
+            'nama_customer'    => 'required',
+            'email'            => 'required|email|unique:users',
+            'no_telp_customer' => 'required',
+            'alamat'           => 'required',
+            'password'         => 'required',
+        ]);
 
-        $customer = DB::table('customers')
-            ->where('email', $email)
-            ->where('password', $password)
-            ->first();
-
-        if ($customer) {
-            $response = array(
-                'success' => true,
-                'message' => 'Logged in successfully',
-                'id_customer' => $customer->id_customer,
-                'nama_customer' => $customer->nama_customer,
-                'email' => $customer->email,
-                'no_telp_customer' => $customer->no_telp_customer,
-                'alamat' => $customer->alamat,
-            );
-            return response()->json($response);
-        } else {
-            $response = array(
-                'success' => false,
-                'message' => 'User not found or incorrect password',
-            );
-            return response()->json($response);
+        //if validation fails
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
         }
-    }
+
+        //create user
+        $customer = customer::create([
+            'id_customer'      => 'required',
+            'nama_customer'    => 'required',
+            'email'            => 'required|email|unique:users',
+            'no_telp_customer' => 'required',
+            'alamat'           => 'required',
+            'password'         => 'required',
+        ]);
+
+        //return response JSON user is created
+            if ($customer) {
+                $response = array(
+                    'success' => true,
+                    'message' => 'Berhasil melakukan Registrasi ' .$customer->nama_customer,
+                );
+        return response()->json($response);
+        //return JSON process insert failed 
+            } else {
+        $response = array(
+            'success' => false,
+            'message' => 'Registrasi Gagal',
+        );
+        return response()->json($response);
+}
+}
 }
