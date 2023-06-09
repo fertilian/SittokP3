@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Barang;
 use App\Models\Kategori;
 use App\Models\Keranjang;
+use App\Models\Like;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -184,5 +185,25 @@ class AuthController extends Controller
             'message' => 'Data retrieved successfully',
             'data' => $keranjang
         ], 200);
+    }
+    public function getDataLikes(Request $request)
+    {
+        $likes = Like::all();
+
+        if ($likes->isEmpty()) {
+            $response = array(
+                'success' => false,
+                'message' => 'No data found',
+                'data' => null
+            );
+        } else {
+            $response = array(
+                'success' => true,
+                'message' => 'Data retrieved successfully',
+                'data' => $likes
+            );
+        }
+
+        return response()->json($response);
     }
 }
