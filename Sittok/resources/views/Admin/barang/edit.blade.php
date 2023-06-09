@@ -118,7 +118,7 @@
                     <div class="form-group">
                       <label for="exampleInputEmail1">Gambar</label>
                       <input type="file" name="gambar" class="form-control" placeholder="image" value="{{ $barang->gambar }}">
-                      <img src="/images/{{ $barang->gambar}}" width="300px">
+                      <img src="/{{ $barang->gambar}}" width="300px">
                     </div>
                     <div class="form-group">
                     <label for="exampleInputEmail1">ID Kategori</label>
