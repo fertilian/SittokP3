@@ -11,8 +11,8 @@ class KategoriController extends Controller
      */
     public function index()
     {
-        $ktg=kategori::orderBy('created_at', 'DESC')->get();
-        return view('Admin.kategori.index', compact('kategori'));
+        $kategoris=kategori::orderBy('created_at', 'DESC')->get();
+        return view('Admin.kategori.index', compact('kategoris'));
     }
 
     /**

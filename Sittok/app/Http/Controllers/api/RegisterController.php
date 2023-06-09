@@ -4,37 +4,68 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class LoginController extends Controller
+class RegisterController extends Controller
 {
     public function register(Request $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
+        // Validate the request data
+        $request->validate([
+            'nama_customer' => 'required|string',
+            'email' => 'required|email',
+            'no_telp_customer' => 'required|string',
+            'password' => 'required',
+        ]);
 
-        $customer = DB::table('customers')
-            ->where('email', $email)
-            ->where('password', $password)
-            ->first();
+        // Create a new user
+        $user = new User();
 
-        if ($customer) {
-            $response = array(
-                'success' => true,
-                'message' => 'Logged in successfully',
-                'id_customer' => $customer->id_customer,
-                'nama_customer' => $customer->nama_customer,
-                'email' => $customer->email,
-                'no_telp_customer' => $customer->no_telp_customer,
-                'alamat' => $customer->alamat,
-            );
-            return response()->json($response);
-        } else {
-            $response = array(
-                'success' => false,
-                'message' => 'User not found or incorrect password',
-            );
-            return response()->json($response);
-        }
+        $user->nama_customer = $request->nama_customer;
+        $user->email = $request->email;
+        $user->no_telp_customer = $request->no_telp_customer;
+        $user->password = $request->password;
+        $user->save();
+
+        // Return a response
+        return response()->json(['message' => 'Registration successful'], 201);
+    }
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

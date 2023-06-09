@@ -17,10 +17,7 @@ class KeranjangSeeder extends Seeder
     		\App\Models\Keranjang::create([
     			'id_customer' => '3',
     			'id_barang' => '1',
-    			'merk_barang' => 'Charger Asus',
                 'qty' => rand(1, 3),
-                'harga' => '200000',
-                'gambar' => 'charger-asus.jpg',
     		]);
         
     }

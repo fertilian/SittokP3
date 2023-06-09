@@ -86,6 +86,7 @@
                                         <tr>
                                             <th width="50px">No</th>
                                             <th>Nama</th>
+                                            <th>Email</th>
                                             <th>No Telp</th>
                                             <th>Alamat</th>
                                             <th width="150px">Aksi</th>
@@ -97,6 +98,7 @@
                                         <tr>
                                             <td class="align-middle">{{ $loop->iteration}}</td>
                                             <td class="align-middle">{{ $customer->nama_customer}}</td>
+                                            <td class="align-middle">{{ $customer->email}}</td>
                                             <td class="align-middle">{{ $customer->no_telp_customer}}</td>
                                             <td class="align-middle">{{ $customer->alamat}}</td>
                                             <td>

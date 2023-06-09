@@ -45,7 +45,7 @@ class BarangController extends Controller
             $destinationPath = 'images/';
             $profileImage = date('YmdHis') .".".$image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
-            $input['gambar'] = "$profileImage";
+            $input['gambar'] = "images/$profileImage";
         }
 
         barang::create($input);
@@ -92,8 +92,8 @@ class BarangController extends Controller
         if ($image = $request->file('gambar')) {
             $destinationPath = 'images/';
             $profileImage = date('YmdHis') .".".$image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['gambar'] = "$profileImage";
+            $image->move('images/', $profileImage);
+            $input['gambar'] = "images/$profileImage";
         }
 
         $barang->update($input);

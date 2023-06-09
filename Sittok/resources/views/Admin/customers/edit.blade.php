@@ -104,6 +104,10 @@
                       <input type="text" class="form-control" name="nama_supplier" placeholder="Masukkan Nama Customer" value="{{ $customer->nama_customer }}">
                     </div>
                     <div class="form-group">
+                      <label for="txt_nama">Email Customer</label>
+                      <input type="email" class="form-control" name="email" placeholder="Masukkan Email Customer" value="{{ $customer->email }}">
+                    </div>
+                    <div class="form-group">
                       <label for="txt_nama">No Telepon Customer</label>
                       <input type="text" class="form-control" name="no_telp_supplier" placeholder="Masukkan No Telepon Customer" value="{{ $customer->no_telp_customer }}">
                     </div>

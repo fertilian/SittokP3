@@ -103,12 +103,20 @@
                       <input type="text" class="form-control" name="nama_customer" placeholder="Masukkan Nama Customer">
                     </div>
                     <div class="form-group">
+                      <label for="txt_nama">Email Customer</label>
+                      <input type="email" class="form-control" name="email" placeholder="Masukkan Email Customer">
+                    </div>
+                    <div class="form-group">
                       <label for="txt_nama">No Telepon Customer</label>
                       <input type="tel" class="form-control" name="no_telp_customer" placeholder="Masukkan No Telepon Customer">
                     </div>
                     <div class="form-group">
                       <label for="txt_nama">Alamat Customer</label>
-                      <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat">
+                      <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat Customer">
+                    </div>
+                    <div class="form-group">
+                      <label for="txt_nama">Password Customer</label>
+                      <input type="password" class="form-control" name="password" placeholder="Masukkan Password Customer">
                     </div>
                     <button type="submit" name="create" class="btn btn-primary">Submit</button>
                   </form>

@@ -15,10 +15,7 @@ return new class extends Migration
             $table->id('id_keranjang');
             $table->unsignedBigInteger('id_customer');
             $table->unsignedBigInteger('id_barang');
-            $table->string('merk_barang');
             $table->integer('qty');
-            $table->integer('harga');
-            $table->string('gambar');
             $table->timestamps();
 
             $table->foreign('id_customer')->references('id_customer')->on('customers');

@@ -112,7 +112,7 @@
                                             <td class="align-middle">Rp.{{ $barang->harga}}</td>
                                             <td class="align-middle">{{ $barang->deskripsi}}</td>
                                             <td class="align-middle">{{ $barang->id_kategori}}</td>
-                                            <td class="align-middle"><img src="/images/{{ $barang->gambar}}" width="75px" ></td> 
+                                            <td class="align-middle"><img src="/{{ $barang->gambar}}" width="75px" ></td> 
                                             <td>
                                             <a href="{{ route('barang.edit', $barang->id_barang)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
                                             <form action="{{ route('barang.destroy', $barang->id_barang) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
