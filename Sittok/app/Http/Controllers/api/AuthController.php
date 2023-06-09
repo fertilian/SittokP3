@@ -1,0 +1,141 @@
+<?php
+
+namespace App\Http\Controllers\api;
+
+use App\Http\Controllers\Controller;
+use App\Models\Barang;
+use App\Models\Kategori;
+use Dotenv\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
+class AuthController extends Controller
+{
+    public function login(Request $request)
+    {
+        $email = $request->input('email');
+        $password = $request->input('password');
+    
+        $customer = DB::table('customers')
+            ->where('email', $email)
+            ->first();
+    
+        if ($customer) {
+            if (Hash::check($password, $customer->password)) {
+                $response = array(
+                    'success' => true,
+                    'message' => 'Selamat Datang ' . $customer->nama_customer,
+                    'data' => array(
+                        'id_customer' => $customer->id_customer,
+                        'nama_customer' => $customer->nama_customer,
+                        'email' => $customer->email,
+                        'no_telp_customer' => $customer->no_telp_customer,
+                        'alamat' => $customer->alamat
+                    )
+                );
+                return response()->json($response);
+            }
+        }
+    
+        $response = array(
+            'success' => false,
+            'message' => 'User not found or incorrect password',
+        );
+        return response()->json($response);
+    }
+    
+  
+
+    public function register(Request $request)
+    {
+        $email = $request->input('email');
+        $password = Hash::make($request->input('password'));
+        $nama_customer = $request->input('nama_customer');
+        $no_telp_customer = $request->input('no_telp_customer');
+        $alamat = $request->input('alamat');
+    
+        // Validasi jika email sudah terdaftar sebelumnya
+        $existingCustomer = DB::table('customers')
+            ->where('email', $email)
+            ->first();
+    
+        if ($existingCustomer) {
+            $response = array(
+                'success' => false,
+                'message' => 'Email already registered',
+            );
+            return response()->json($response);
+        }
+    
+        // Lakukan proses penyimpanan data customer ke database
+    
+        $customer = DB::table('customers')->insertGetId([
+            'email' => $email,
+            'password' => $password,
+            'nama_customer' => $nama_customer,
+            'no_telp_customer' => $no_telp_customer,
+            'alamat' => $alamat
+        ]);
+        if ($customer) {
+            $response = array(
+                'success' => true,
+                'message' => 'Registration successful',
+                'data' => array(
+                    'id_customer' => $customer,
+                    'nama_customer' => $nama_customer,
+                    'email' => $email,
+                    'no_telp_customer' => $no_telp_customer,
+                    'alamat' => $alamat
+                )
+            );
+            return response()->json($response);
+        } else {
+            $response = array(
+                'success' => false,
+                'message' => 'Registration failed',
+            );
+            return response()->json($response);
+        }
+    }
+    public function getDataBarang(Request $request)
+    {
+        $barangs = Barang::all();
+
+        if ($barangs->isEmpty()) {
+            $response = array(
+                'success' => false,
+                'message' => 'No data found',
+                'data' => null
+            );
+        } else {
+            $response = array(
+                'success' => true,
+                'message' => 'Data retrieved successfully',
+                'data' => $barangs
+            );
+        }
+
+        return response()->json($response);
+    }
+    public function getDataKategori(Request $request)
+    {
+        $kategoris = Kategori::all();
+
+        if ($kategoris->isEmpty()) {
+            $response = array(
+                'success' => false,
+                'message' => 'No data found',
+                'data' => null
+            );
+        } else {
+            $response = array(
+                'success' => true,
+                'message' => 'Data retrieved successfully',
+                'data' => $kategoris
+            );
+        }
+
+        return response()->json($response);
+    }
+}
