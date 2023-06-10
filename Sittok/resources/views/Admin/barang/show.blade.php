@@ -1,7 +1,39 @@
 <!DOCTYPE html>
 
 <html lang="en">
+<style>
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* Mengatur 2 kolom dengan lebar yang sesuai */
+            grid-gap: 20px; /* Mengatur jarak antara elemen */
+            align-items: center; /* Mengatur pemusat vertikal */
+            font-family: Arial, sans-serif; /* Mengatur jenis font */
+        }
 
+        .gambar {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .detail-barang {
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .button
+        {
+          width="125px"
+        }
+    </style>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -73,63 +105,34 @@
         <!---Container Fluid-->
         
         <!-- <Form Basic> -->
+          
           <div class="row">
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Barang</h6>
-                  
-                  <a href = "{{ route('barang.create')}}" class = "btn btn-outline-primary btn-xs mb-0">+</a>
-                </div>
-                <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                @if(Session::has('success'))
-                                  <div class="alert alert-primary" role="alert">
-                                    {{ Session::get('success') }}
-                                  </div>
-                                @endif
-                                <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Gambar</th>
-                                            <th>Nama</th>
-                                            <th>Kategori</th>
-                                            <th>Harga Jual</th>
-                                            <th width="180px">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                      @if($barangs->count() > 0)
-                                      @foreach($barangs as $barang)
-                                        <tr> 
-                                            <td class="align-middle">{{ $loop->iteration}}</td>
-                                            <td class="align-middle"><img src="/{{ $barang->gambar}}" width="75px" ></td> 
-                                            <td class="align-middle">{{ $barang->merk_barang}}</td>
-                                            <td class="align-middle">{{ $barang->kategori->nama_kategori;}}</td>
-                                            <td class="align-middle">Rp.{{ $barang->harga}}</td>
-                                            <td class="align-middle">
-                                            <a href="{{ route('barang.show', $barang->id_barang)}}" class="btn btn-warning btn-circle " style="width: 40px;"><i class="fas fa-info"></i></a>
-                                            <a href="{{ route('barang.edit', $barang->id_barang)}}" class="btn btn-primary btn-circle " style="width: 40px;"><i class="fas fa-pen"></i></a>
-                                            <form action="{{ route('barang.destroy', $barang->id_barang) }}" style="width: 40px;" method="POST" type="button" class="btn btn-danger p-0" width="25px" onsubmit="return confirm('Ingin Menghapus Data ini?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger m-0"><i class="fas fa-trash"></i></button>
-                                            </form>
-                                          </td> 
-                                        </tr>
-                                        @endforeach
-                                      @else
-                                      <tr>
-                                        <td class="text-center" colspan="8">Data Barang Tidak Ditemukan</td>
-                                      </tr>
-                                      @endif
-                                    </tbody>
-                                </table>
+                  </div>
+                  <div class="container">
+                    <img class="gambar" src="/{{ $barang->gambar}}" alt="Gambar Barang">
+                   
 
-                            </div>
-                        </div>
-              </div>
+                    <div class="detail-barang">
+                        <h1>{{ $barang->merk_barang}}</h1>
+                        <p>{{ $barang->deskripsi}}</p>
+                        <p>Harga: Rp.{{ $barang->harga}}</p>
+                        <p>Kategori: {{ $barang->kategori->nama_kategori}}</p>
+                        <p>Jumlah : {{ $barang->jumlah_barang}}</p>
+                  
+                   
+                      <div style="width: 125px; float: right; margin-left: 500px;" >
+                        <a href="{{ route('barang.index')}}" class="btn btn-secondary btn-user btn-block">Kembali</a>
+                      </div>
+                 
+                        <br>
+                    </div>
+                  </div>
+                  
+                  
         <!-- <Form Basic> -->
       </div>
     </div>

@@ -14,6 +14,11 @@ class BarangController extends Controller
     {
         $barangs=barang::orderBy('created_at', 'DESC')->get();
         return view('Admin.barang.index', compact('barangs'));
+        $barang = Barang::find($id_barang);
+
+            // Mendapatkan nama_kategori berdasarkan fk id_kategori pada model Barang
+            $nama_kategori = $barang->kategori->nama_kategori;
+
     }
 
     /**
@@ -56,9 +61,12 @@ class BarangController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id_barang)
     {
-        //
+        $barang = Barang::findOrFail($id_barang);
+      
+
+        return view('Admin.barang.show', compact('barang'));
     }
 
     /**

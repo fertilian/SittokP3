@@ -18,4 +18,9 @@ class Customer extends Model
     ];
 
     protected $primaryKey = 'id_customer';
+
+    public function setPasswordAttribute($value)
+    {
+    $this->attributes['password'] = bcrypt($value);
+    }
 }
