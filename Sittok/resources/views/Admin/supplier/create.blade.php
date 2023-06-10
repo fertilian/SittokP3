@@ -110,7 +110,15 @@
                       <label for="txt_nama">Alamat Supplier</label>
                       <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat">
                     </div>
-                    <button type="submit" name="create" class="btn btn-primary">Submit</button>
+                    <div class="form-group row" style="position: relative; float: left; ">
+                      <div class="px-3" style="width: 150px;">
+                        <button type="submit" name="create" class="btn btn-primary btn-user btn-block">Simpan</button>
+                      </div>
+                      <div style="width: 125px;">
+                        <a href="{{ route('supplier.index')}}" class="btn btn-secondary btn-user btn-block">Kembali</a>
+                      </div>
+                    </div>
+                   
                   </form>
                 </div>
               </div>

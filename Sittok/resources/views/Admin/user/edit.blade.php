@@ -108,8 +108,15 @@
                       <label for="exampleInputEmail1">No Telp</label>
                       <input type="text" name= "telp" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $user->telp }}">
                     </div>
+                    <div class="form-group row" style="position: relative; float: left; ">
+                      <div class="px-3" style="width: 150px;">
+                        <button type="submit" name="update" class="btn btn-primary btn-user btn-block">Simpan</button>
+                      </div>
+                      <div style="width: 125px;">
+                        <a href="{{ route('user.index')}}" class="btn btn-secondary btn-user btn-block">Kembali</a>
+                      </div>
+                    </div>
                     
-                    <button type="submit" name= "update" class="btn btn-primary">Submit</button>
                   </form>
              
                 </div>

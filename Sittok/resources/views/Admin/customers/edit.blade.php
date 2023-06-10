@@ -108,6 +108,10 @@
                       <input type="email" class="form-control" name="email" placeholder="Masukkan Email Customer" value="{{ $customer->email }}">
                     </div>
                     <div class="form-group">
+                      <label for="txt_nama">Password Customer</label>
+                      <input type="password" class="form-control" name="password" placeholder="Masukkan Email Customer" value="{{ $customer->password }}">
+                    </div>
+                    <div class="form-group">
                       <label for="txt_nama">No Telepon Customer</label>
                       <input type="text" class="form-control" name="no_telp_supplier" placeholder="Masukkan No Telepon Customer" value="{{ $customer->no_telp_customer }}">
                     </div>
@@ -115,7 +119,15 @@
                       <label for="txt_nama">Alamat Customer</label>
                       <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat" value="{{ $customer->alamat }}">
                     </div>
-                    <button type="submit" name="update" class="btn btn-primary">Submit</button>
+                    <div class="form-group row" style="position: relative; float: left; ">
+                      <div class="px-3" style="width: 150px;">
+                        <button type="submit" name="update" class="btn btn-primary btn-user btn-block">Simpan</button>
+                      </div>
+                      <div style="width: 125px;">
+                        <a href="{{ route('customers.index')}}" class="btn btn-secondary btn-user btn-block">Kembali</a>
+                      </div>
+                    </div>
+                    
                   </form>
                 </div>
               </div>
