@@ -147,29 +147,33 @@ class AuthController extends Controller
     }
     public function addData(Request $request)
     {
-        $data = $request->validate([
-            'id_customer' => 'required',
-            'id_barang' => 'required',
-            'merk_barang' => 'required',
-            'qty' => 'required',
-            'harga' => 'required',
-            'gambar' => 'required',
-        ]);
-
+        $data = $request->only(['id_customer', 'id_barang', 'qty']);
+    
+        // Check if required fields are present
+        $requiredFields = ['id_customer', 'id_barang', 'qty'];
+        foreach ($requiredFields as $field) {
+            if (!isset($data[$field]) || empty($data[$field])) {
+                return response()->json([
+                    'error' => 'The ' . $field . ' field is required.'
+                ], 400);
+            }
+        }
+    
         $keranjang = Keranjang::create($data);
-
+    
         return response()->json([
             'message' => 'Data added successfully',
             'data' => $keranjang
         ], 201);
     }
+    
 
     public function getDataKeranjang(Request $request)
     {
         $data = $request->validate([
             'id_customer' => 'required',
             'id_barang' => 'required',
-        ]);
+        ]);  
 
         $keranjang = Keranjang::join('barang', 'keranjang.id_barang', '=', 'barang.id_barang')
             ->where('keranjang.id_customer', $data['id_customer'])

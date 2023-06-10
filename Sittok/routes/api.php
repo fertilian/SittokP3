@@ -22,8 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
-Route::post('getDataBarang', [AuthController::class, 'getDataBarang']);
+Route::post('get-data-barang', [AuthController::class, 'getDataBarang']);
 Route::post('getDataKategori', [AuthController::class, 'getDataKategori']);
 Route::post('addData', [AuthController::class, 'addData']);
-Route::post('getDataKeranjang', [AuthController::class, 'getDataKeranjang']);
+Route::post('get-data-keranjang', [AuthController::class, 'getDataKeranjang']);
 Route::put('/customer/{id}', [CustomerController::class, 'updateData']);

@@ -13,10 +13,7 @@ class Keranjang extends Model
     protected $fillable = [
         'id_customer',
         'id_barang',
-        'merk_barang',
         'qty',
-        'harga',
-        'gambar',
         
     ];
 
