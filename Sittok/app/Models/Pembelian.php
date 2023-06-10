@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Beli extends Model
+class Pembelian extends Model
 {
-    public $table = "beli";
     use HasFactory;
-
+    public $table = "beli";
     protected $fillable = [
         'tgl_beli',
         'jumlah_beli',
         'harga_beli',
         'id_barang',
         'id_supplier',
-       
+        
     ];
 
-    protected $primaryKey = 'id_beli';
+    protected $primaryKey = 'id_supplier';
 }
