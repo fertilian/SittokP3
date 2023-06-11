@@ -106,7 +106,7 @@
                                             <td class="align-middle">{{ $loop->iteration}}</td>
                                             <td class="align-middle"><img src="/{{ $barang->gambar}}" width="75px" ></td> 
                                             <td class="align-middle">{{ $barang->merk_barang}}</td>
-                                            <td class="align-middle">{{ $barang->kategori->nama_kategori;}}</td>
+                                            <td class="align-middle">{{ $barang->kategori->nama_kategori}}</td>
                                             <td class="align-middle">Rp.{{ $barang->harga}}</td>
                                             <td class="align-middle">
                                             <a href="{{ route('barang.show', $barang->id_barang)}}" class="btn btn-warning btn-circle " style="width: 40px;"><i class="fas fa-info"></i></a>
