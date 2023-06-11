@@ -18,19 +18,7 @@
     <link rel="stylesheet" type="text/css" href="landing/css/font-awesome.css">
 
     <link rel="stylesheet" href="landing/css/templatemo-softy-pinko.css">
-
-    <script>
-        $(document).ready(function(){       
-            $('.form-checkbox').click(function(){
-                if($(this).is(':checked')){
-                    $('.form-password').attr('type','text');
-                }else{
-                    $('.form-password').attr('type','password');
-                }
-            });
-        });
-    </script>
-
+    <link href="login/css/sb-admin-2.min.css" rel="stylesheet">
     </head>
     
     <body>
@@ -52,16 +40,16 @@
     </header>
     <!-- ***** Header Area End ***** -->
 
-    <!-- ***** Welcome Area Start ***** -->
+    <!-- * **** Welcome Area Start ***** -->
     <div class="welcome-area" id="welcome">
 
         <!-- ***** Header Text Start ***** -->
         <div class="header-text">
             <div class="container">
                 <div class="row">
-                    <div class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-1">
+                    <div class="col-xl-7 offset-lg-2 col-lg-8 col-md-12 col-sm-1" style="margin-left:220px">
                     <img src="/assets/img/logo/sittok.png" width="150px">
-                        <h1> Selamat Datang di Website <strong>SITTOK</strong></h1>
+                        <h1> Selamat Datang di Website Admin <strong>SITTOK</strong></h1> 
                         <p>Sittok merupakan sistem informasi toko komputer yang menyediakan serta melayani penjualan Komputer, Laptop, Spare Part, dan Aksesoris untuk komputer kesayangan.</p>
                         
                         <a href="loginn" class="main-button-slider" class="active">LOGIN</a>
@@ -77,7 +65,7 @@
     <!-- Bootstrap -->
     <script src="landing/js/popper.js"></script>
     <script src="landing/js/bootstrap.min.js"></script>
-
+ 
     <!-- Plugins -->
     <script src="landing/js/scrollreveal.min.js"></script>
     <script src="landing/js/waypoints.min.js"></script>
