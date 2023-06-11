@@ -97,35 +97,42 @@
                 <div class="card-body">
                   <form method="post" action="{{ route('barang.store')}}" enctype="multipart/form-data">
                   @csrf
-                    <div class="form-group">
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
                       <label for="exampleInputEmail1">Merk Barang</label>
                       <input type="text" name="merk_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk Barang">
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Jumlah Barang</label>
-                      <input type="number" name="jumlah_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Jumlah Barang">
+                    <div class="col-sm-6">
+                      <label for="exampleInputEmail1">Kategori</label>
+                        <select name="id_kategori" class="form-control">
+                          <option value="">- Pilih -</option>
+                          @foreach ($kategoris as $item)
+                          <option value="{{ $item->id_kategori}}">{{$item->nama_kategori}}</option>
+                          @endforeach
+                        </select>
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Harga</label>
-                      <input type="number" name="harga" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga">
+
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="exampleInputEmail1">Jumlah Barang</label>
+                        <input type="number" name="jumlah_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Jumlah Barang">
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="exampleInputEmail1">Harga</label>
+                        <input type="number" name="harga" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga">
+                      </div>
                     </div>
+
                     <div class="form-group">
                       <label for="exampleInputEmail1">Deskripsi</label>
-                      <input type="text" name= "deskripsi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Deskripsi">
+                      <textarea name= "deskripsi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Deskripsi"></textarea>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputEmail1">Gambar</label>
                       <input type="file" name="gambar" class="form-control" placeholder="image">
                     </div>
-                    <div class="form-group">
-                    <label for="exampleInputEmail1">ID Kategori</label>
-                      <select name="id_kategori" class="form-control">
-                        <option value="">- Pilih -</option>
-                        @foreach ($kategoris as $item)
-                        <option value="{{ $item->id_kategori}}">{{$item->id_kategori}} | {{$item->nama_kategori}}</option>
-                        @endforeach
-                      </select>
-                    </div>
+                    
                     <div class="form-group row" style="position: relative; float: left; ">
                       <div class="px-3" style="width: 150px;">
                         <button type="submit" name="simpan" class="btn btn-primary btn-user btn-block">Simpan</button>

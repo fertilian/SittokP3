@@ -8,12 +8,14 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\JualController;
+use App\Http\Controllers\BeliController;
 use App\Models\Barang;
 use App\Models\Kategori;
 use App\Models\Supplier;
 use App\Models\User;
 use App\Models\Customer;
 use App\Models\Jual;
+use App\Models\Beli;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,3 +54,4 @@ Route::resource('/kategori', KategoriController::class);
 Route::resource('/barang', BarangController::class);
 Route::resource('/customers', CustomerController::class);
 Route::resource('/jual', JualController::class);
+Route::resource('/beli', BeliController::class);

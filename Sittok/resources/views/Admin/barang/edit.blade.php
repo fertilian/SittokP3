@@ -99,36 +99,44 @@
                   @csrf
                   @method('PUT') 
                 
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Merk Barang</label>
-                      <input type="text" name="merk_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $barang->merk_barang }}">
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="exampleInputEmail1">Merk Barang</label>
+                        <input type="text" name="merk_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $barang->merk_barang }}">
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="exampleInputEmail1">Kategori</label>
+                        <select name="id_kategori" class="form-control">
+                          <option value="{{ $barang->id_kategori }}">{{ $barang->kategori->nama_kategori}}</option>
+                          @foreach ($kategoris as $item)
+                          <option value="{{ $item->id_kategori}}">{{$item->nama_kategori}}</option>
+                          @endforeach
+                        </select>
+                      </div>
                     </div>
-                    <div class="form-group">
+
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
                       <label for="exampleInputEmail1">Jumlah Barang</label>
-                      <input type="number" name="jumlah_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jumlah Barang" value="{{ $barang->jumlah_barang }}">
+                        <input type="number" name="jumlah_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Jumlah Barang" value="{{ $barang->jumlah_barang }}">
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="exampleInputEmail1">Harga</label>
+                        <input type="number" name="harga" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $barang->harga }}">
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Harga</label>
-                      <input type="number" name="harga" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $barang->harga }}">
-                    </div>
+
                     <div class="form-group">
                       <label for="exampleInputEmail1">Deskripsi</label>
-                      <input type="text" name= "deskripsi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $barang->deskripsi }}">
+                      <textarea name= "deskripsi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Deskripsi">{{ $barang->deskripsi }}</textarea>
                     </div>
+
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Gambar</label>
-                      <input type="file" name="gambar" class="form-control" placeholder="image" value="{{ $barang->gambar }}">
-                      <img src="/{{ $barang->gambar}}" width="300px">
+                        <label for="exampleInputEmail1">Gambar</label>
+                        <input type="file" name="gambar" class="form-control" placeholder="image" value="{{ $barang->gambar }}">
+                        <img src="/{{ $barang->gambar}}" width="300px">
                     </div>
-                    <div class="form-group">
-                    <label for="exampleInputEmail1">ID Kategori</label>
-                      <select name="id_kategori" class="form-control">
-                        <option value="{{ $barang->id_kategori }}">{{ $barang->id_kategori }}</option>
-                        @foreach ($kategoris as $item)
-                        <option value="{{ $item->id_kategori}}">{{$item->id_kategori}} | {{$item->nama_kategori}}</option>
-                        @endforeach
-                      </select>
-                    </div>
+                     
                     <div class="form-group row" style="position: relative; float: left; ">
                       <div class="px-3" style="width: 150px;">
                         <button type="submit" name="update" class="btn btn-primary btn-user btn-block">Simpan</button>

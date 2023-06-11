@@ -85,7 +85,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="{{ route('register')}}">Buat Akun Baru!</a>
+                                        <a class="small" href="#">Lupa Email/Password? Klik Disini</a>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,7 +36,7 @@
                 <form class="navbar-search">
                   <div class="input-group">
                     <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
-                      aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
+                      aria-label="Search" aria-describedby="basic-addon2" style="border-color: #810CA8;">
                     <div class="input-group-append">
                       <button class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
@@ -52,7 +51,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                <span class="ml-2 d-none d-lg-inline text-white small">Kresna Tampan</span>
+                <span class="ml-2 d-none d-lg-inline text-white small">Maman Ketoprak</span>
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -80,7 +79,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Master Supplier</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Master Pembelian</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -93,38 +92,60 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Master Supplier</h6>            
+                  <h6 class="m-0 font-weight-bold text-primary">Data Master Pembelian</h6>
                 </div>
                 <div class="card-body">
-                  <form action="{{ route('supplier.store')}}" method="POST" class="user">
-                    @csrf
-                    <div class="form-group">
-                      <label for="txt_nama">Nama Supplier</label>
-                      <input type="text" class="form-control" name="nama_supplier" placeholder="Masukkan Nama Supplier">
+                  <form method="post" action="{{ route('beli.store')}}" enctype="multipart/form-data">
+                  @csrf
+                    <div class="form-group row">
+                      <div class="col-sm-4">
+                        <label for="exampleInputEmail1">Tanggal</label>
+                        <input type="date" name="tgl_beli" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Tanggal Beli">
+                      </div>
+                      <div class="col-sm-4">
+                        <label for="exampleInputEmail1">Qty</label>
+                        <input type="number" name="jumlah_beli" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Jumlah Beli">
+                      </div>
+                      <div class="col-sm-4">
+                        <label for="exampleInputEmail1">Harga</label>
+                        <input type="number" name="harga_beli" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga Beli">
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label for="txt_nama">No Telepon Supplier</label>
-                      <input type="tel" class="form-control" name="no_telp_supplier" placeholder="Masukkan No Telepon Supplier">
-                    </div>
-                    <div class="form-group">
-                      <label for="txt_nama">Alamat Supplier</label>
-                      <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat Supplier">
-                    </div>
+                    <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <label for="exampleInputEmail1">Barang</label>
+                        <select name="id_barang" class="form-control">
+                          <option value="">- Pilih -</option>
+                          @foreach ($barangs as $item)
+                          <option value="{{ $item->id_barang}}">{{$item->merk_barang}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    <div class="col-sm-6">
+                    <label for="exampleInputEmail1">Supplier</label>
+                      <select name="id_supplier" class="form-control">
+                        <option value="">- Pilih -</option>
+                        @foreach ($suppliers as $item)
+                        <option value="{{ $item->id_supplier}}">{{$item->nama_supplier}}</option>
+                        @endforeach
+                      </select>
+                    </div></div>
+                    
                     <div class="form-group row" style="position: relative; float: left; ">
                       <div class="px-3" style="width: 150px;">
-                        <button type="submit" name="create" class="btn btn-primary btn-user btn-block">Simpan</button>
+                        <button type="submit" name="simpan" class="btn btn-primary btn-user btn-block">Simpan</button>
                       </div>
                       <div style="width: 125px;">
-                        <a href="{{ route('supplier.index')}}" class="btn btn-secondary btn-user btn-block">Kembali</a>
+                        <a href="{{ route('beli.index')}}" class="btn btn-secondary btn-user btn-block">Kembali</a>
                       </div>
                     </div>
-                   
+                    
                   </form>
                 </div>
               </div>
-          </div>
-            
         <!-- <Form Basic> -->
+
+
       </div>
     </div>
   </div>
@@ -141,5 +162,3 @@
   <script src="/assets/vendor/chart.js/Chart.min.js"></script>
   <script src="/assets/js/demo/chart-area-demo.js"></script>  
 </body>
-
-</html>

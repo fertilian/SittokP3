@@ -61,7 +61,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Master Supplier</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Master Pembelian</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -74,8 +74,8 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Master Supplier</h6>
-                  <a href ="{{ route('supplier.create')}}" class ="btn btn-outline-primary btn-xs mb-0">+</a>
+                  <h6 class="m-0 font-weight-bold text-primary">Data Master Pembelian</h6>
+                  <a href ="{{ route('beli.create')}}" class ="btn btn-outline-primary btn-xs mb-0">+</a>
                 </div>
                 <div class="card-body">
                             <div class="table-responsive">
@@ -89,23 +89,27 @@
                                     <thead>
                                         <tr>
                                             <th width="50px">No</th>
-                                            <th>Nama</th>
-                                            <th>No Telp</th>
-                                            <th>Alamat</th>
+                                            <th>Tanggal</th>
+                                            <th>Qty</th>
+                                            <th>Harga</th>
+                                            <th>Barang</th>
+                                            <th>Supplier</th>
                                             <th width="150px">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      @if($suppliers->count() > 0)
-                                      @foreach($suppliers as $supplier)
+                                      @if($belis->count() > 0)
+                                      @foreach($belis as $beli)
                                         <tr>
                                             <td class="align-middle">{{ $loop->iteration}}</td>
-                                            <td class="align-middle">{{ $supplier->nama_supplier}}</td>
-                                            <td class="align-middle">{{ $supplier->no_telp_supplier}}</td>
-                                            <td class="align-middle">{{ $supplier->alamat}}</td>
+                                            <td class="align-middle">{{ $beli->tgl_beli}}</td>
+                                            <td class="align-middle">{{ $beli->jumlah_beli}}</td>
+                                            <td class="align-middle">Rp.{{ $beli->harga_beli}}</td>
+                                            <td class="align-middle">{{ $beli->barang->merk_barang}}</td>
+                                            <td class="align-middle">{{ $beli->supplier->nama_supplier}}</td>
                                             <td>
-                                            <a href="{{ route('supplier.edit', $supplier->id_supplier)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
-                                            <form action="{{ route('supplier.destroy', $supplier->id_supplier) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
+                                            <a href="{{ route('beli.edit', $beli->id)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
+                                            <form action="{{ route('beli.destroy', $beli->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger m-0"><i class="fas fa-trash"></i></button>
