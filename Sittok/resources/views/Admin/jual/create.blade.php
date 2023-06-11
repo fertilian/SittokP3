@@ -68,8 +68,8 @@
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="logoutadmin.php" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" 
-                    class="dropdown-item">
-                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>>Logout</a>
+                                    class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>>Logout</a>
               </div>
             </li>
           </ul>
@@ -79,7 +79,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Jual</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Master Jual</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -92,54 +92,56 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Jual</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Data Master Jual</h6>
                 </div>
                 <div class="card-body">
-                  <form method="POST" action="{{ route('jual.update', $jual->id_jual)}}" enctype="multipart/form-data">
+                  <form method="post" action="{{ route('jual.store')}}" enctype="multipart/form-data">
                   @csrf
-                  @method('PUT') 
-                
+                  <div class="form-group row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <label for="exampleInputEmail1">Merk Barang</label>
+                      <input type="text" name="merk_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk Barang">
+                    </div>
+                    <div class="col-sm-6">
+                      <label for="exampleInputEmail1">Kategori</label>
+                        <select name="id_kategori" class="form-control">
+                          <option value="">- Pilih -</option>
+                          @foreach ($kategoris as $item)
+                          <option value="{{ $item->id_kategori}}">{{$item->nama_kategori}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="exampleInputEmail1">Jumlah Barang</label>
+                        <input type="number" name="jumlah_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Jumlah Barang">
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="exampleInputEmail1">Harga</label>
+                        <input type="number" name="harga" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga">
+                      </div>
+                    </div>
+
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Tanggal Jual</label>
-                      <input type="date" name="tanggal_jual" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $jual->tanggal_jual }}">
+                      <label for="exampleInputEmail1">Deskripsi</label>
+                      <textarea name= "deskripsi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Deskripsi"></textarea>
                     </div>
                     <div class="form-group">
-                    <label for="exampleInputEmail1">ID Barang</label>
-                      <select name="id_barang" class="form-control">
-                        <option value="{{ $jual->id_barang }}">{{ $jual->id_barang }}</option>
-                        @foreach ($barangs as $item)
-                        <option value="{{ $item->id_barang}}">{{$item->id_barang}} | {{$item->merk_barang}}</option>
-                        @endforeach
-                      </select>
+                      <label for="exampleInputEmail1">Gambar</label>
+                      <input type="file" name="gambar" class="form-control" placeholder="image">
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">No Pesanan</label>
-                      <input type="text" name="no_pesanan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $jual->no_pesanan }}">
+                    
+                    <div class="form-group row" style="position: relative; float: left; ">
+                      <div class="px-3" style="width: 150px;">
+                        <button type="submit" name="simpan" class="btn btn-primary btn-user btn-block">Simpan</button>
+                      </div>
+                      <div style="width: 125px;">
+                        <a href="{{ route('barang.index')}}" class="btn btn-secondary btn-user btn-block">Kembali</a>
+                      </div>
                     </div>
-                    <div class="form-group">
-                    <label for="exampleInputEmail1">ID Customer</label>
-                      <select name="id_customer" class="form-control">
-                        <option value="{{ $jual->id_customer }}">{{ $jual->id_customer }}</option>
-                        @foreach ($customers as $item)
-                        <option value="{{ $item->id_customer}}">{{$item->id_customer}} | {{$item->nama_customer}}</option>
-                        @endforeach
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Total</label>
-                      <input type="number" name="total" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $jual->total }}">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Status Pesanan</label>
-                      <input type="text" name= "status_pesanan" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Merk" value="{{ $jual->deskripsi }}">
-                    </div>
-                   
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Bukti Pembayaran</label>
-                      <input type="file" name="bukti_bayar" class="form-control" placeholder="image" value="{{ $jual->bukti_bayar }}">
-                      <img src="/images/{{ $jual->bukti_bayar}}" width="300px">
-                    </div>
-                    <button type="submit" name= "update" class="btn btn-primary">Submit</button>
+                    
                   </form>
                 </div>
               </div>

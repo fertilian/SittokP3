@@ -17,7 +17,7 @@ class AdminController extends Controller
         $count = Barang::count();
         $cst = Customer::count();
         $sup = Supplier::count();
-        $tsk = Jual::count();
+        $tsk = Jual::sum('total');
         $sum = Barang::sum('jumlah_barang');
         return view ('Admin.index', compact('count', 'cst', 'sup', 'tsk', 'sum'));
        
