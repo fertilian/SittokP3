@@ -11,13 +11,21 @@ class Jual extends Model
     use HasFactory;
 
     protected $fillable = [
+        'no_pesanan',
         'tanggal_jual',
         'id_barang',
-        'no_pesanan',
-        'id_customer',
+        'harga',
+        'qty',
         'total',
+        'harga_bayar',
+        'id_customer',
+        'alamat',
+        'no_hp',
+        'bukti_bayar',
         'status',
-        'bukti_bayar'
+        'id',
+        'nama_lengkap',
+       
     ];
 
     protected $primaryKey = 'id_jual';
