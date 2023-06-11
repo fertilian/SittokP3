@@ -9,6 +9,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\JualController;
 use App\Http\Controllers\BeliController;
+use App\Http\Controllers\AdminController;
+
 use App\Models\Barang;
 use App\Models\Kategori;
 use App\Models\Supplier;
@@ -43,11 +45,7 @@ Route::controller(CustomAuthController::class)->group(function () {
     Route::post('loginn', 'loginPost');
 });
 
-
-Route::get('/Admin/indexadmin', function () {
-    return view('Admin.indexadmin');
-});
-
+Route::resource('/home', AdminController::class);
 Route::resource('/user', UserController::class);
 Route::resource('/supplier', SupplierController::class);
 Route::resource('/kategori', KategoriController::class);

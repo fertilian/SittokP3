@@ -15,6 +15,12 @@ class JualController extends Controller
     {
         $juals=jual::orderBy('created_at', 'DESC')->get();
         return view('Admin.jual.index', compact('juals'));
+
+        $jual = Jual::find($id_jual);
+
+        $nama_customer = $jual->customers->nama_customer;
+        $merk_barang = $jual->barang->merk_barang;
+        
     }
 
     /**
@@ -23,10 +29,8 @@ class JualController extends Controller
     public function create()
     {
         $barangs=barang::orderBy('created_at', 'DESC')->get();
-        return view('Admin.jual.create', compact('barangs'));
-
         $customers=customer::orderBy('created_at', 'DESC')->get();
-        return view('Admin.jual.create', compact('customers'));
+        return view('Admin.jual.create', compact('customers', 'barangs'));
     }
 
     /**
@@ -61,9 +65,12 @@ class JualController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id_jual)
     {
-        //
+        $jual = Jual::findOrFail($id_jual);
+      
+
+        return view('Admin.jual.show', compact('jual'));
     }
 
     /**
