@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
             'user_fullname' => 'Admin Sittok',
             'telp' => ' 081234582780',
             'alamat' => 'Jember',
-            'id_level' => '1',
+             
         ]);
     }
 }

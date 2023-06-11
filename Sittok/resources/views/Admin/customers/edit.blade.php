@@ -80,7 +80,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Master Customers</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Master Customer</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -93,7 +93,7 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Master Customers</h6>            
+                  <h6 class="m-0 font-weight-bold text-primary">Data Master Customer</h6>            
                 </div>
                 <div class="card-body">
                 <form action="{{ route('customers.update', $customer->id_customer)}}" method="POST" class="user">
@@ -103,21 +103,25 @@
                       <label for="txt_nama">Nama Customer</label>
                       <input type="text" class="form-control" name="nama_supplier" placeholder="Masukkan Nama Customer" value="{{ $customer->nama_customer }}">
                     </div>
-                    <div class="form-group">
-                      <label for="txt_nama">Email Customer</label>
-                      <input type="email" class="form-control" name="email" placeholder="Masukkan Email Customer" value="{{ $customer->email }}">
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="txt_nama">Email Customer</label>
+                        <input type="email" class="form-control" name="email" placeholder="Masukkan Email Customer" value="{{ $customer->email }}">
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="txt_nama">Password Customer</label>
+                        <input type="password" class="form-control" name="password" placeholder="Masukkan Email Customer" value="{{ $customer->password }}">
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label for="txt_nama">Password Customer</label>
-                      <input type="password" class="form-control" name="password" placeholder="Masukkan Email Customer" value="{{ $customer->password }}">
-                    </div>
-                    <div class="form-group">
-                      <label for="txt_nama">No Telepon Customer</label>
-                      <input type="text" class="form-control" name="no_telp_supplier" placeholder="Masukkan No Telepon Customer" value="{{ $customer->no_telp_customer }}">
-                    </div>
-                    <div class="form-group">
-                      <label for="txt_nama">Alamat Customer</label>
-                      <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat" value="{{ $customer->alamat }}">
+                    <div class="form-group row">
+                      <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label for="txt_nama">No Telepon Customer</label>
+                        <input type="text" class="form-control" name="no_telp_supplier" placeholder="Masukkan No Telepon Customer" value="{{ $customer->no_telp_customer }}">
+                      </div>
+                      <div class="col-sm-6">
+                        <label for="txt_nama">Alamat Customer</label>
+                        <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat" value="{{ $customer->alamat }}">
+                      </div>
                     </div>
                     <div class="form-group row" style="position: relative; float: left; ">
                       <div class="px-3" style="width: 150px;">

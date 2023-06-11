@@ -20,7 +20,7 @@ class SuppliersTableSeeder extends Seeder
  
     	      
     		\App\Models\Supplier::create([
-    			'nama_supplier' => $faker->name,
+    			'nama_supplier' => $faker->company,
     			'no_telp_supplier' => $faker->phoneNumber,
     			'alamat' => $faker->address,
     		]);

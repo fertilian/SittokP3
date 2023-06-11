@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Beli extends Model
 {
     public $table = "beli";
+
     use HasFactory;
 
     protected $fillable = [
@@ -16,8 +17,18 @@ class Beli extends Model
         'harga_beli',
         'id_barang',
         'id_supplier',
-       
+        
     ];
+    
+    protected $primaryKey = 'id';
 
-    protected $primaryKey = 'id_beli';
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class, 'id_barang');
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class, 'id_supplier');
+    }
 }
