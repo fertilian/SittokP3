@@ -5,6 +5,9 @@ use App\Models\Barang;
 use App\Models\Customer;
 use App\Models\Supplier;
 use App\Models\Jual;
+use App\Models\Beli;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,11 +18,34 @@ class AdminController extends Controller
     public function index()
     {
         $count = Barang::count();
-        $cst = Customer::count();
-        $sup = Supplier::count();
-        $tsk = Jual::sum('total');
+        $saiki = Carbon::now()->toDateString();
+        $currentDate = Carbon::now()->format('Y-m-d');
+        $totalHargaBayar = Jual::whereDate('tanggal_jual', $currentDate)
+            ->value('harga_bayar');
+        $income = 'Rp. ' . number_format($totalHargaBayar, 0, ',', '.');
+
+        $jumlahPesananPending = Jual::where('status', 'Pending')->count();
+
+        $currentMonth = Carbon::now()->format('m');
+        $laba = Jual::join('beli', 'jual.id_barang', '=', 'beli.id_barang')
+            ->select(DB::raw('(jual.harga - beli.harga_beli) * jual.qty AS laba_total'))
+            ->whereMonth('jual.tanggal_jual', '=', $currentMonth)
+            ->value('laba_total');
+        $hargaFormatted = 'Rp. ' . number_format($laba, 0, ',', '.');
+        
         $sum = Barang::sum('jumlah_barang');
-        return view ('Admin.index', compact('count', 'cst', 'sup', 'tsk', 'sum'));
+
+        // Contoh pengambilan data penjualan dari database
+        $jual = DB::table('jual')
+        ->select('status', DB::raw('COUNT(*) as total'))
+        ->groupBy('status')
+        ->get();
+
+        // Mengambil data status dan total dari objek penjualan
+        $status = $jual->pluck('status');
+        $total = $jual->pluck('total');
+
+        return view ('Admin.index', compact('status', 'total', 'income', 'jumlahPesananPending', 'hargaFormatted', 'sum', 'saiki'));
        
         
     }

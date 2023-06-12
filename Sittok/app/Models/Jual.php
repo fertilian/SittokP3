@@ -21,7 +21,7 @@ class Jual extends Model
         'harga_bayar',
         'id_customer',
         'alamat',
-        'no_hp',
+        'nohp',
         'bukti_bayar',
         'status',
         'id',
@@ -46,7 +46,7 @@ class Jual extends Model
     parent::boot();
 
     static::creating(function ($model) {
-        $model->stk_column = 'STK' . uniqid();
+        $model->no_pesanan = 'STK' . uniqid();
     });
 }
 }

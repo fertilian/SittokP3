@@ -138,7 +138,7 @@
                                    
                                 </div>
                             </div>
-                        </div>
+                        </div> 
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -147,11 +147,11 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                              Supplier</div>
-                                            <div class="h6 mb-0 font-weight-bold text-gray-800">{{$sup}}</div>
+                                              Perlu Diproses</div>
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">{{$jumlahPesananPending}}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-store fa-2x text-gray-300"></i>
+                                            <i class="fas fa-shopping-cart fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -164,11 +164,11 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                               Customer</div>
-                                            <div class="h6 mb-0 font-weight-bold text-gray-800">{{$cst}}</div>
+                                               Income Hari ini</div>
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">{{$income}}</div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -182,8 +182,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Transaksi</div>
-                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Rp.{{$tsk}}</div>
+                                                Laba Bulan ini</div>
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">{{$hargaFormatted}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-hand-holding-usd fa-2x text-gray-300"></i>
@@ -216,6 +216,8 @@
               </div>
             </div>
             <!--Row-->
+
+            
           <!-- Modal Logout -->
           <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
             aria-hidden="true">
@@ -266,6 +268,10 @@
   <script src="assets/js/ruang-admin.min.js"></script>
   <script src="assets/vendor/chart.js/Chart.min.js"></script>
   <script src="assets/js/demo/chart-area-demo.js"></script>  
+  <script src="assets/js/demo/chart-pie-demo.js"></script>  
+  <script src="assets/js/demo/chart-bar-demo.js"></script>  
+  
+  
 </body>
 
 </html>

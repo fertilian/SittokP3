@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\Customer;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
@@ -43,7 +43,7 @@ class CustomersSeeder extends Seeder
         ]);
 
         \App\Models\Customer::create([
-            'nama_customer' => 'Fertilian',
+            'nama_customer' => 'Fertilia',
             'email' => 'fertilia@gmail.com',
             'no_telp_customer' => ' 081234582780',
             'alamat' => 'Jember',
@@ -59,6 +59,25 @@ class CustomersSeeder extends Seeder
             'password' => bcrypt('nizar'),
             
         ]);
+
+        $faker = Faker::create('id_ID');
+ 
+    	for($i = 1; $i <= 200; $i++){
+            $nama_customer = $faker->name;
+            $email = $faker->unique()->safeEmail;
+            $no_telp_customer = $faker->phoneNumber;
+            $alamat = $faker->address;
+            $password = bcrypt('password123'); // Contoh password, ganti dengan password yang sesuai
+
+            Customer::create([
+                'nama_customer' => $nama_customer,
+                'email' => $email,
+                'no_telp_customer' => $no_telp_customer,
+                'alamat' => $alamat,
+                'password' => $password,
+            ]);
+
+    }
 
     }
 }

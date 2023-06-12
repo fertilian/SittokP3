@@ -49,7 +49,9 @@ class DatabaseSeeder extends Seeder
             KeranjangSeeder::class
         ]);
 
-       
+        $this->call([
+            JualSeeder::class
+        ]);
 
     }
 }

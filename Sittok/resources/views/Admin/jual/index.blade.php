@@ -96,10 +96,8 @@
                                             <th>Tanggal</th>
                                             <th>No Pesanan</th>
                                             <th>Customer</th>
-                                            <th>Barang</th>
-                                            <th>Total</th>
                                             <th>Status</th>
-                                            <th width="150px">Aksi</th>
+                                            <th width="180px">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -110,12 +108,10 @@
                                             <td class="align-middle">{{ $jual->tanggal_jual}}</td>
                                             <td class="align-middle">{{ $jual->no_pesanan}}</td>
                                             <td class="align-middle">{{  $jual->customer->nama_customer}}</td>
-                                            <td class="align-middle">{{  $jual->barang->merk_barang}}</td>
-                                            <td class="align-middle">Rp.{{ $jual->total}}</td>
                                             <td class="align-middle">{{ $jual->status}}</td>
                                             <td>
                                             <a href="{{ route('jual.show', $jual->id_jual)}}" class="btn btn-warning btn-circle " style="width: 40px;"><i class="fas fa-info"></i></a>
-                                            <form action="{{ route('jual.destroy', $jual->id_jual) }}" method="POST" type="button" class="btn btn-danger p-0" style="width: 40px;" onsubmit="return confirm('Ingin Menghapus Data ini?')">
+                                            <form action="{{ route('barang.destroy', $jual->id_jual) }}" style="width: 40px;" method="POST" type="button" class="btn btn-danger p-0" width="25px" onsubmit="return confirm('Ingin Menghapus Data ini?')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger m-0"><i class="fas fa-trash"></i></button>

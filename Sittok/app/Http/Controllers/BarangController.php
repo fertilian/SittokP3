@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Barang;
 use App\Models\Kategori;
+use NumberFormatter;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -13,6 +14,10 @@ class BarangController extends Controller
     public function index()
     {
         $barangs=barang::orderBy('created_at', 'DESC')->get();
+        foreach ($barangs as $barang) {
+            $formattedHarga = 'Rp. ' . number_format($barang->harga, 0, ',', '.');
+            $barang->formatted_harga = $formattedHarga;
+        }
         return view('Admin.barang.index', compact('barangs'));
         $barang = Barang::find($id_barang);
 
@@ -20,6 +25,8 @@ class BarangController extends Controller
             $nama_kategori = $barang->kategori->nama_kategori;
 
     }
+
+    
 
     /**
      * Show the form for creating a new resource.

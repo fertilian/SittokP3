@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('nohp');
             $table->string('bukti_bayar');
             $table->string('status');
-            $table->unsignedBigInteger('id');
+            $table->unsignedBigInteger('id')->nullable();
             $table->string('nama_lengkap');
             $table->timestamps();
 

@@ -88,7 +88,7 @@
                                             <th>Nama</th>
                                             <th>Email</th>
                                             <th>No Telp</th>
-                                            <th>Alamat</th>
+                                        
                                             <th width="150px">Aksi</th>
                                         </tr>
                                     </thead>
@@ -100,7 +100,7 @@
                                             <td class="align-middle">{{ $customer->nama_customer}}</td>
                                             <td class="align-middle">{{ $customer->email}}</td>
                                             <td class="align-middle">{{ $customer->no_telp_customer}}</td>
-                                            <td class="align-middle">{{ $customer->alamat}}</td>
+                                           
                                             <td>
                                             <a href="{{ route('customers.edit', $customer->id_customer)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
                                             <form action="{{ route('customers.destroy', $customer->id_customer) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">

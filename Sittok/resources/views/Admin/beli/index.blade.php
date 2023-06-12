@@ -104,7 +104,7 @@
                                             <td class="align-middle">{{ $loop->iteration}}</td>
                                             <td class="align-middle">{{ $beli->tgl_beli}}</td>
                                             <td class="align-middle">{{ $beli->jumlah_beli}}</td>
-                                            <td class="align-middle">Rp.{{ $beli->harga_beli}}</td>
+                                            <td class="align-middle">{{ $beli->formatted_harga}}</td>
                                             <td class="align-middle">{{ $beli->barang->merk_barang}}</td>
                                             <td class="align-middle">{{ $beli->supplier->nama_supplier}}</td>
                                             <td>

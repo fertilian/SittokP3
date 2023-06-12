@@ -59,6 +59,10 @@ class JualController extends Controller
         }
 
         jual->create($input);
+
+        $barang = Barang::findOrFail($request->id_barang);
+        $barang->jumlah_barang += $request->jumlah_beli;
+        $barang->save();
         return redirect()->route('jual.index')->with('success', 'Data Jual Berhasil Ditambahkan');
     }
 

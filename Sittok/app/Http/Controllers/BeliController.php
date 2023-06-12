@@ -14,6 +14,12 @@ class BeliController extends Controller
     public function index()
     {
         $belis=beli::orderBy('created_at', 'DESC')->get();
+        
+        foreach ($belis as $beli) {
+            $formattedHarga = 'Rp. ' . number_format($beli->harga_beli, 0, ',', '.');
+            $beli->formatted_harga = $formattedHarga;
+        }
+
         return view('Admin.beli.index', compact('belis'));
 
         $beli = Beli::find($id);
@@ -37,7 +43,29 @@ class BeliController extends Controller
      */
     public function store(Request $request)
     {
-        beli::create($request->all());
+        $beli = Beli::create([
+            'tgl_beli' => $request->tgl_beli,
+            'jumlah_beli' => $request->jumlah_beli,
+            'harga_beli' => $request->harga_beli,
+            'id_barang' => $request->id_barang,
+            'id_supplier' => $request->id_supplier,
+        ]);
+    
+        // Tambahkan jumlah barang pada tabel 'barang' berdasarkan 'id_barang'
+        $barang = Barang::findOrFail($request->id_barang);
+        $barang->jumlah_barang += $request->jumlah_beli;
+        $barang = Barang::findOrFail($request->id_barang);
+        
+        $hargaBeli = $beli->harga_beli;
+
+        // Hitung harga jual
+        $persentaseHargaJual = 0.23; // 23%
+        $hargaJual = round($hargaBeli + ($hargaBeli * $persentaseHargaJual));
+
+        // Simpan harga jual ke dalam field yang sesuai pada tabel barang
+        $barang->harga = $hargaJual;
+
+        $barang->save();
 
         return redirect()->route('beli.index')->with('success', 'Data Pembelian Berhasil Ditambahkan');
     }

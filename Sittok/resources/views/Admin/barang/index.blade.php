@@ -13,8 +13,10 @@
   <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="/assets/css/ruang-admin.min.css" rel="stylesheet">
-  <link href="/DataTables/datatables.min.css" rel="stylesheet"/>
-  <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+  
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -109,7 +111,7 @@
                                             <td class="align-middle"><img src="/{{ $barang->gambar}}" width="75px" ></td> 
                                             <td class="align-middle">{{ $barang->merk_barang}}</td>
                                             <td class="align-middle">{{ $barang->kategori->nama_kategori}}</td>
-                                            <td class="align-middle">Rp.{{ $barang->harga}}</td>
+                                            <td class="align-middle">{{ $barang->formatted_harga}}</td>
                                             <td class="align-middle">
                                             <a href="{{ route('barang.show', $barang->id_barang)}}" class="btn btn-warning btn-circle " style="width: 40px;"><i class="fas fa-info"></i></a>
                                             <a href="{{ route('barang.edit', $barang->id_barang)}}" class="btn btn-primary btn-circle " style="width: 40px;"><i class="fas fa-pen"></i></a>
@@ -150,12 +152,7 @@
   <script src="../assets/vendor/chart.js/Chart.min.js"></script>
   <script src="../assets/js/demo/chart-area-demo.js"></script> 
   
-   <!-- Page level plugins -->
-   <script src="../assets/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="../assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="../assets/js/demo/datatables-demo.js"></script>
+  
  
 </body>
 
