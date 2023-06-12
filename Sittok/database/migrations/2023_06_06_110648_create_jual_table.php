@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('jual', function (Blueprint $table) {
             $table->id('id_jual');
             $table->string('no_pesanan');
-            $table->date('tanggal_jual');
+           
             $table->unsignedBigInteger('id_barang');
             $table->integer('harga');
             $table->integer('qty');
