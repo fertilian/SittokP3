@@ -133,10 +133,9 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Gambar</label>
-                        <input type="file" name="gambar" class="form-control" placeholder="image" value="{{ $barang->gambar }}">
+                        <input type="file" name="gambar" class="form-control" placeholder="image" value="{{ basename($barang->gambar) }}">{{ $barang->gambar }}
                         <img src="/{{ $barang->gambar}}" width="300px">
                     </div>
-                     
                     <div class="form-group row" style="position: relative; float: left; ">
                       <div class="px-3" style="width: 150px;">
                         <button type="submit" name="update" class="btn btn-primary btn-user btn-block">Simpan</button>
