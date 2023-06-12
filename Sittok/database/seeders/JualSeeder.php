@@ -23,7 +23,7 @@ class JualSeeder extends Seeder
     	for($i = 1; $i <= 10; $i++){
 
         $no_pesanan = $faker->randomNumber(8);
-        $tanggal_jual = $faker->dateTimeBetween('-1 year', 'now')->format('Y-m-d');
+        
         $id_barang = $faker->randomElement(Barang::pluck('id_barang')->all());
         $harga = Barang::find($id_barang)->harga;
         $qty = $faker->randomNumber(2);
@@ -40,7 +40,7 @@ class JualSeeder extends Seeder
         
         \App\Models\Jual::create([
             'no_pesanan' => $no_pesanan,
-            'tanggal_jual' => $tanggal_jual,
+            
             'id_barang' => $id_barang,
             'harga' => $harga,
             'qty' => $qty,
