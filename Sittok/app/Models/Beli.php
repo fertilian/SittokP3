@@ -12,7 +12,7 @@ class Beli extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tgl_beli',
+        
         'jumlah_beli',
         'harga_beli',
         'id_barang',

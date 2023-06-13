@@ -62,7 +62,7 @@ class CustomersSeeder extends Seeder
 
         $faker = Faker::create('id_ID');
  
-    	for($i = 1; $i <= 200; $i++){
+    	for($i = 1; $i <= 50; $i++){
             $nama_customer = $faker->name;
             $email = $faker->unique()->safeEmail;
             $no_telp_customer = $faker->phoneNumber;

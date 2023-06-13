@@ -13,7 +13,7 @@ class BeliSeeder extends Seeder
     public function run(): void
     {
         \App\Models\Beli::create([
-            'tgl_beli' => date('Y-m-d'),
+            
             'jumlah_beli' => '5',
             'harga_beli' => '215000',
             'id_barang' => '1',
@@ -21,7 +21,7 @@ class BeliSeeder extends Seeder
         ]);
 
         \App\Models\Beli::create([
-            'tgl_beli' => date('Y-m-d'),
+            
             'jumlah_beli' => '20',
             'harga_beli' => '140000',
             'id_barang' => '2',
@@ -29,7 +29,7 @@ class BeliSeeder extends Seeder
         ]);
 
         \App\Models\Beli::create([
-            'tgl_beli' => date('Y-m-d'),
+            
             'jumlah_beli' => '20',
             'harga_beli' => '225000',
             'id_barang' => '3',
@@ -37,7 +37,7 @@ class BeliSeeder extends Seeder
         ]);
 
         \App\Models\Beli::create([
-            'tgl_beli' => date('Y-m-d'),
+            
             'jumlah_beli' => '12',
             'harga_beli' => '350000',
             'id_barang' => '4',
@@ -45,7 +45,7 @@ class BeliSeeder extends Seeder
         ]);
 
         \App\Models\Beli::create([
-            'tgl_beli' => date('Y-m-d'),
+            
             'jumlah_beli' => '15',
             'harga_beli' => '630000',
             'id_barang' => '5',

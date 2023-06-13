@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Beli;
-use App\Models\Barang;
 use App\Models\Supplier;
+use App\Models\Barang;
+use Illuminate\Support\Facades\DB;
 class BeliController extends Controller
 {
     /**
@@ -13,19 +14,18 @@ class BeliController extends Controller
      */
     public function index()
     {
-        $belis=beli::orderBy('created_at', 'DESC')->get();
-        
+        $belis = Beli::orderBy('created_at', 'DESC')->get();
+
         foreach ($belis as $beli) {
             $formattedHarga = 'Rp. ' . number_format($beli->harga_beli, 0, ',', '.');
             $beli->formatted_harga = $formattedHarga;
+
+            $totalPembelian = Beli::select(DB::raw('SUM(jumlah_beli * harga_beli) as total_pembelian'), 'id_barang')
+                ->groupBy('id_barang')
+                ->get();
         }
 
-        return view('Admin.beli.index', compact('belis'));
-
-        $beli = Beli::find($id);
-
-        $merk_barang = $beli->barang->merk_barang;
-        $nama_supplier = $beli->supplier->nama_Supplier;
+        return view('Admin.beli.index', compact('belis', 'totalPembelian'));
     }
 
     /**
@@ -33,8 +33,8 @@ class BeliController extends Controller
      */
     public function create()
     {
-        $barangs=barang::orderBy('created_at', 'DESC')->get();
-        $suppliers=supplier::orderBy('created_at', 'DESC')->get();
+        $barangs = Barang::orderBy('created_at', 'DESC')->get();
+        $suppliers = Supplier::orderBy('created_at', 'DESC')->get();
         return view('Admin.beli.create', compact('barangs', 'suppliers'));
     }
 
@@ -43,32 +43,35 @@ class BeliController extends Controller
      */
     public function store(Request $request)
     {
-        $beli = Beli::create([
-            'tgl_beli' => $request->tgl_beli,
-            'jumlah_beli' => $request->jumlah_beli,
-            'harga_beli' => $request->harga_beli,
-            'id_barang' => $request->id_barang,
-            'id_supplier' => $request->id_supplier,
+        $request->validate([
+            'id_supplier' => 'required',
+            'id_barang.*' => 'required',
+            'jumlah_beli.*' => 'required',
+            'harga_beli.*' => 'required',
         ]);
-    
-        // Tambahkan jumlah barang pada tabel 'barang' berdasarkan 'id_barang'
-        $barang = Barang::findOrFail($request->id_barang);
-        $barang->jumlah_barang += $request->jumlah_beli;
-        $barang = Barang::findOrFail($request->id_barang);
-        
-        $hargaBeli = $beli->harga_beli;
 
-        // Hitung harga jual
-        $persentaseHargaJual = 0.23; // 23%
-        $hargaJual = round($hargaBeli + ($hargaBeli * $persentaseHargaJual));
+        // Retrieve the input values
+        $idSupplier = $request->input('id_supplier');
+        $idBarangs = $request->input('id_barang');
+        $jumlahBelis = $request->input('jumlah_beli');
+        $hargaBelis = $request->input('harga_beli');
 
-        // Simpan harga jual ke dalam field yang sesuai pada tabel barang
-        $barang->harga = $hargaJual;
-
-        $barang->save();
+        // Loop through each input and create a new Beli record
+        foreach ($idBarangs as $key => $idBarang) {
+            $beli = new Beli();
+            $beli->id_supplier = $idSupplier;
+            $beli->id_barang = $idBarang;
+            $beli->jumlah_beli = $jumlahBelis[$key];
+            $beli->harga_beli = $hargaBelis[$key];
+            $beli->save();
+        }
 
         return redirect()->route('beli.index')->with('success', 'Data Pembelian Berhasil Ditambahkan');
     }
+
+
+
+    
 
     /**
      * Display the specified resource.

@@ -20,13 +20,13 @@ class JualSeeder extends Seeder
 
         $faker = Faker::create('id_ID');
  
-    	for($i = 1; $i <= 10; $i++){
+    	for($i = 1; $i <= 50; $i++){
 
         $no_pesanan = $faker->randomNumber(8);
         
         $id_barang = $faker->randomElement(Barang::pluck('id_barang')->all());
         $harga = Barang::find($id_barang)->harga;
-        $qty = $faker->randomNumber(2);
+        $qty = $faker->randomNumber(1);
         $total = $harga * $qty;
         $harga_bayar = $total;
         $id_customer = $faker->randomElement(Customer::pluck('id_customer')->all());

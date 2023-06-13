@@ -105,7 +105,7 @@
                                       @foreach($juals as $jual)
                                         <tr>
                                             <td class="align-middle">{{ $loop->iteration}}</td>
-                                            <td class="align-middle">{{ $jual->tanggal_jual}}</td>
+                                            <td class="align-middle">{{ $jual->created_at}}</td>
                                             <td class="align-middle">{{ $jual->no_pesanan}}</td>
                                             <td class="align-middle">{{  $jual->customer->nama_customer}}</td>
                                             <td class="align-middle">{{ $jual->status}}</td>

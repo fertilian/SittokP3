@@ -16,4 +16,9 @@ class Supplier extends Model
     ];
 
     protected $primaryKey = 'id_supplier';
+
+    public function beli()
+    {
+        return $this->hasMany(Beli::class, 'id_supplier');
+    }
 }

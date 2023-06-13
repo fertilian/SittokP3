@@ -90,11 +90,9 @@
                                         <tr>
                                             <th width="50px">No</th>
                                             <th>Tanggal</th>
-                                            <th>Qty</th>
-                                            <th>Harga</th>
-                                            <th>Barang</th>
-                                            <th>Supplier</th>
-                                            <th width="150px">Aksi</th>
+                                            <th>Nama Supplier</th>
+                                            <th>Total Belanja</th>
+                                            <th width="180px">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -102,14 +100,13 @@
                                       @foreach($belis as $beli)
                                         <tr>
                                             <td class="align-middle">{{ $loop->iteration}}</td>
-                                            <td class="align-middle">{{ $beli->tgl_beli}}</td>
-                                            <td class="align-middle">{{ $beli->jumlah_beli}}</td>
-                                            <td class="align-middle">{{ $beli->formatted_harga}}</td>
-                                            <td class="align-middle">{{ $beli->barang->merk_barang}}</td>
+                                            <td class="align-middle">{{ $beli->created_at}}</td>
                                             <td class="align-middle">{{ $beli->supplier->nama_supplier}}</td>
+                                            <td class="align-middle">{{ $beli->totalPembelian}}</td>
                                             <td>
-                                            <a href="{{ route('beli.edit', $beli->id)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
-                                            <form action="{{ route('beli.destroy', $beli->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
+                                            <a href="{{ route('beli.show', $beli->id)}}" class="btn btn-warning btn-circle " style="width: 40px;"><i class="fas fa-info"></i></a>
+                                            <a href="{{ route('beli.edit', $beli->id)}}" class="btn btn-primary btn-circle " style="width: 40px;"><i class="fas fa-pen"></i></a>
+                                            <form action="{{ route('beli.destroy', $beli->id) }}" method="POST" type="button" style="width: 40px;" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger m-0"><i class="fas fa-trash"></i></button>

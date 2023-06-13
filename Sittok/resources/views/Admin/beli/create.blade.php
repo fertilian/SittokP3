@@ -97,40 +97,38 @@
                 <div class="card-body">
                   <form method="post" action="{{ route('beli.store')}}" enctype="multipart/form-data">
                   @csrf
-                    <div class="form-group row">
-                      <div class="col-sm-4">
-                        <label for="exampleInputEmail1">Tanggal</label>
-                        <input type="date" name="tgl_beli" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Tanggal Beli">
-                      </div>
-                      <div class="col-sm-4">
-                        <label for="exampleInputEmail1">Qty</label>
-                        <input type="number" name="jumlah_beli" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Jumlah Beli">
-                      </div>
-                      <div class="col-sm-4">
-                        <label for="exampleInputEmail1">Harga</label>
-                        <input type="number" name="harga_beli" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga Beli">
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                    <div class="col-sm-6 mb-3 mb-sm-0">
-                      <label for="exampleInputEmail1">Barang</label>
-                        <select name="id_barang" class="form-control">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Supplier</label>
+                        <select name="id_supplier" class="form-control">
                           <option value="">- Pilih -</option>
-                          @foreach ($barangs as $item)
-                          <option value="{{ $item->id_barang}}">{{$item->merk_barang}}</option>
+                          @foreach ($suppliers as $item)
+                          <option value="{{ $item->id_supplier}}">{{$item->nama_supplier}}</option>
                           @endforeach
                         </select>
+                    </div>
+                    <div class="form-group row">
+                      <div class="col-sm-4">
+                          <label for="id_barang" class="col-form-label">Barang:</label>
+                          <select name="id_barang[]" class="form-control">
+                              <option value="">- Pilih -</option>
+                              @foreach ($barangs as $item)
+                                  <option value="{{ $item->id_barang }}">{{ $item->merk_barang }}</option>
+                              @endforeach
+                          </select>
                       </div>
-                    <div class="col-sm-6">
-                    <label for="exampleInputEmail1">Supplier</label>
-                      <select name="id_supplier" class="form-control">
-                        <option value="">- Pilih -</option>
-                        @foreach ($suppliers as $item)
-                        <option value="{{ $item->id_supplier}}">{{$item->nama_supplier}}</option>
-                        @endforeach
-                      </select>
-                    </div></div>
-                    
+                      <div class="col-sm-4">
+                          <label class="col-form-label">Jumlah Pembelian:</label>
+                          <input type="number" name="jumlah_beli[]" class="form-control">
+                      </div>
+                      <div class="col-sm-4">
+                          <label class="col-form-label">Harga Pembelian:</label>
+                          <input type="number" name="harga_beli[]" class="form-control">
+                      </div>
+                  </div>
+                  <div id="id_barang_container"></div>
+                  <button type="button" id="add_id_barang" style="float:right;">+</button>
+                </div>
+
                     <div class="form-group row" style="position: relative; float: left; ">
                       <div class="px-3" style="width: 150px;">
                         <button type="submit" name="simpan" class="btn btn-primary btn-user btn-block">Simpan</button>
@@ -154,6 +152,27 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+  <script>
+    const addIdBarangButton = document.getElementById('add_id_barang');
+    const idBarangContainer = document.getElementById('id_barang_container');
+    const formGroupTemplate = document.querySelector('.form-group.row');
+
+    addIdBarangButton.addEventListener('click', function() {
+        const newFormGroup = formGroupTemplate.cloneNode(true);
+
+        const selectBarang = newFormGroup.querySelector('select[name="id_barang[]"]');
+        const inputJumlahBeli = newFormGroup.querySelector('input[name="jumlah_beli[]"]');
+        const inputHargaBeli = newFormGroup.querySelector('input[name="harga_beli[]"]');
+
+        // Clear the values of the new form inputs
+        selectBarang.value = '';
+        inputJumlahBeli.value = '';
+        inputHargaBeli.value = '';
+
+        idBarangContainer.appendChild(newFormGroup);
+    });
+</script>
+
 
   <script src="/assets/vendor/jquery/jquery.min.js"></script>
   <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('beli', function (Blueprint $table) {
             $table->id();
-            $table->date('tgl_beli');
+          
             $table->integer('jumlah_beli');
             $table->integer('harga_beli');
             $table->unsignedBigInteger('id_barang');

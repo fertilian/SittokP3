@@ -20,7 +20,7 @@ class AdminController extends Controller
         $count = Barang::count();
         $saiki = Carbon::now()->toDateString();
         $currentDate = Carbon::now()->format('Y-m-d');
-        $totalHargaBayar = Jual::whereDate('tanggal_jual', $currentDate)
+        $totalHargaBayar = Jual::whereDate('created_at', $currentDate)
             ->value('harga_bayar');
         $income = 'Rp. ' . number_format($totalHargaBayar, 0, ',', '.');
 
@@ -29,7 +29,7 @@ class AdminController extends Controller
         $currentMonth = Carbon::now()->format('m');
         $laba = Jual::join('beli', 'jual.id_barang', '=', 'beli.id_barang')
             ->select(DB::raw('(jual.harga - beli.harga_beli) * jual.qty AS laba_total'))
-            ->whereMonth('jual.tanggal_jual', '=', $currentMonth)
+            ->whereMonth('jual.created_at', '=', $currentMonth)
             ->value('laba_total');
         $hargaFormatted = 'Rp. ' . number_format($laba, 0, ',', '.');
         
