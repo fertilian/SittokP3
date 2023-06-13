@@ -13,25 +13,17 @@ return new class extends Migration
     {
         Schema::create('jual', function (Blueprint $table) {
             $table->id('id_jual');
-            $table->string('no_pesanan');
-           
-            $table->unsignedBigInteger('id_barang');
-            $table->integer('harga');
-            $table->integer('qty');
             $table->integer('total');
-            $table->integer('harga_bayar');
-            $table->unsignedBigInteger('id_customer');
+            $table->integer('total_final');
             $table->string('alamat');
             $table->string('nohp');
-            $table->string('bukti_bayar');
-            $table->string('status');
-            $table->unsignedBigInteger('id')->nullable();
+            $table->string('bukti_bayar')->nullable();
+            $table->enum('status', ['belum bayar', 'dibayar', 'dikemas', 'dikirim', 'selesai'])->default('belum bayar');
+            $table->unsignedBigInteger('id_keranjang');
             $table->string('nama_lengkap');
             $table->timestamps();
-
-            $table->foreign('id_barang')->references('id_barang')->on('barang');
-            $table->foreign('id_customer')->references('id_customer')->on('customers');
-            $table->foreign('id')->references('id')->on('users');
+            $table->foreign('id_keranjang')->references('id_keranjang')->on('keranjang');
+           
         });
     }
 

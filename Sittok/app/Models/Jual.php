@@ -12,19 +12,13 @@ class Jual extends Model
     use HasFactory;
 
     protected $fillable = [
-        'no_pesanan',
-        'tanggal_jual',
-        'id_barang',
-        'harga',
-        'qty',
         'total',
-        'harga_bayar',
-        'id_customer',
+        'total_final',
         'alamat',
         'nohp',
         'bukti_bayar',
         'status',
-        'id',
+        'id_keranjang',
         'nama_lengkap',
        
     ];
