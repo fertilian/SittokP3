@@ -90,8 +90,8 @@
                                         <tr>
                                             <th width="50px">No</th>
                                             <th>Tanggal</th>
-                                            <th>Nama Supplier</th>
-                                            <th>Total Belanja</th>
+                                            <th>Nama Barang</th>
+                                            <th>Harga Beli</th>
                                             <th width="180px">Aksi</th>
                                         </tr>
                                     </thead>
@@ -101,8 +101,8 @@
                                         <tr>
                                             <td class="align-middle">{{ $loop->iteration}}</td>
                                             <td class="align-middle">{{ $beli->created_at}}</td>
-                                            <td class="align-middle">{{ $beli->supplier->nama_supplier}}</td>
-                                            <td class="align-middle">{{ $beli->totalPembelian}}</td>
+                                            <td class="align-middle">{{ $beli->barang->merk_barang}}</td>
+                                            <td class="align-middle">{{ $beli->harga_beli}}</td>
                                             <td>
                                             <a href="{{ route('beli.show', $beli->id)}}" class="btn btn-warning btn-circle " style="width: 40px;"><i class="fas fa-info"></i></a>
                                             <a href="{{ route('beli.edit', $beli->id)}}" class="btn btn-primary btn-circle " style="width: 40px;"><i class="fas fa-pen"></i></a>

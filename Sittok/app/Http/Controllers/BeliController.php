@@ -42,32 +42,40 @@ class BeliController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'id_supplier' => 'required',
-            'id_barang.*' => 'required',
-            'jumlah_beli.*' => 'required',
-            'harga_beli.*' => 'required',
-        ]);
+{
+    $request->validate([
+        'id_supplier' => 'required',
+        'id_barang.*' => 'required',
+        'jumlah_beli.*' => 'required',
+        'harga_beli.*' => 'required',
+    ]);
 
-        // Retrieve the input values
-        $idSupplier = $request->input('id_supplier');
-        $idBarangs = $request->input('id_barang');
-        $jumlahBelis = $request->input('jumlah_beli');
-        $hargaBelis = $request->input('harga_beli');
+    // Retrieve the input values
+    $idSupplier = $request->input('id_supplier');
+    $idBarangs = $request->input('id_barang');
+    $jumlahBelis = $request->input('jumlah_beli');
+    $hargaBelis = $request->input('harga_beli');
 
-        // Loop through each input and create a new Beli record
-        foreach ($idBarangs as $key => $idBarang) {
-            $beli = new Beli();
-            $beli->id_supplier = $idSupplier;
-            $beli->id_barang = $idBarang;
-            $beli->jumlah_beli = $jumlahBelis[$key];
-            $beli->harga_beli = $hargaBelis[$key];
-            $beli->save();
-        }
+    // Loop through each input and create a new Beli record
+    foreach ($idBarangs as $key => $idBarang) {
+        $beli = new Beli();
+        $beli->id_supplier = $idSupplier;
+        $beli->id_barang = $idBarang;
+        $beli->jumlah_beli = $jumlahBelis[$key];
+        $beli->harga_beli = $hargaBelis[$key];
+        $beli->save();
 
-        return redirect()->route('beli.index')->with('success', 'Data Pembelian Berhasil Ditambahkan');
+        // Update the harga_jual in the barang table
+        $barang = Barang::findOrFail($idBarang);
+        $barang->harga = $hargaBelis[$key] * 1.13; // Set harga_jual as 13% more than harga_beli
+        $barang->save();
+
+        // Update the quantity of the purchased item in the 'barang' table
+        $barang->increment('jumlah_barang', $jumlahBelis[$key]);
     }
+
+    return redirect()->route('beli.index')->with('success', 'Data Pembelian Berhasil Ditambahkan');
+}
 
 
 

@@ -37,9 +37,18 @@ class BarangController extends Controller
         return view('Admin.barang.create', compact('kategoris'));
     }
 
+
     /**
-     * Store a newly created resource in storage.
+     * Display the specified resource.
      */
+    public function show(string $id_barang)
+    {
+        $barang = Barang::findOrFail($id_barang);
+      
+
+        return view('Admin.barang.show', compact('barang'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -55,26 +64,16 @@ class BarangController extends Controller
 
         if ($image = $request->file('gambar')) {
             $destinationPath = 'images/';
-            $profileImage = date('YmdHis') .".".$image->getClientOriginalExtension();
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['gambar'] = "images/$profileImage";
         }
 
-        barang::create($input);
+        Barang::create($input);
 
         return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id_barang)
-    {
-        $barang = Barang::findOrFail($id_barang);
-      
-
-        return view('Admin.barang.show', compact('barang'));
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -92,28 +91,39 @@ class BarangController extends Controller
      */
     public function update(Request $request, string $id_barang)
     {
-        $barang = Barang::findOrFail($id_barang);
-        $request->validate([
-            'merk_barang' => 'required',
-            'jumlah_barang' => 'required',
-            'harga' => 'required',
-            'deskripsi' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'id_kategori' => 'required',
-        ]);
+ 
+            $barang = Barang::findOrFail($id_barang);
+        
+            $request->validate([
+                'merk_barang' => 'required',
+                'jumlah_barang' => 'required',
+                'harga' => 'required',
+                'deskripsi' => 'required',
+                'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'id_kategori' => 'required',
+            ]);
+        
+            $input = $request->all();
+        
+            if ($request->hasFile('gambar')) {
+                $image = $request->file('gambar');
+                $destinationPath = 'images/';
+                $profileImage = date('YmdHis') . '.' . $image->getClientOriginalExtension();
+                $image->move('images/', $profileImage);
+                $input['gambar'] = "images/$profileImage";
+            } else {
+                // Retain the existing image path
+                $input['gambar'] = $barang->gambar;
+            }
+        
+            $barang->update($input);
+            return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Diupdate');
+        
+        
+}
 
-        $input = $request->all();
 
-        if ($image = $request->file('gambar')) {
-            $destinationPath = 'images/';
-            $profileImage = date('YmdHis') .".".$image->getClientOriginalExtension();
-            $image->move('images/', $profileImage);
-            $input['gambar'] = "images/$profileImage";
-        }
-
-        $barang->update($input);
-        return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Diupdate');
-    }
+    
 
     /**
      * Remove the specified resource from storage.

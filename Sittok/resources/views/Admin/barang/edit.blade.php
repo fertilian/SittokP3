@@ -133,7 +133,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Gambar</label>
-                        <input type="file" name="gambar" class="form-control" placeholder="image" value="{{ basename($barang->gambar) }}">{{ $barang->gambar }}
+                        <input type="file" name="gambar" class="form-control" placeholder="image" value="{{ basename($barang->gambar) }}">
                         <img src="/{{ $barang->gambar}}" width="300px">
                     </div>
                     <div class="form-group row" style="position: relative; float: left; ">

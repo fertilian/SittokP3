@@ -183,7 +183,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Laba Bulan ini</div>
-                                            <div class="h6 mb-0 font-weight-bold text-gray-800">{{$hargaFormatted}}</div>
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-hand-holding-usd fa-2x text-gray-300"></i>

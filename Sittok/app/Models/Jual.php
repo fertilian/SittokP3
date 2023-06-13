@@ -20,7 +20,6 @@ class Jual extends Model
         'status',
         'id_keranjang',
         'nama_lengkap',
-       
     ];
 
     protected $primaryKey = 'id_jual';

@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\KategoriController;
@@ -53,3 +52,5 @@ Route::resource('/barang', BarangController::class);
 Route::resource('/customers', CustomerController::class);
 Route::resource('/jual', JualController::class);
 Route::resource('/beli', BeliController::class);
+
+Route::post('/barang', 'BarangController@store')->name('barang.store');
