@@ -42,66 +42,66 @@ class BeliController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'id_supplier' => 'required',
-        'id_barang.*' => 'required',
-        'jumlah_beli.*' => 'required',
-        'harga_beli.*' => 'required',
-    ]);
+    {
+        try {
+            $request->validate([
+                'id_supplier' => 'required',
+                'id_barang.*' => 'required',
+                'jumlah_beli.*' => 'required',
+                'harga_beli.*' => 'required',
+            ]);
 
-    // Retrieve the input values
-    $idSupplier = $request->input('id_supplier');
-    $idBarangs = $request->input('id_barang');
-    $jumlahBelis = $request->input('jumlah_beli');
-    $hargaBelis = $request->input('harga_beli');
+            // Retrieve the input values
+            $idSupplier = $request->input('id_supplier');
+            $idBarangs = $request->input('id_barang');
+            $jumlahBelis = $request->input('jumlah_beli');
+            $hargaBelis = $request->input('harga_beli');
 
-    // Loop through each input and create a new Beli record
-    foreach ($idBarangs as $key => $idBarang) {
-        $beli = new Beli();
-        $beli->id_supplier = $idSupplier;
-        $beli->id_barang = $idBarang;
-        $beli->jumlah_beli = $jumlahBelis[$key];
-        $beli->harga_beli = $hargaBelis[$key];
-        $beli->save();
+            // Loop through each input and create a new Beli record
+            foreach ($idBarangs as $key => $idBarang) {
+                $beli = new Beli();
+                $beli->id_supplier = $idSupplier;
+                $beli->id_barang = $idBarang;
+                $beli->jumlah_beli = $jumlahBelis[$key];
+                $beli->harga_beli = $hargaBelis[$key];
+                $beli->save();
 
-        // Update the harga_jual in the barang table
-        $barang = Barang::findOrFail($idBarang);
-        $barang->harga = $hargaBelis[$key] * 1.13; // Set harga_jual as 13% more than harga_beli
-        $barang->save();
+                // Update the harga_jual in the barang table
+                $barang = Barang::findOrFail($idBarang);
+                $barang->harga = $hargaBelis[$key] * 1.13; // Set harga_jual as 13% more than harga_beli
+                $barang->save();
 
-        // Update the quantity of the purchased item in the 'barang' table
-        $barang->increment('jumlah_barang', $jumlahBelis[$key]);
+                // Update the quantity of the purchased item in the 'barang' table
+                $barang->increment('jumlah_barang', $jumlahBelis[$key]);
+            }
+
+        return redirect()->route('beli.index')->with('success', 'Data Pembelian Berhasil Ditambahkan');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Pembelian Gagal Ditambahkan!!! silahkan isi semua field');
+        }
     }
-
-    return redirect()->route('beli.index')->with('success', 'Data Pembelian Berhasil Ditambahkan');
-}
-
-
-
-    
 
     /**
      * Display the specified resource.
      */
     public function show(string $id_beli)
-{
-    $beli = Beli::findOrFail($id_beli);
+    {
+        $beli = Beli::findOrFail($id_beli);
 
-    // Format harga_beli menjadi mata uang
-    $formattedHarga = 'Rp. ' . number_format($beli->harga_beli, 0, ',', '.');
-    $beli->formatted_harga = $formattedHarga;
+        // Format harga_beli menjadi mata uang
+        $formattedHarga = 'Rp. ' . number_format($beli->harga_beli, 0, ',', '.');
+        $beli->formatted_harga = $formattedHarga;
 
-    $jumlahBeli = $beli->jumlah_beli;
-    $hargaBeli = $beli->harga_beli;
-    
-    $total = $jumlahBeli * $hargaBeli;
+        $jumlahBeli = $beli->jumlah_beli;
+        $hargaBeli = $beli->harga_beli;
+        
+        $total = $jumlahBeli * $hargaBeli;
 
-    // Format total menjadi mata uang
-    $formattedTotal = 'Rp. ' . number_format($total, 0, ',', '.');
-    
-    return view('Admin.beli.show', compact('beli', 'formattedTotal'));
-}
+        // Format total menjadi mata uang
+        $formattedTotal = 'Rp. ' . number_format($total, 0, ',', '.');
+        
+        return view('Admin.beli.show', compact('beli', 'formattedTotal'));
+    }
 
 
     /**
@@ -123,16 +123,20 @@ class BeliController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $beli = Beli::findOrFail($id);
+        try {
+            $beli = Beli::findOrFail($id);
 
-        $beli->jumlah_beli = $request->input('jumlah_beli');
-        $beli->harga_beli = $request->input('harga_beli');
-        $beli->id_barang = $request->input('id_barang');
-        $beli->id_supplier = $request->input('id_supplier');
+            $beli->jumlah_beli = $request->input('jumlah_beli');
+            $beli->harga_beli = $request->input('harga_beli');
+            $beli->id_barang = $request->input('id_barang');
+            $beli->id_supplier = $request->input('id_supplier');
 
-        $beli->save();
+            $beli->save();
 
-        return redirect()->route('beli.index')->with('success', 'Data Pembelian Berhasil Diupdate');
+            return redirect()->route('beli.index')->with('success', 'Data Pembelian Berhasil Diupdate');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Pembelian Gagal Diupdate!!! silahkan isi semua field ');
+        }
     }
 
     /**
@@ -140,10 +144,14 @@ class BeliController extends Controller
      */
     public function destroy(string $id)
     {
-        $belis = beli::findOrFail($id);
+        try {
+            $belis = beli::findOrFail($id);
 
-        $belis->delete();
+            $belis->delete();
 
-        return redirect()->route('beli.index')->with('success', 'Data Pembelian Berhasil Dihapus');
+            return redirect()->route('beli.index')->with('success', 'Data Pembelian Berhasil Dihapus');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Pembelian Gagal Dihapus' . $e->getMessage());
+        }
     }
 }

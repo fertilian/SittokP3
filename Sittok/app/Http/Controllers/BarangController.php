@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Barang;
 use App\Models\Kategori;
 use NumberFormatter;
@@ -13,12 +14,15 @@ class BarangController extends Controller
      */
     public function index()
     {
-        $barangs=barang::orderBy('created_at', 'DESC')->get();
+        $barangs = Barang::orderBy('created_at', 'DESC')->get();
+
         foreach ($barangs as $barang) {
             $formattedHarga = 'Rp. ' . number_format($barang->harga, 0, ',', '.');
             $barang->formatted_harga = $formattedHarga;
         }
+
         return view('Admin.barang.index', compact('barangs'));
+
         $barang = Barang::find($id_barang);
 
             // Mendapatkan nama_kategori berdasarkan fk id_kategori pada model Barang
@@ -33,7 +37,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        $kategoris=kategori::orderBy('created_at', 'DESC')->get();
+        $kategoris=Kategori::orderBy('created_at', 'DESC')->get();
         return view('Admin.barang.create', compact('kategoris'));
     }
 
@@ -44,10 +48,9 @@ class BarangController extends Controller
     public function show(string $id_barang)
     {
         $barang = Barang::findOrFail($id_barang);
-       
-       
-            $formattedHarga = 'Rp. ' . number_format($barang->harga, 0, ',', '.');
-            $barang->formatted_harga = $formattedHarga;
+
+        $formattedHarga = 'Rp. ' . number_format($barang->harga, 0, ',', '.');
+        $barang->formatted_harga = $formattedHarga;
          
         return view('Admin.barang.show', compact('barang'));
     }
@@ -56,11 +59,9 @@ class BarangController extends Controller
     {
         $request->validate([
             'merk_barang' => 'required',
-            'jumlah_barang' => 'required',
-            'harga' => 'required',
+            'id_kategori' => 'required',
             'deskripsi' => 'required',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'id_kategori' => 'required',
         ]);
 
         $input = $request->all();
@@ -72,9 +73,14 @@ class BarangController extends Controller
             $input['gambar'] = "images/$profileImage";
         }
 
-        Barang::create($input);
+        $barang = new Barang();
+        $barang->merk_barang = $input['merk_barang'];
+        $barang->deskripsi = $input['deskripsi'];
+        $barang->gambar = $input['gambar'];
+        $barang->id_kategori = $input['id_kategori'];
+        $barang->save();
 
-        return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Ditambahkan');
+        return redirect()->route('Admin.barang.index')->with('success', 'Data Barang Berhasil Ditambahkan');
     }
 
 

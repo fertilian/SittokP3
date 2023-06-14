@@ -113,17 +113,6 @@
                       </div>
                     </div>
 
-                    <div class="form-group row">
-                      <div class="col-sm-6 mb-3 mb-sm-0">
-                        <label for="exampleInputEmail1">Jumlah Barang</label>
-                        <input type="number" name="jumlah_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Jumlah Barang">
-                      </div>
-                      <div class="col-sm-6">
-                        <label for="exampleInputEmail1">Harga</label>
-                        <input type="number" name="harga" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga">
-                      </div>
-                    </div>
-
                     <div class="form-group">
                       <label for="exampleInputEmail1">Deskripsi</label>
                       <textarea name= "deskripsi" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Deskripsi"></textarea>

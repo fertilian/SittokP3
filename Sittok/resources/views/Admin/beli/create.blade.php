@@ -95,6 +95,11 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Pembelian</h6>
                 </div>
                 <div class="card-body">
+                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
                   <form method="post" action="{{ route('beli.store')}}" enctype="multipart/form-data">
                   @csrf
                     <div class="form-group">
@@ -131,11 +136,11 @@
                     </div>
 
                     <div class="form-group row" style="position: relative; float: left; ">
-                      <div class="px-3" style="width: 150px;">
-                        <button type="submit" name="create" class="btn btn-primary btn-user btn-block">Simpan</button>
+                      <div  class="px-3" style="width: 150px;">
+                        <button type="submit" name="create" class="btn btn-primary btn-user btn-block ml-3">Simpan</button>
                       </div>
                       <div style="width: 125px;">
-                        <a href="{{ route('beli.index')}}" class="btn btn-secondary btn-user btn-block">Kembali</a>
+                        <a href="{{ route('beli.index')}}" class="btn btn-secondary btn-user btn-block ml-3">Kembali</a>
                       </div>
                     </div>
                     
