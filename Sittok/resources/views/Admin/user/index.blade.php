@@ -86,7 +86,12 @@
                                     <div class="alert alert-primary" role="alert">
                                         {{ Session::get('success') }}
                                     </div>
-                                @endif  
+                                @endif
+                                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif 
                                     <thead>
                                         <tr>
                                             <th>No</th>

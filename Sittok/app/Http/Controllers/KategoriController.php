@@ -28,10 +28,13 @@ class KategoriController extends Controller
      */
     public function store(Request $request)
     {
-       
+        try{
         kategori::create($request->all());
 
         return redirect()->route('kategori.index')->with('success', 'Data Kategori Berhasil Ditambahkan');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Data Kategori Gagal Ditambahkan!!! silahkan isi semua field');
+    }
     }
 
     /**
@@ -59,11 +62,15 @@ class KategoriController extends Controller
      */
     public function update(Request $request, $id_kategori)
     {
+        try {
         $kategori = Kategori::findOrFail($id_kategori);
 
         $kategori->update($request->all());
 
         return redirect()->route('kategori.index')->with('success', 'Data Kategori Berhasil Diupdate');
+    }catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Data Kategori Gagal Diupdate!!! silahkan isi semua field ');
+    }
     }
     
 
@@ -72,10 +79,16 @@ class KategoriController extends Controller
      */
     public function destroy($id_kategori)
     {
-        $kategoris = kategori::findOrFail($id_kategori);
+        try {
+            $kategoris = kategori::findOrFail($id_kategori);
 
         $kategoris->delete();
 
         return redirect()->route('kategori.index')->with('success', 'Data Kategori Berhasil Dihapus');
+        }
+        catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Kategori Gagal Dihapus!!! parent row');
+        }
+        
     }
 }

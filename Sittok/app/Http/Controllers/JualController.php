@@ -38,7 +38,7 @@ class JualController extends Controller
      */
     public function store(Request $request)
     {
-        
+        try{
         $request->validate([
             'tanggal_jual' => 'required',
             'id_barang' => 'required',
@@ -64,6 +64,9 @@ class JualController extends Controller
         $barang->jumlah_barang += $request->jumlah_beli;
         $barang->save();
         return redirect()->route('jual.index')->with('success', 'Data Jual Berhasil Ditambahkan');
+    }catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Data Jual Gagal Ditambahkan!!!' . $e->getMessage());
+    }
     }
 
     /**
@@ -94,6 +97,7 @@ class JualController extends Controller
      */
     public function update(Request $request, string $id_jual)
     {
+        try{
         $jual = Jual::findOrFail($id_jual);
         $request->validate([
             'tanggal_jual' => 'required',
@@ -116,6 +120,9 @@ class JualController extends Controller
 
         $jual->update($input);
         return redirect()->route('jual.index')->with('success', 'Data Jual Berhasil Diupdate');
+    }catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Data Jual Gagal Diupdate!!!' . $e->getMessage());
+    }
     }
 
     /**
@@ -123,10 +130,14 @@ class JualController extends Controller
      */
     public function destroy(string $id_jual)
     {
+        try{
         $juals = jual::findOrFail($id_jual);
 
         $juals->delete();
 
         return redirect()->route('jual.index')->with('success', 'Data Jual Berhasil Dihapus');
+    }catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Data Jual Gagal Dihapus!!!' . $e->getMessage());
+    }
     }
 }

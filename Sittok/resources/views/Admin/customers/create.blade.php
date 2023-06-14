@@ -96,9 +96,19 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Customer</h6>            
                 </div>
                 <div class="card-body">
+                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif 
                   <form action="{{ route('customers.store')}}" method="POST" class="user">
                     @csrf
                     <div class="form-group">
+                    @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                       <label for="txt_nama">Nama Customer</label>
                       <input type="text" class="form-control" name="nama_customer" placeholder="Masukkan Nama Customer">
                     </div>

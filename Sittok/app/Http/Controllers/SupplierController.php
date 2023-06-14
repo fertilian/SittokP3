@@ -28,9 +28,13 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
+        try{
         supplier::create($request->all());
 
         return redirect()->route('supplier.index')->with('success', 'Data Supplier Berhasil Ditambahkan');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Supplier Gagal Ditambahkan!!! silahkan isi semua field');
+        }
     }
 
     /**
@@ -56,11 +60,15 @@ class SupplierController extends Controller
      */
     public function update(Request $request, string $id_supplier)
     {
-        $supplier = Supplier::findOrFail($id_supplier);
+        try {
+            $supplier = Supplier::findOrFail($id_supplier);
 
-        $supplier->update($request->all());
+            $supplier->update($request->all());
 
-        return redirect()->route('supplier.index')->with('success', 'Data Supplier Berhasil Diupdate');
+            return redirect()->route('supplier.index')->with('success', 'Data Supplier Berhasil Diupdate');
+        }catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Supplier Gagal Diupdate!!! silahkan isi semua field ');
+        }
     }
 
     /**
@@ -68,10 +76,14 @@ class SupplierController extends Controller
      */
     public function destroy($id_supplier)
     {
-        $suppliers = supplier::findOrFail($id_supplier);
+        try {
+            $suppliers = supplier::findOrFail($id_supplier);
 
-        $suppliers->delete();
+            $suppliers->delete();
 
-        return redirect()->route('supplier.index')->with('success', 'Data Supplier Berhasil Dihapus');
+            return redirect()->route('supplier.index')->with('success', 'Data Supplier Berhasil Dihapus');
+        }catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Supplier Gagal Dihapus!!! parent row');
+        }
     }
 }

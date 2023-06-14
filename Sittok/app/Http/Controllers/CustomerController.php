@@ -29,17 +29,22 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        customer::create($request->all());
+        try {
+            customer::create($request->all());
 
-        return redirect()->route('customers.index')->with('success', 'Data Customer Berhasil Ditambahkan');
+            return redirect()->route('customers.index')->with('success', 'Data Customer Berhasil Ditambahkan');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Customer Gagal Ditambahkan!!! silahkan isi semua field');
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id_customer)
     {
-        //
+        $customer = Customer::findOrFail($id_customer);
+        return view('Admin.customers.show', compact('customer'));
     }
 
     /**
@@ -58,11 +63,15 @@ class CustomerController extends Controller
      */
     public function update(Request $request, string $id_customer)
     {
-        $customer = Customer::findOrFail($id_customer);
+        try {
+            $customer = Customer::findOrFail($id_customer);
 
-        $customer->update($request->all());
+            $customer->update($request->all());
 
-        return redirect()->route('customers.index')->with('success', 'Data Customer Berhasil Diupdate');
+            return redirect()->route('customers.index')->with('success', 'Data Customer Berhasil Diupdate');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Customer Gagal Diupdate!!! silahkan isi semua field ');
+        }
     }
 
     /**
@@ -70,10 +79,15 @@ class CustomerController extends Controller
      */
     public function destroy(string $id_customer)
     {
-        $customers= customer::findOrFail($id_customer);
+        try {
+            $customers= customer::findOrFail($id_customer);
 
-        $customers->delete();
+            $customers->delete();
 
-        return redirect()->route('customers.index')->with('success', 'Data Customer Berhasil Dihapus');
+            return redirect()->route('customers.index')->with('success', 'Data Customer Berhasil Dihapus');
+    
+        }catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Customer Gagal Dihapus!!! parent row');
+        }
     }
 }

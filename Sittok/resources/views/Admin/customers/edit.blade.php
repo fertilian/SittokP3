@@ -96,6 +96,11 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Customer</h6>            
                 </div>
                 <div class="card-body">
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <form action="{{ route('customers.update', $customer->id_customer)}}" method="POST" class="user">
                 @csrf
                   @method('PUT')     

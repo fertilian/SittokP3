@@ -82,14 +82,23 @@
                 <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                @if(Session::has('success'))
+                                    <div class="alert alert-primary" role="alert">
+                                        {{ Session::get('success') }}
+                                    </div>
+                                @endif
+                                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif 
                                     <thead>
                                         <tr>
                                             <th width="50px">No</th>
                                             <th>Nama</th>
                                             <th>Email</th>
                                             <th>No Telp</th>
-                                        
-                                            <th width="150px">Aksi</th>
+                                            <th width="180px">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -102,8 +111,9 @@
                                             <td class="align-middle">{{ $customer->no_telp_customer}}</td>
                                            
                                             <td>
-                                            <a href="{{ route('customers.edit', $customer->id_customer)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
-                                            <form action="{{ route('customers.destroy', $customer->id_customer) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
+                                            <a href="{{ route('customers.show', $customer->id_customer)}}" class="btn btn-warning btn-circle " style="width: 40px;"><i class="fas fa-info"></i></a>
+                                            <a href="{{ route('customers.edit', $customer->id_customer)}}" class="btn btn-primary btn-circle" style="width: 40px; "><i class="fas fa-pen"></i></a>
+                                            <form action="{{ route('customers.destroy', $customer->id_customer) }}" method="POST" type="button" style="width: 40px;" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-danger m-0"><i class="fas fa-trash"></i></button>

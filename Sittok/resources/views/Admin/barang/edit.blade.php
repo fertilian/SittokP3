@@ -95,6 +95,11 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Barang</h6>
                 </div>
                 <div class="card-body">
+                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif 
                   <form method="POST" action="{{ route('barang.update', $barang->id_barang)}}" enctype="multipart/form-data">
                   @csrf
                   @method('PUT') 

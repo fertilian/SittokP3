@@ -95,6 +95,11 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Barang</h6>
                 </div>
                 <div class="card-body">
+                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif 
                   <form method="post" action="{{ route('barang.store')}}" enctype="multipart/form-data">
                   @csrf
                   <div class="form-group row">

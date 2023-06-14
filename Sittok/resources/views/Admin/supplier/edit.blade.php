@@ -96,6 +96,11 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Supplier</h6>            
                 </div>
                 <div class="card-body">
+                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif 
                 <form action="{{ route('supplier.update', $supplier->id_supplier)}}" method="POST" class="user">
                 @csrf
                   @method('PUT')     

@@ -96,10 +96,10 @@
                 </div>
                 <div class="card-body">
                 @if (session('error'))
-                                    <div class="alert alert-danger">
-                                        {{ session('error') }}
-                                    </div>
-                                @endif
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                   <form method="post" action="{{ route('beli.store')}}" enctype="multipart/form-data">
                   @csrf
                     <div class="form-group">

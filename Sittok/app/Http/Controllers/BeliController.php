@@ -151,7 +151,7 @@ class BeliController extends Controller
 
             return redirect()->route('beli.index')->with('success', 'Data Pembelian Berhasil Dihapus');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Data Pembelian Gagal Dihapus' . $e->getMessage());
+            return redirect()->back()->with('error', 'Data Pembelian Gagal Dihapus!!!');
         }
     }
 }

@@ -95,6 +95,11 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Pembelian</h6>
                 </div>
                 <div class="card-body">
+                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif 
                   <form method="POST" action="{{ route('beli.update', $beli->id)}}" enctype="multipart/form-data">
                   @csrf
                   @method('PUT') 

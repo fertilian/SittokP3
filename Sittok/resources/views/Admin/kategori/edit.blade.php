@@ -96,6 +96,11 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Kategori</h6>            
                 </div>
                 <div class="card-body">
+                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif 
                   <form action="{{ route('kategori.update', $kategori->id_kategori)}}" method="POST" class="user">
                   @csrf
                   @method('PUT')   

@@ -57,6 +57,7 @@ class BarangController extends Controller
 
     public function store(Request $request)
     {
+        try{
         $request->validate([
             'merk_barang' => 'required',
             'id_kategori' => 'required',
@@ -81,6 +82,9 @@ class BarangController extends Controller
         $barang->save();
 
         return redirect()->route('Admin.barang.index')->with('success', 'Data Barang Berhasil Ditambahkan');
+    }catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Barang Gagal Dihapus!!!' . $e->getMessage());
+        }
     }
 
 
@@ -100,6 +104,7 @@ class BarangController extends Controller
      */
     public function update(Request $request, string $id_barang)
     {
+        try{
  
             $barang = Barang::findOrFail($id_barang);
         
@@ -127,6 +132,9 @@ class BarangController extends Controller
         
             $barang->update($input);
             return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Diupdate');
+        }catch (\Exception $e) {
+                return redirect()->back()->with('error', 'Data Barang Gagal Diupdate!!! silahkan isi semua field');
+            }
         
         
 }
@@ -139,10 +147,14 @@ class BarangController extends Controller
      */
     public function destroy($id_barang)
     {
+        try{
         $barangs = barang::findOrFail($id_barang);
 
         $barangs->delete();
 
         return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Dihapus');
+        }catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Barang Gagal Dihapus!!! parent row');
+        }
     }
 }

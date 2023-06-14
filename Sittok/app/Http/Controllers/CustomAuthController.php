@@ -26,7 +26,7 @@ class CustomAuthController extends Controller
             return redirect('/home')->with('success', 'Login Berhasil');
         }
 
-        return redirect('/loginn')->with('error', 'Email or Password salah');
+        return redirect('/loginn')->with('error', 'Email atau Password salah');
     }
     
     public function home()

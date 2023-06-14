@@ -89,9 +89,14 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 @if(Session::has('success'))
-                                  <div class="alert alert-primary" role="alert">
-                                    {{ Session::get('success') }}
-                                  </div>
+                                    <div class="alert alert-primary" role="alert">
+                                        {{ Session::get('success') }}
+                                    </div>
+                                @endif
+                                @if (session('error'))
+                                    <div class="alert alert-danger">
+                                        {{ session('error') }}
+                                    </div>
                                 @endif
                                 <thead>
                                         <tr>

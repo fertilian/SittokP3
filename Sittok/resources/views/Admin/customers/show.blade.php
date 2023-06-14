@@ -1,7 +1,39 @@
 <!DOCTYPE html>
 
 <html lang="en">
+<style>
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 2fr; /* Mengatur 2 kolom dengan lebar yang sesuai */
+            grid-gap: 20px; /* Mengatur jarak antara elemen */
+            align-items: center; /* Mengatur pemusat vertikal */
+            font-family: Arial, sans-serif; /* Mengatur jenis font */
+        }
 
+        .gambar {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .detail-barang {
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .button
+        {
+          width="125px"
+        }
+    </style>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,7 +95,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Jual</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Master Customer</h1>
            
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
@@ -73,68 +105,32 @@
         <!---Container Fluid-->
         
         <!-- <Form Basic> -->
+          
           <div class="row">
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Jual</h6>
-                  
-                  
-                </div>
-                <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                @if(Session::has('success'))
-                                    <div class="alert alert-primary" role="alert">
-                                        {{ Session::get('success') }}
-                                    </div>
-                                @endif
-                                @if (session('error'))
-                                    <div class="alert alert-danger">
-                                        {{ session('error') }}
-                                    </div>
-                                @endif
-                                <thead>
-                                
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Tanggal</th>
-                                            <th>No Pesanan</th>
-                                            <th>Customer</th>
-                                            <th>Status</th>
-                                            <th width="180px">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                      @if($juals->count() > 0)
-                                      @foreach($juals as $jual)
-                                        <tr>
-                                            <td class="align-middle">{{ $loop->iteration}}</td>
-                                            <td class="align-middle">{{ $jual->created_at}}</td>
-                                            <td class="align-middle">{{ $jual->no_pesanan}}</td>
-                                            <td class="align-middle">{{  $jual->customer->nama_customer}}</td>
-                                            <td class="align-middle">{{ $jual->status}}</td>
-                                            <td>
-                                            <a href="{{ route('jual.show', $jual->id_jual)}}" class="btn btn-warning btn-circle " style="width: 40px;"><i class="fas fa-info"></i></a>
-                                            <form action="{{ route('barang.destroy', $jual->id_jual) }}" style="width: 40px;" method="POST" type="button" class="btn btn-danger p-0" width="25px" onsubmit="return confirm('Ingin Menghapus Data ini?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger m-0"><i class="fas fa-trash"></i></button>
-                                            </form>
-                                          </td> 
-                                        </tr>
-                                        @endforeach
-                                      @else
-                                      <tr>
-                                        <td class="text-center" colspan="9">Data Jual Tidak Ditemukan</td>
-                                      </tr>
-                                      @endif
-                                    </tbody>
-                                </table>
+                  <h6 class="m-0 font-weight-bold text-primary">Data Master Customer</h6>
+                  </div>
+                  <div class="container">
+                    <img class="gambar" src="" alt="Gambar Barang">
+                   
 
-                            </div>
-                        </div>
-              </div>
+                    <div class="detail-barang">
+                        <h1>{{ $customer->nama_customer}}</h1>
+                        <p>Email Customer :{{ $customer->email}}</p>
+                        <p>No Telp Customer : {{ $customer->no_telp_customer}}</p>
+                        <p>Alamat Customer : {{ $customer->alamat}}</p>
+                   
+                      <div style="width: 125px; float: right; margin-left: 500px;" >
+                        <a href="{{ route('customers.index')}}" class="btn btn-secondary btn-user btn-block">Kembali</a>
+                      </div>
+                 
+                        <br>
+                    </div>
+                  </div>
+                  
+                  
         <!-- <Form Basic> -->
       </div>
     </div>
