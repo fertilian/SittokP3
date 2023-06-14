@@ -102,15 +102,15 @@
                   <div class="form-group row">  
                     <div class="col-sm-4">
                       <label for="exampleInputEmail1">Tanggal</label>
-                      <input type="date" name="merk_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Tanggal" value="{{ $beli->tgl_beli }}">
+                      <input type="date" name="created_at" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Tanggal" value="{{ $beli->created_at->format('Y-m-d') }}" readonly>
                     </div>
                     <div class="col-sm-4">
                       <label for="exampleInputEmail1">Qty</label>
-                      <input type="number" name="jumlah_barang" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Maukkan Jumlah" value="{{ $beli->jumlah_beli }}">
+                      <input type="number" name="jumlah_beli" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Maukkan Jumlah" value="{{ $beli->jumlah_beli }}">
                     </div>
                     <div class="col-sm-4">
                       <label for="exampleInputEmail1">Harga</label>
-                      <input type="number" name="harga" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $beli->harga_beli }}">
+                      <input type="number" name="harga_beli" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Harga" value="{{ $beli->harga_beli }}">
                     </div>
                   </div>
 

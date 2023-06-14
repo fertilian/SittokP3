@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,19 +12,28 @@ class CustomAuthController extends Controller
 {
     public function loginn()
     {
-         return view('loginn');
+        return view('loginn');
     }
 
     public function loginPost(Request $request)
     {
         $credentials = [
             'email' => $request->email,
-            'password'  => $request->password,
+            'password' => $request->password,
         ];
 
         if (Auth::attempt($credentials)) {
             return redirect('/home')->with('success', 'Login Berhasil');
+        }
 
-        }return back()->with('error', 'Email or Password salah');
+        return redirect('/loginn')->with('error', 'Email or Password salah');
+    }
+    
+    public function home()
+    {
+        if (Auth::check()) {
+            return view('home');
+        }
+        return redirect('/loginn')->with('error', 'Anda harus login untuk mengakses halaman ini');
     }
 }

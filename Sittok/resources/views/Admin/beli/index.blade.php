@@ -89,7 +89,7 @@
                                     <thead>
                                         <tr>
                                             <th width="50px">No</th>
-                                            <th>Tanggal</th>
+                                            <th>Tanggal Pembelian</th>
                                             <th>Nama Barang</th>
                                             <th>Harga Beli</th>
                                             <th width="180px">Aksi</th>

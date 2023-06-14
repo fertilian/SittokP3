@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\KategoriController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\JualController;
 use App\Http\Controllers\BeliController;
 use App\Http\Controllers\AdminController;
+
 
 use App\Models\Barang;
 use App\Models\Kategori;

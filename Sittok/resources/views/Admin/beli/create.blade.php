@@ -108,7 +108,7 @@
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-4">
-                          <label for="id_barang" class="col-form-label">Barang:</label>
+                          <label for="id_barang" class="col-form-label">Barang </label>
                           <select name="id_barang[]" class="form-control">
                               <option value="">- Pilih -</option>
                               @foreach ($barangs as $item)
@@ -117,26 +117,28 @@
                           </select>
                       </div>
                       <div class="col-sm-4">
-                          <label class="col-form-label">Jumlah Pembelian:</label>
+                          <label class="col-form-label">Qty</label>
                           <input type="number" name="jumlah_beli[]" class="form-control">
                       </div>
                       <div class="col-sm-4">
-                          <label class="col-form-label">Harga Pembelian:</label>
+                          <label class="col-form-label">Harga Beli </label>
                           <input type="number" name="harga_beli[]" class="form-control">
                       </div>
-                  </div>
-                  <div id="id_barang_container"></div>
-                  <button type="button" id="add_id_barang" style="float:right;">+</button>
-                </div>
+                    </div>
+                    
+                    <div id="id_barang_container"></div>
+                      <button type="button" id="add_id_barang" style="float:right;">+</button>
+                    </div>
 
                     <div class="form-group row" style="position: relative; float: left; ">
                       <div class="px-3" style="width: 150px;">
-                        <button type="submit" name="simpan" class="btn btn-primary btn-user btn-block">Simpan</button>
+                        <button type="submit" name="create" class="btn btn-primary btn-user btn-block">Simpan</button>
                       </div>
                       <div style="width: 125px;">
                         <a href="{{ route('beli.index')}}" class="btn btn-secondary btn-user btn-block">Kembali</a>
                       </div>
                     </div>
+                    
                     
                   </form>
                 </div>

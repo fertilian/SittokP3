@@ -119,7 +119,7 @@
                     <div class="detail-barang">
                         <h1>{{ $barang->merk_barang}}</h1>
                         <p>{{ $barang->deskripsi}}</p>
-                        <p>Harga: Rp.{{ $barang->harga}}</p>
+                        <p>Harga: {{ $barang->formatted_harga}}</p>
                         <p>Kategori: {{ $barang->kategori->nama_kategori}}</p>
                         <p>Jumlah : {{ $barang->jumlah_barang}}</p>
                   

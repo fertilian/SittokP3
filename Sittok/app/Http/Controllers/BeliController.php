@@ -84,10 +84,25 @@ class BeliController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    public function show(string $id_beli)
+{
+    $beli = Beli::findOrFail($id_beli);
+
+    // Format harga_beli menjadi mata uang
+    $formattedHarga = 'Rp. ' . number_format($beli->harga_beli, 0, ',', '.');
+    $beli->formatted_harga = $formattedHarga;
+
+    $jumlahBeli = $beli->jumlah_beli;
+    $hargaBeli = $beli->harga_beli;
+    
+    $total = $jumlahBeli * $hargaBeli;
+
+    // Format total menjadi mata uang
+    $formattedTotal = 'Rp. ' . number_format($total, 0, ',', '.');
+    
+    return view('Admin.beli.show', compact('beli', 'formattedTotal'));
+}
+
 
     /**
      * Show the form for editing the specified resource.
@@ -96,6 +111,7 @@ class BeliController extends Controller
     {
        
         $beli = Beli::findOrFail($id);
+        $beli->created_at = date('Y-m-d');
         $barangs=barang::orderBy('created_at', 'DESC')->get();
         $suppliers=supplier::orderBy('created_at', 'DESC')->get();
 
@@ -109,7 +125,12 @@ class BeliController extends Controller
     {
         $beli = Beli::findOrFail($id);
 
-        $beli->update($request->all());
+        $beli->jumlah_beli = $request->input('jumlah_beli');
+        $beli->harga_beli = $request->input('harga_beli');
+        $beli->id_barang = $request->input('id_barang');
+        $beli->id_supplier = $request->input('id_supplier');
+
+        $beli->save();
 
         return redirect()->route('beli.index')->with('success', 'Data Pembelian Berhasil Diupdate');
     }

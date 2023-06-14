@@ -44,8 +44,11 @@ class BarangController extends Controller
     public function show(string $id_barang)
     {
         $barang = Barang::findOrFail($id_barang);
-      
-
+       
+       
+            $formattedHarga = 'Rp. ' . number_format($barang->harga, 0, ',', '.');
+            $barang->formatted_harga = $formattedHarga;
+         
         return view('Admin.barang.show', compact('barang'));
     }
 
