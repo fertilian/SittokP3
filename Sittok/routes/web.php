@@ -39,9 +39,6 @@ Route::get('/', [LandingController::class, 'index'])->name('landing');
 //});
 
 Route::controller(CustomAuthController::class)->group(function () {
-    Route::get('register', 'register')->name('register');
-    Route::post('register', 'registerPost')->name('register');
-
     Route::get('loginn', 'loginn')->name('loginn');
     Route::post('loginn', 'loginPost');
 });
@@ -52,7 +49,7 @@ Route::resource('/supplier', SupplierController::class);
 Route::resource('/kategori', KategoriController::class);
 Route::resource('/barang', BarangController::class);
 Route::resource('/customers', CustomerController::class);
-Route::resource('/jual', JualController::class);
 Route::resource('/beli', BeliController::class);
 
 Route::post('/barang', 'BarangController@store')->name('barang.store');
+

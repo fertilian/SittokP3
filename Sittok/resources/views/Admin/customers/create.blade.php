@@ -104,11 +104,7 @@
                   <form action="{{ route('customers.store')}}" method="POST" class="user">
                     @csrf
                     <div class="form-group">
-                    @if (session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
-                @endif
+                    
                       <label for="txt_nama">Nama Customer</label>
                       <input type="text" class="form-control" name="nama_customer" placeholder="Masukkan Nama Customer">
                     </div>
@@ -157,7 +153,7 @@
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
+  
   <script src="/assets/vendor/jquery/jquery.min.js"></script>
   <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>

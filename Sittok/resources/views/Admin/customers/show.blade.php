@@ -4,16 +4,19 @@
 <style>
         .container {
             display: grid;
-            grid-template-columns: 1fr 2fr; /* Mengatur 2 kolom dengan lebar yang sesuai */
-            grid-gap: 20px; /* Mengatur jarak antara elemen */
-            align-items: center; /* Mengatur pemusat vertikal */
-            font-family: Arial, sans-serif; /* Mengatur jenis font */
+            grid-template-columns: 1fr 2fr;
+            grid-gap: 20px;
+            align-items: center;
+            font-family: Arial, sans-serif;
         }
 
         .gambar {
-            width: 100%;
+            width: 62%;
             height: auto;
             object-fit: cover;
+            justify-self: center; /* Menyusun gambar di tengah secara horizontal */
+            align-self: center; /* Menyusun gambar di tengah secara vertikal */
+            margin-bottom: 70px;
         }
 
         .detail-barang {
@@ -29,10 +32,10 @@
             margin-bottom: 10px;
         }
 
-        .button
-        {
-          width="125px"
+        .button {
+            width: 125px;
         }
+
     </style>
 <head>
   <meta charset="utf-8">
@@ -113,12 +116,12 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Customer</h6>
                   </div>
                   <div class="container">
-                    <img class="gambar" src="" alt="Gambar Barang">
+                    <img class="gambar" src="/images/cust.png" alt="Gambar Barang">
                    
 
                     <div class="detail-barang">
                         <h1>{{ $customer->nama_customer}}</h1>
-                        <p>Email Customer :{{ $customer->email}}</p>
+                        <p>Email Customer : {{ $customer->email}}</p>
                         <p>No Telp Customer : {{ $customer->no_telp_customer}}</p>
                         <p>Alamat Customer : {{ $customer->alamat}}</p>
                    

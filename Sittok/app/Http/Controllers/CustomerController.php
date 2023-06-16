@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Customer;
 
 class CustomerController extends Controller
@@ -88,6 +89,21 @@ class CustomerController extends Controller
     
         }catch (\Exception $e) {
             return redirect()->back()->with('error', 'Data Customer Gagal Dihapus!!! parent row');
+        }
+    }
+
+    public function resetPassword(Request $request, string $id_customer)
+    {
+        try {
+            $customer = Customer::findOrFail($id_customer);
+            
+            // Ubah password pengguna menjadi "customerpw123"
+            $customer->password = Hash::make('customerpw123');
+            $customer->save();
+
+            return redirect()->back()->with('success', 'Password Customer Berhasil Diatur Ulang.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal Mengatur Ulang Password Customer!!!');
         }
     }
 }

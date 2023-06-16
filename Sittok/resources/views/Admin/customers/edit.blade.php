@@ -104,24 +104,20 @@
                 <form action="{{ route('customers.update', $customer->id_customer)}}" method="POST" class="user">
                 @csrf
                   @method('PUT')     
-                    <div class="form-group">
-                      <label for="txt_nama">Nama Customer</label>
-                      <input type="text" class="form-control" name="nama_supplier" placeholder="Masukkan Nama Customer" value="{{ $customer->nama_customer }}">
-                    </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
-                        <label for="txt_nama">Email Customer</label>
-                        <input type="email" class="form-control" name="email" placeholder="Masukkan Email Customer" value="{{ $customer->email }}">
+                      <label for="txt_nama">Nama Customer</label>
+                      <input type="text" class="form-control" name="nama_customer" placeholder="Masukkan Nama Customer" value="{{ $customer->nama_customer }}">
                       </div>
                       <div class="col-sm-6">
-                        <label for="txt_nama">Password Customer</label>
-                        <input type="password" class="form-control" name="password" placeholder="Masukkan Email Customer" value="{{ $customer->password }}">
+                      <label for="txt_nama">Email Customer</label>
+                        <input type="email" class="form-control" name="email" placeholder="Masukkan Email Customer" value="{{ $customer->email }}">
                       </div>
                     </div>
                     <div class="form-group row">
                       <div class="col-sm-6 mb-3 mb-sm-0">
                         <label for="txt_nama">No Telepon Customer</label>
-                        <input type="text" class="form-control" name="no_telp_supplier" placeholder="Masukkan No Telepon Customer" value="{{ $customer->no_telp_customer }}">
+                        <input type="text" class="form-control" name="no_telp_customer" placeholder="Masukkan No Telepon Customer" value="{{ $customer->no_telp_customer }}">
                       </div>
                       <div class="col-sm-6">
                         <label for="txt_nama">Alamat Customer</label>
