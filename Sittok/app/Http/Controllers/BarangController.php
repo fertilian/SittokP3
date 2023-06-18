@@ -22,12 +22,6 @@ class BarangController extends Controller
         }
 
         return view('Admin.barang.index', compact('barangs'));
-
-        $barang = Barang::find($id_barang);
-
-            // Mendapatkan nama_kategori berdasarkan fk id_kategori pada model Barang
-            $nama_kategori = $barang->kategori->nama_kategori;
-
     }
 
     
@@ -81,7 +75,7 @@ class BarangController extends Controller
         $barang->id_kategori = $input['id_kategori'];
         $barang->save();
 
-        return redirect()->route('Admin.barang.index')->with('success', 'Data Barang Berhasil Ditambahkan');
+        return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Ditambahkan');
     }catch (\Exception $e) {
             return redirect()->back()->with('error', 'Data Barang Gagal Dihapus!!!' . $e->getMessage());
         }
@@ -94,7 +88,7 @@ class BarangController extends Controller
     public function edit(string $id_barang)
     {
         $barang = Barang::findOrFail($id_barang);
-        $kategoris=kategori::orderBy('created_at', 'DESC')->get();
+        $kategoris=Kategori::orderBy('created_at', 'DESC')->get();
 
         return view('Admin.barang.edit', compact('barang', 'kategoris'));
     }
@@ -148,7 +142,7 @@ class BarangController extends Controller
     public function destroy($id_barang)
     {
         try{
-        $barangs = barang::findOrFail($id_barang);
+        $barangs = Barang::findOrFail($id_barang);
 
         $barangs->delete();
 

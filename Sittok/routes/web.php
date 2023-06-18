@@ -10,6 +10,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\JualController;
 use App\Http\Controllers\BeliController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BarangkuController;
 
 
 use App\Models\Barang;
@@ -51,5 +52,4 @@ Route::resource('/barang', BarangController::class);
 Route::resource('/customers', CustomerController::class);
 Route::resource('/beli', BeliController::class);
 
-Route::post('/barang', 'BarangController@store')->name('barang.store');
-
+Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
