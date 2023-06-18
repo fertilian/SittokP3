@@ -31,7 +31,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        $kategoris=Kategori::orderBy('created_at', 'DESC')->get();
+        $kategoris=kategori::orderBy('created_at', 'DESC')->get();
         return view('Admin.barang.create', compact('kategoris'));
     }
 
@@ -52,28 +52,25 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         try{
-        $request->validate([
-            'merk_barang' => 'required',
-            'id_kategori' => 'required',
-            'deskripsi' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        $input = $request->all();
-
-        if ($image = $request->file('gambar')) {
-            $destinationPath = 'images/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['gambar'] = "images/$profileImage";
-        }
-
-        $barang = new Barang();
-        $barang->merk_barang = $input['merk_barang'];
-        $barang->deskripsi = $input['deskripsi'];
-        $barang->gambar = $input['gambar'];
-        $barang->id_kategori = $input['id_kategori'];
-        $barang->save();
+            $request->validate([
+                'merk_barang' => 'required',
+                'jumlah_barang' => 'required',
+                'harga' => 'required',
+                'deskripsi' => 'required',
+                'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'id_kategori' => 'required',
+            ]);
+    
+            $input = $request->all();
+    
+            if ($image = $request->file('gambar')) {
+                $destinationPath = 'images/';
+                $profileImage = date('YmdHis') .".".$image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['gambar'] = "images/$profileImage";
+            }
+    
+            barang::create($input);
 
         return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Ditambahkan');
     }catch (\Exception $e) {

@@ -101,7 +101,7 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Pembelian</h6>
                   </div>
                   <div class="container">
-                        <p>Tanggal Pembelian : 2023-06-14</p>              
+                        <p>Tanggal Pembelian : {{ $beli->created_at}}</p>              
                         <p>Nama Supplier : {{ $beli->supplier->nama_supplier}}</p>
                         <p>Alamat Supplier : {{ $beli->supplier->alamat}}</p>
                         <p>No Telp Supplier : {{ $beli->supplier->no_telp_supplier}}</p>

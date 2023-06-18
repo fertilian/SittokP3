@@ -62,7 +62,7 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Data Master Barang</h1>
+            <h1 class="h3 mb-0 text-gray-800">Data Jual</h1>
            
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="./">Home</a></li>
@@ -77,7 +77,43 @@
             <div class="col-lg-12">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Data Master Barang</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Data Jual</h6>
+                  </div>
+                  <div class="container">
+                        <p>Tanggal Transaksi : {{ $jual->created_at}}</p>
+                        <p>Nama Customer : {{ $jual->created_at}}</p>    
+                        <p>Data Penerima : </p>
+                        <ul>
+                            <li>Nama Lengkap : {{ $jual->nama_lengkap}}</li>
+                            <li>Alamat : {{ $jual->alamat}}</li>
+                            <li>No Telp : {{ $jual->nohp}}</li>
+                        </ul>
+                        
+                        <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                          <thead>
+                            <tr>
+                              <th>Nama Barang</th>
+                              <th>Qty</th>
+                              <th>Harga Beli</th>
+                              <th>Total</th>
+                              <th>Gambar</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="align-middle"></td>
+                              <td class="align-middle"></td>
+                              <td class="align-middle"></td>
+                              <td class="align-middle"></td>
+                              <td class="align-middle"><img src="" width="50px" ></td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                        <br>
+                        <div style="width: 125px; float: right; margin-left: 500px;margin-bottom: 30px;" >
+                          <a href="{{ route('jual.index')}}" class="btn btn-secondary btn-user btn-block">Kembali</a>
+                        </div>
+                        <br>
                   </div>
                   
                   

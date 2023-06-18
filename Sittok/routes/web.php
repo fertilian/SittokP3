@@ -51,5 +51,6 @@ Route::resource('/kategori', KategoriController::class);
 Route::resource('/barang', BarangController::class);
 Route::resource('/customers', CustomerController::class);
 Route::resource('/beli', BeliController::class);
+Route::resource('/barangku', BarangkuController::class);
 
 Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');

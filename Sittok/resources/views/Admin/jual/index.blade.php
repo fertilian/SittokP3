@@ -99,8 +99,8 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Tanggal</th>
-                                            <th>No Pesanan</th>
                                             <th>Customer</th>
+                                            <th>Total</th>
                                             <th>Status</th>
                                             <th width="180px">Aksi</th>
                                         </tr>
@@ -111,8 +111,8 @@
                                         <tr>
                                             <td class="align-middle">{{ $loop->iteration}}</td>
                                             <td class="align-middle">{{ $jual->created_at}}</td>
-                                            <td class="align-middle">{{ $jual->no_pesanan}}</td>
-                                            <td class="align-middle">{{  $jual->customer->nama_customer}}</td>
+                                            <td class="align-middle">{{ $jual->nama_lengkap}}</td>
+                                            <td class="align-middle">{{  $jual->total_final}}</td>
                                             <td class="align-middle">{{ $jual->status}}</td>
                                             <td>
                                             <a href="{{ route('jual.show', $jual->id_jual)}}" class="btn btn-warning btn-circle " style="width: 40px;"><i class="fas fa-info"></i></a>
