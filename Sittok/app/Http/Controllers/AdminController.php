@@ -24,7 +24,7 @@ class AdminController extends Controller
             ->value('total_final');
         $income = 'Rp. ' . number_format($totalHargaBayar, 0, ',', '.');
 
-        $jumlahPesananPending = Jual::where('status', 'sudah bayar')->count();
+        $jumlahPesananPending = Jual::where('status', 'dibayar')->count();
 
         // $currentMonth = Carbon::now()->format('m');
         // $laba = Jual::join('beli', 'jual.id_barang', '=', 'beli.id_barang')

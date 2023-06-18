@@ -84,10 +84,8 @@ class JualController extends Controller
     public function edit(string $id_jual)
     {
         $jual = Jual::findOrFail($id_jual);
-        $barangs=barang::orderBy('created_at', 'DESC')->get();
-        $customers=customer::orderBy('created_at', 'DESC')->get();
 
-        return view('Admin.jual.edit', compact('jual', 'barangs', 'customers'));
+        return view('Admin.jual.edit', compact('jual'));
     }
 
     /**
@@ -96,28 +94,11 @@ class JualController extends Controller
     public function update(Request $request, string $id_jual)
     {
         try{
-        $jual = Jual::findOrFail($id_jual);
-        $request->validate([
-            'tanggal_jual' => 'required',
-            'id_barang' => 'required',
-            'no_pesanan' => 'required',
-            'id_customer' => 'required',
-            'total' => 'required',
-            'status'=> 'required',
-            'bukti_bayar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+            $jual = Jual::findOrFail($id_jual);
+            $jual->status = $request->input('status');
+            $jual->save();
 
-        $input = $request->all();
-
-        if ($image = $request->file('bukti_bayar')) {
-            $destinationPath = 'images/';
-            $profileImage = date('YmdHis') .".".$image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['bukti_bayar'] = "$profileImage";
-        }
-
-        $jual->update($input);
-        return redirect()->route('jual.index')->with('success', 'Data Jual Berhasil Diupdate');
+        return redirect()->route('jual.index')->with('success', 'Status Data Jual Berhasil Diupdate');
     }catch (\Exception $e) {
         return redirect()->back()->with('error', 'Data Jual Gagal Diupdate!!!' . $e->getMessage());
     }

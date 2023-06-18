@@ -116,6 +116,7 @@
                                             <td class="align-middle">{{ $jual->status}}</td>
                                             <td>
                                             <a href="{{ route('jual.show', $jual->id_jual)}}" class="btn btn-warning btn-circle " style="width: 40px;"><i class="fas fa-info"></i></a>
+                                            <a href="{{ route('jual.edit', $jual->id_jual)}}" class="btn btn-primary btn-circle" style="width: 40px; "><i class="fas fa-pen"></i></a>
                                             <form action="{{ route('barang.destroy', $jual->id_jual) }}" style="width: 40px;" method="POST" type="button" class="btn btn-danger p-0" width="25px" onsubmit="return confirm('Ingin Menghapus Data ini?')">
                                                 @csrf
                                                 @method('DELETE')
