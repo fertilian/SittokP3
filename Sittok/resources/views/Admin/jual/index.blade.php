@@ -111,7 +111,7 @@
                                         <tr>
                                             <td class="align-middle">{{ $loop->iteration}}</td>
                                             <td class="align-middle">{{ $jual->created_at}}</td>
-                                            <td class="align-middle">{{ $jual->nama_lengkap}}</td>
+                                            <td class="align-middle">{{ $jual->keranjang->customer->nama_customer}}</td>
                                             <td class="align-middle">{{  $jual->total_final}}</td>
                                             <td class="align-middle">{{ $jual->status}}</td>
                                             <td>

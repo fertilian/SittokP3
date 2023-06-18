@@ -18,4 +18,14 @@ class Keranjang extends Model
     ];
 
     protected $primaryKey = 'id_keranjang';
+
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class, 'id_barang');
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'id_customer');
+    }
 }

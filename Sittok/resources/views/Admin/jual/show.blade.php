@@ -80,32 +80,32 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Jual</h6>
                   </div>
                   <div class="container">
-                        <p>Tanggal Transaksi : {{ $jual->created_at}}</p>
-                        <p>Nama Customer : {{ $jual->created_at}}</p>    
+                        <p>Tanggal Transaksi : {{ $jual->created_at}} | {{ $jual->keranjang->customer->nama_customer}} </p>
+                        
                         <p>Data Penerima : </p>
                         <ul>
                             <li>Nama Lengkap : {{ $jual->nama_lengkap}}</li>
                             <li>Alamat : {{ $jual->alamat}}</li>
                             <li>No Telp : {{ $jual->nohp}}</li>
                         </ul>
-                        
+
                         <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                           <thead>
                             <tr>
                               <th>Nama Barang</th>
                               <th>Qty</th>
-                              <th>Harga Beli</th>
+                              <th>Harga</th>
                               <th>Total</th>
-                              <th>Gambar</th>
+                             
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="align-middle"></td>
-                              <td class="align-middle"></td>
-                              <td class="align-middle"></td>
-                              <td class="align-middle"></td>
-                              <td class="align-middle"><img src="" width="50px" ></td>
+                              <td class="align-middle">{{ $jual->keranjang->barang->merk_barang }}</td>
+                              <td class="align-middle">{{ $jual->keranjang->qty }}</td>
+                              <td class="align-middle">Rp. {{ number_format($jual->keranjang->barang->harga, 0, ',', '.') }}</td>
+                              <td class="align-middle">Rp {{ number_format($jual->keranjang->qty * $jual->keranjang->barang->harga, 0, ',', '.') }}</td>
+                             
                             </tr>
                           </tfoot>
                         </table>

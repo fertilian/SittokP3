@@ -29,5 +29,8 @@ class Barang extends Model
         return $this->belongsTo(Kategori::class, 'id_kategori');
     }
 
-    
+    public function keranjang()
+    {
+        return $this->hasMany(Keranjang::class, 'id_barang');
+    }
 }

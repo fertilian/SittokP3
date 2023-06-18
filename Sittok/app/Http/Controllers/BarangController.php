@@ -74,7 +74,7 @@ class BarangController extends Controller
 
         return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Ditambahkan');
     }catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Data Barang Gagal Dihapus!!!' . $e->getMessage());
+            return redirect()->back()->with('error', 'Data Barang Gagal Ditambahkan!!!' . $e->getMessage());
         }
     }
 

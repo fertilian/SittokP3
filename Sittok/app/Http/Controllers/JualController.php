@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Jual;
 use App\Models\Barang;
 use App\Models\Customer;
+use App\Models\Keranjang;
 class JualController extends Controller
 {
     /**
@@ -13,14 +14,9 @@ class JualController extends Controller
      */
     public function index()
     {
-        $juals=jual::orderBy('created_at', 'DESC')->get();
-        return view('Admin.jual.index', compact('juals'));
+        $juals = Jual::with('barang', 'barang.keranjang')->get();
 
-        $jual = Jual::find($id_jual);
-
-        $nama_customer = $jual->customers->nama_customer;
-        $merk_barang = $jual->barang->merk_barang;
-        
+    return view('Admin.jual.index', ['juals' => $juals]);
     }
 
     /**
@@ -30,7 +26,8 @@ class JualController extends Controller
     {
         $barangs=barang::orderBy('created_at', 'DESC')->get();
         $customers=customer::orderBy('created_at', 'DESC')->get();
-        return view('Admin.jual.create', compact('customers', 'barangs'));
+        $keranjangs=keranjang::orderBy('created_at', 'DESC')->get();
+        return view('Admin.jual.create', compact('customers', 'barangs', 'keranjangs'));
     }
 
     /**
@@ -72,10 +69,11 @@ class JualController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id_jual)
+    public function show($id_jual)
     {
-        $jual = Jual::findOrFail($id_jual);
-      
+        $jual = Jual::with('keranjang.barang', 'keranjang.customer')->findOrFail($id_jual);
+
+        
 
         return view('Admin.jual.show', compact('jual'));
     }

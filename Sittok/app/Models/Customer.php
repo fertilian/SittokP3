@@ -23,4 +23,9 @@ class Customer extends Model
     {
     $this->attributes['password'] = bcrypt($value);
     }
+
+    public function keranjang()
+    {
+        return $this->hasMany(Keranjang::class, 'id_customer');
+    }
 }
