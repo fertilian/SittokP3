@@ -18,7 +18,7 @@ class Jual extends Model
         'nohp',
         'bukti_bayar',
         'status',
-        'id_keranjang',
+        'id_customer',
         'nama_lengkap',
     ];
 

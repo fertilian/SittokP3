@@ -14,6 +14,7 @@ class Keranjang extends Model
         'id_customer',
         'id_barang',
         'qty',
+        'status',
         
     ];
 

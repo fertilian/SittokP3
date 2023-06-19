@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('user_fullname')->nullable();
             $table->string('telp')->nullable();
             $table->string('alamat')->nullable();
-          
             $table->timestamps();
         });
     }

@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id('id_customer');
             $table->string('nama_customer');
             $table->string('email');
-            $table->string('no_telp_customer');
-            $table->string('alamat');
+            $table->string('no_telp_customer')->nullable();
+            $table->string('alamat')->nullable();
             $table->string('password');
+            $table->string('profil')->nullable();
             $table->timestamps();
         });
     }

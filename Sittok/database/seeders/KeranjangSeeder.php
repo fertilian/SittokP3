@@ -18,6 +18,7 @@ class KeranjangSeeder extends Seeder
     			'id_customer' => '3',
     			'id_barang' => '1',
                 'qty' => rand(1, 3),
+                'status' => 'selesai',
     		]);
         
     }

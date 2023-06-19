@@ -35,7 +35,7 @@ class CustomerController extends Controller
 
             return redirect()->route('customers.index')->with('success', 'Data Customer Berhasil Ditambahkan');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Data Customer Gagal Ditambahkan!!! silahkan isi semua field');
+            return redirect()->back()->with('error', 'Data Customer Gagal Ditambahkan!!!'. $e->getMessage());
         }
     }
 

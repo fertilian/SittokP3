@@ -116,7 +116,7 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Customer</h6>
                   </div>
                   <div class="container">
-                    <img class="gambar" src="/images/cust.png" alt="Gambar Barang">
+                    <img class="gambar" src="/{{ $customer->profil}}" alt="Gambar Barang">
                    
 
                     <div class="detail-barang">

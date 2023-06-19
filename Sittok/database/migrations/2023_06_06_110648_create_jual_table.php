@@ -18,11 +18,12 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('nohp');
             $table->string('bukti_bayar')->nullable();
-            $table->enum('status', ['belum bayar', 'dibayar', 'dikemas', 'dikirim', 'selesai'])->default('belum bayar');
-            $table->unsignedBigInteger('id_keranjang');
+            $table->enum('status', ['Belum Bayar', 'Dibayar', 'Dikemas', 'Dikirim', 'Selesai', 'Konfirmasi Admin'])->default('Belum Bayar');
             $table->string('nama_lengkap');
+            $table->unsignedBigInteger('id_customer');
             $table->timestamps();
-            $table->foreign('id_keranjang')->references('id_keranjang')->on('keranjang');
+
+            $table->foreign('id_customer')->references('id_customer')->on('customers');
            
         });
     }
