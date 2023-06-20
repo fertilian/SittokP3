@@ -107,10 +107,10 @@
                                 @endif 
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                           
                                             <th>Username</th>
                                             <th>Email</th>
-                                           
+                                            <th>Alamat</th>
                                             <th>No Telp</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -119,10 +119,10 @@
                                       @if($users->count() > 0)
                                       @foreach($users as $user)
                                         <tr>
-                                          <td class="align-middle">{{ $loop->iteration}}</td>
+                                          
                                           <td class="align-middle">{{ $user->user_fullname}}</td>
                                           <td class="align-middle">{{ $user->email}}</td> 
-                            
+                                          <td class="align-middle">{{ $user->alamat}}</td> 
                                           <td class="align-middle">{{ $user->telp}}</td>
                                           <td>
                                           

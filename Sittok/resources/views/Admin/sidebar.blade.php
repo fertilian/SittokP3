@@ -32,23 +32,12 @@
           </div>
         </div>
       </li>
-      <hr class="sidebar-divider">
-      <div class="sidebar-heading">
-        Data User
-      </div>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap1"
-          aria-expanded="true" aria-controls="collapseBootstrap">
-          <i class="fa fa-user"></i>
-          <span>Data User</span>
-        </a>
-        <div id="collapseBootstrap1" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Sittok</h6>
-            <a class="collapse-item" href="{{ route('user.index')}}">User</a>
-            <a class="collapse-item" href="{{ route('jual.index')}}">Jual</a>
-          </div>
-        </div>
+      <hr class="sidebar-divider my-0">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('jual.index')}}">
+                <i class="fas fa-table"></i>
+                    <span>Data Jual</span></a>
+            </li>
       </li>
       <!-- <hr class="sidebar-divider"> -->
       <div class="sidebar-heading">
