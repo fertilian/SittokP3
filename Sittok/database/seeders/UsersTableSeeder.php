@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
             'user_fullname' => 'Admin Sittok',
             'telp' => ' 081234582780',
             'alamat' => 'Jember',
+            'poto' => 'images/img/boy.png'
              
         ]);
     }

@@ -8,6 +8,7 @@ use App\Models\Barang;
 use App\Models\Customer;
 use App\Models\Keranjang;
 use App\Models\DetileJual;
+use App\Models\User;
 class JualController extends Controller
 {
     /**
@@ -15,6 +16,7 @@ class JualController extends Controller
      */
     public function index()
     {
+        $user = User::first();
         $juals = Jual::orderBy('created_at', 'DESC')->get();
 
         foreach ($juals as $jual) {
@@ -22,7 +24,7 @@ class JualController extends Controller
             $jual->formatted_harga = $formattedHarga;
         }
 
-        return view('Admin.jual.index', compact('juals'));
+        return view('Admin.jual.index', compact('juals', 'user'));
     }
 
     /**
@@ -33,7 +35,8 @@ class JualController extends Controller
         $barangs=barang::orderBy('created_at', 'DESC')->get();
         $customers=customer::orderBy('created_at', 'DESC')->get();
         $keranjangs=keranjang::orderBy('created_at', 'DESC')->get();
-        return view('Admin.jual.create', compact('customers', 'barangs', 'keranjangs'));
+        $user = User::first();
+        return view('Admin.jual.create', compact('customers', 'barangs', 'keranjangs', 'user'));
     }
 
     /**
@@ -80,8 +83,8 @@ class JualController extends Controller
         $jual = Jual::with('detilJual.barang')->findOrFail($id_jual);
 
         $detilJual = $jual->detilJual ?? [];
-    
-        return view('Admin.jual.show', compact('jual', 'detilJual'));
+        $user = User::first();
+        return view('Admin.jual.show', compact('jual', 'detilJual', 'user'));
     }
 
     /**
@@ -90,8 +93,9 @@ class JualController extends Controller
     public function edit(string $id_jual)
     {
         $jual = Jual::findOrFail($id_jual);
+        $user = User::first();
 
-        return view('Admin.jual.edit', compact('jual'));
+        return view('Admin.jual.edit', compact('jual', 'user'));
     }
 
     /**

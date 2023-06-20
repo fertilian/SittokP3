@@ -51,7 +51,7 @@
             <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <img class="img-profile rounded-circle" src="/assets/img/boy.png" style="max-width: 60px">
+                <img class="img-profile rounded-circle" src="/{{ $user->poto }}" style="max-width: 60px">
                 
               </a>
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -92,40 +92,47 @@
                 </div>
                 <div class="card-body">
              
-                  <form method="POST" action="{{ route('user.update', $user->id)}}" enctype="multipart/form-data">
-                  @csrf
-                  @method('PUT')  
-                  <div class="form-group">
-                      <label for="exampleInputEmail1">Email</label>
-                      <input type="text" name= "email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Email" value="{{ $user->email }}">
-                    </div> 
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Password</label>
-                      <input type="text" name= "password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Password" value="{{ $user->password }}">
-                    </div> 
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">User Fullname</label>
-                      <input type="text" name="user_fullname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan User Fullname" value="{{ $user->user_fullname }}">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">No Telp</label>
-                      <input type="text" name= "telp" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Telp" value="{{ $user->telp }}">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Alamat</label>
-                      <input type="text" name= "alamat" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Alamat" value="{{ $user->alamat }}">
-                    </div>
-                    <div class="form-group row" style="position: relative; float: left; ">
-                      <div class="px-3" style="width: 150px;">
-                        <button type="submit" name="update" class="btn btn-primary btn-user btn-block">Simpan</button>
-                      </div>
-                      <div style="width: 125px;">
-                        <a href="{{ route('user.index')}}" class="btn btn-secondary btn-user btn-block">Kembali</a>
-                      </div>
-                    </div>
-                    
-                  </form>
-             
+                <form method="POST" action="{{ route('user.update', $user->id) }}" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')  
+    <div class="form-group row">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Email" value="{{ $user->email }}">
+      </div> 
+      <div class="col-sm-6">
+          <label for="exampleInputEmail1">Password</label>
+          <input type="password" name="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Password">
+      </div>
+    </div> 
+    <div class="form-group row">
+      <div class="col-sm-6 mb-3 mb-sm-0">
+        <label for="exampleInputEmail1">User Fullname</label>
+        <input type="text" name="user_fullname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan User Fullname" value="{{ $user->user_fullname }}">
+      </div>
+      <div class="col-sm-6">
+        <label for="exampleInputEmail1">No Telp</label>
+        <input type="text" name="telp" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Telp" value="{{ $user->telp }}">
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Alamat</label>
+        <input type="text" name="alamat" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Alamat" value="{{ $user->alamat }}">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Photo Profile</label>
+        <input type="file" name="poto" class="form-control" placeholder="image">
+    </div>
+    <div class="form-group row" style="position: relative; float: left; ">
+        <div class="px-3" style="width: 150px;">
+            <button type="submit" name="update" class="btn btn-primary btn-user btn-block">Simpan</button>
+        </div>
+        <div style="width: 125px;">
+            <a href="{{ route('user.index') }}" class="btn btn-secondary btn-user btn-block">Kembali</a>
+        </div>
+    </div>
+</form>
+
                 </div>
               </div>
         <!-- <Form Basic> -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kategori;
+use App\Models\User;
 class KategoriController extends Controller
 {
     /**
@@ -11,8 +12,9 @@ class KategoriController extends Controller
      */
     public function index()
     {
+        $user = User::first();
         $kategoris=kategori::orderBy('created_at', 'DESC')->get();
-        return view('Admin.kategori.index', compact('kategoris'));
+        return view('Admin.kategori.index', compact('kategoris', 'user'));
     }
 
     /**
@@ -20,7 +22,8 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('Admin.kategori.create');
+        $user = User::first();
+        return view('Admin.kategori.create', compact('user'));
     }
 
     /**
@@ -43,8 +46,9 @@ class KategoriController extends Controller
     public function show(string $id)
     {
         $kategoris = kategori::findOrFail($id);
+        $user = User::first();
 
-        return view('Admin.kategori.show', compact('kategoris'));
+        return view('Admin.kategori.show', compact('kategoris', 'user'));
     }
 
     /**
@@ -53,8 +57,9 @@ class KategoriController extends Controller
     public function edit(string $id_kategori)
     {
         $kategori = Kategori::findOrFail($id_kategori);
+        $user = User::first();
 
-        return view('Admin.kategori.edit', compact('kategori'));
+        return view('Admin.kategori.edit', compact('kategori', 'user'));
     }
 
     /**

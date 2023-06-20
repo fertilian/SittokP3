@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Customer;
+use App\Models\User;
 
 class CustomerController extends Controller
 {
@@ -13,8 +14,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
+        $user = User::first();
         $customers=customer::orderBy('created_at', 'DESC')->get();
-        return view('Admin.customers.index', compact('customers'));
+        return view('Admin.customers.index', compact('customers', 'user'));
     }
 
     /**
@@ -25,7 +27,8 @@ class CustomerController extends Controller
         $defaultValues = [
             'profil' => asset('images/cust.png'),
         ];
-        return view('Admin.customers.create', $defaultValues);
+        $user = User::first();
+        return view('Admin.customers.create', $defaultValues, $user);
     }
 
     /**
@@ -56,7 +59,8 @@ class CustomerController extends Controller
     public function show(string $id_customer)
     {
         $customer = Customer::findOrFail($id_customer);
-        return view('Admin.customers.show', compact('customer'));
+        $user = User::first();
+        return view('Admin.customers.show', compact('customer', 'user'));
     }
 
     /**
