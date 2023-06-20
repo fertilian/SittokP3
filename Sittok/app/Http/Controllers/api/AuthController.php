@@ -498,7 +498,6 @@ public function updateQty(Request $request)
     }
     
 
-
     public function getDataKeranjang(Request $request)
     {
         $data = $request->validate([
@@ -517,18 +516,13 @@ public function updateQty(Request $request)
             ], 404);
         }
     
-        $totalJumlah = 0;
         foreach ($keranjang as $item) {
-            $jumlah = $item->harga * $item->qty;
-            $item->jumlah = $jumlah;
-            $totalJumlah += $jumlah;
+            $item->jumlah = $item->harga * $item->qty;
         }
     
-        return response()->json(
-            $keranjang
-        , 200);
+        return response()->json($keranjang, 200);
     }
-
+    
 
 
     public function showByCustomer(Request $request)
