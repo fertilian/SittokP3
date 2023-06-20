@@ -30,7 +30,7 @@ Route::post('getTotalKeranjang', [AuthController::class, 'getTotalKeranjang']);
 Route::post('getAllPaymen', [AuthController::class, 'getAllPaymen']);
 Route::post('store', [AuthController::class, 'store']);
 Route::post('storeJual', [AuthController::class, 'storeJual']);
-Route::post('storeDetil', [AuthController::class, 'storeDetil']);itt
+Route::post('storeDetil', [AuthController::class, 'storeDetil']);
 Route::post('updateStatusKeranjang', [AuthController::class, 'updateStatusKeranjang']);
 Route::post('getNota', [AuthController::class, 'getNota']);
 Route::post('getDataJualByCustomer', [AuthController::class, 'getDataJualByCustomer']);
