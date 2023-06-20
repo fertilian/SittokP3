@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class detil_jual extends Model
+class DetileJual extends Model
 {
     public $table = "detil_jual";
 
