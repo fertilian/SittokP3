@@ -47,5 +47,7 @@ Route::controller(CustomAuthController::class)->group(function () {
     Route::post('/customers/resetPassword/{id_customer}', [CustomerController::class, 'resetPassword'])->name('customers.resetPassword');
     Route::resource('/customers', CustomerController::class);
     Route::resource('/barangku', BarangkuController::class);
+    Route::resource('/jual', JualController::class);
+    Route::resource('/beli', BeliController::class);
 
     Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
