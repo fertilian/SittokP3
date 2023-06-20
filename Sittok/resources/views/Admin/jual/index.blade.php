@@ -111,8 +111,8 @@
                                         <tr>
                                             <td class="align-middle">{{ $loop->iteration}}</td>
                                             <td class="align-middle">{{ $jual->created_at}}</td>
-                                            <td class="align-middle">{{ $jual->keranjang->customer->nama_customer}}</td>
-                                            <td class="align-middle">{{  $jual->total_final}}</td>
+                                            <td class="align-middle">{{ $jual->customer->nama_customer}}</td>
+                                            <td class="align-middle">{{  $jual->formatted_harga}}</td>
                                             <td class="align-middle">{{ $jual->status}}</td>
                                             <td>
                                             <a href="{{ route('jual.show', $jual->id_jual)}}" class="btn btn-warning btn-circle " style="width: 40px;"><i class="fas fa-info"></i></a>

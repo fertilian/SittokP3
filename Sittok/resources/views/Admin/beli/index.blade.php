@@ -107,7 +107,7 @@
                                             <td class="align-middle">{{ $loop->iteration}}</td>
                                             <td class="align-middle">{{ $beli->created_at}}</td>
                                             <td class="align-middle">{{ $beli->barang->merk_barang}}</td>
-                                            <td class="align-middle">{{ $beli->harga_beli}}</td>
+                                            <td class="align-middle">Rp. {{ number_format($beli->harga_beli, 0, ',', '.') }}</td>
                                             <td>
                                             <a href="{{ route('beli.show', $beli->id)}}" class="btn btn-warning btn-circle " style="width: 40px;"><i class="fas fa-info"></i></a>
                                             <a href="{{ route('beli.edit', $beli->id)}}" class="btn btn-primary btn-circle " style="width: 40px;"><i class="fas fa-pen"></i></a>

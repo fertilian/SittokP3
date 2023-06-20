@@ -24,14 +24,16 @@ class AdminController extends Controller
             ->value('total_final');
         $income = 'Rp. ' . number_format($totalHargaBayar, 0, ',', '.');
 
+        $currentDate = Carbon::now()->format('Y-m-d');
+
+        $pengeluaran = DB::table('beli')
+        ->whereDate('created_at', $currentDate)
+        ->select(DB::raw('SUM(jumlah_beli * harga_beli) as total_pengeluaran'))
+        ->value('total_pengeluaran');
+
         $jumlahPesananPending = Jual::where('status', 'dibayar')->count();
 
-        // $currentMonth = Carbon::now()->format('m');
-        // $laba = Jual::join('beli', 'jual.id_barang', '=', 'beli.id_barang')
-        //     ->select(DB::raw('(jual.harga - beli.harga_beli) * jual.qty AS laba_total'))
-        //     ->whereMonth('jual.created_at', '=', $currentMonth)
-        //     ->value('laba_total');
-        // $hargaFormatted = 'Rp. ' . number_format($laba, 0, ',', '.');
+       
         
         $sum = Barang::sum('jumlah_barang');
 
@@ -45,7 +47,7 @@ class AdminController extends Controller
         $status = $jual->pluck('status');
         $total = $jual->pluck('total');
 
-        return view ('Admin.index', compact('status', 'total', 'income', 'jumlahPesananPending', 'sum', 'saiki'));
+        return view ('Admin.index', compact('status', 'total', 'income', 'jumlahPesananPending', 'sum', 'pengeluaran'));
        
         
     }

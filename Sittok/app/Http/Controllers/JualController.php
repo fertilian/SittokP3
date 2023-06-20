@@ -14,9 +14,14 @@ class JualController extends Controller
      */
     public function index()
     {
-        $juals = Jual::with('barang', 'barang.keranjang')->get();
+        $juals = Jual::orderBy('created_at', 'DESC')->get();
 
-    return view('Admin.jual.index', ['juals' => $juals]);
+        foreach ($juals as $jual) {
+            $formattedHarga = 'Rp. ' . number_format($jual->total_final, 0, ',', '.');
+            $jual->formatted_harga = $formattedHarga;
+        }
+
+        return view('Admin.jual.index', compact('juals'));
     }
 
     /**

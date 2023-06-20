@@ -182,8 +182,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Laba Bulan ini</div>
-                                            <div class="h6 mb-0 font-weight-bold text-gray-800"></div>
+                                                Pengeluaran Hari ini</div>
+                                            <div class="h6 mb-0 font-weight-bold text-gray-800">Rp. {{ number_format($pengeluaran, 0, ',', '.') }}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-hand-holding-usd fa-2x text-gray-300"></i>

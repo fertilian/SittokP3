@@ -80,7 +80,7 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Jual</h6>
                   </div>
                   <div class="container">
-                        <p>Tanggal Transaksi : {{ $jual->created_at}} | {{ $jual->keranjang->customer->nama_customer}} </p>
+                        <p>Tanggal Transaksi : {{ $jual->created_at}} | {{ $jual->customer->nama_customer}} </p>
                         
                         <p>Data Penerima : </p>
                         <ul>
@@ -101,10 +101,10 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td class="align-middle">{{ $jual->keranjang->barang->merk_barang }}</td>
-                              <td class="align-middle">{{ $jual->keranjang->qty }}</td>
-                              <td class="align-middle">Rp. {{ number_format($jual->keranjang->barang->harga, 0, ',', '.') }}</td>
-                              <td class="align-middle">Rp {{ number_format($jual->keranjang->qty * $jual->keranjang->barang->harga, 0, ',', '.') }}</td>
+                              <td class="align-middle"></td>
+                              <td class="align-middle"></td>
+                              <td class="align-middle"></td>
+                              <td class="align-middle"></td>
                              
                             </tr>
                           </tfoot>
