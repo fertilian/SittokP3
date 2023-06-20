@@ -11,8 +11,6 @@ use App\Http\Controllers\JualController;
 use App\Http\Controllers\BeliController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BarangkuController;
-
-
 use App\Models\Barang;
 use App\Models\Kategori;
 use App\Models\Supplier;
@@ -20,6 +18,7 @@ use App\Models\User;
 use App\Models\Customer;
 use App\Models\Jual;
 use App\Models\Beli;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,22 +34,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 
-//Route::get('/', function () {
-    //return view('loginn');
-//});
-
 Route::controller(CustomAuthController::class)->group(function () {
     Route::get('loginn', 'loginn')->name('loginn');
     Route::post('loginn', 'loginPost');
 });
 
-Route::resource('/home', AdminController::class);
-Route::resource('/user', UserController::class);
-Route::resource('/supplier', SupplierController::class);
-Route::resource('/kategori', KategoriController::class);
-Route::resource('/barang', BarangController::class);
-Route::resource('/customers', CustomerController::class);
-Route::resource('/beli', BeliController::class);
-Route::resource('/barangku', BarangkuController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/home', AdminController::class);
+    Route::resource('/user', UserController::class);
+    Route::resource('/supplier', SupplierController::class);
+    Route::resource('/kategori', KategoriController::class);
+    Route::resource('/barang', BarangController::class);
+    Route::post('/customers/resetPassword/{id_customer}', [CustomerController::class, 'resetPassword'])->name('customers.resetPassword');
+    Route::resource('/customers', CustomerController::class);
+    Route::resource('/barangku', BarangkuController::class);
 
-Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
+    Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
+});
