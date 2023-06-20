@@ -137,11 +137,7 @@
                         </table>
                         <p>Bukti Pembayaran : </p>
                         @if ($jual->bukti_bayar)
-<<<<<<< Updated upstream
                             <img class="gambar" src="/{{ $jual->bukti_bayar }}" alt="Gambar Bayar" width="300px">
-=======
-                        <div style="width: 30px;"><img class="gambar" src="/{{ $jual->bukti_bayar }}" alt="Gambar Bayar">
->>>>>>> Stashed changes
                         @else
                             <p style="color: red;"><strong>Not Found!!! Transaksi Belum Dibayar</strong></p>
                         @endif
