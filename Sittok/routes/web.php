@@ -49,5 +49,5 @@ Route::controller(CustomAuthController::class)->group(function () {
     Route::resource('/barangku', BarangkuController::class);
     Route::resource('/jual', JualController::class);
     Route::resource('/beli', BeliController::class);
-
+    
     Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
