@@ -15,7 +15,7 @@ class CustomersSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Customer::create([
+        Customer::create([
             'nama_customer' => 'Ria',
             'email' => 'ria@gmail.com',
             'no_telp_customer' => ' 081234582780',
@@ -25,7 +25,7 @@ class CustomersSeeder extends Seeder
             
         ]);
 
-        \App\Models\Customer::create([
+        Customer::create([
             'nama_customer' => 'Sindi',
             'email' => 'sindi@gmail.com',
             'no_telp_customer' => ' 081234582780',
@@ -34,7 +34,7 @@ class CustomersSeeder extends Seeder
             'profil' => 'images/g2.jpg',
         ]);
 
-        \App\Models\Customer::create([
+        Customer::create([
             'nama_customer' => 'Karina',
             'email' => 'karina@gmail.com',
             'no_telp_customer' => ' 081234582780',
@@ -43,7 +43,7 @@ class CustomersSeeder extends Seeder
             'profil' => 'images/g3.jpg',
         ]);
 
-        \App\Models\Customer::create([
+        Customer::create([
             'nama_customer' => 'Fertilia',
             'email' => 'fertilia@gmail.com',
             'no_telp_customer' => ' 081234582780',
@@ -52,7 +52,7 @@ class CustomersSeeder extends Seeder
             'profil' => 'images/g4.jpg',
         ]);
 
-        \App\Models\Customer::create([
+        Customer::create([
             'nama_customer' => 'Nizar',
             'email' => 'nizar@gmail.com',
             'no_telp_customer' => ' 081234582780',
@@ -60,6 +60,5 @@ class CustomersSeeder extends Seeder
             'password' => bcrypt('nizar'),
             'profil' => 'images/csnizar.jpg',
         ]);
-
     }
 }
