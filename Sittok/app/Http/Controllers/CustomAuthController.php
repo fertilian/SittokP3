@@ -17,10 +17,10 @@ class CustomAuthController extends Controller
 
     public function loginPost(Request $request)
     {
-        $credentials = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
         if (Auth::attempt($credentials)) {
             return redirect('/home')->with('success', 'Login Berhasil');
@@ -34,6 +34,7 @@ class CustomAuthController extends Controller
         if (Auth::check()) {
             return view('home');
         }
+        
         return redirect('/loginn')->with('error', 'Anda harus login untuk mengakses halaman ini');
     }
 }

@@ -22,7 +22,10 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('Admin.customers.create');
+        $defaultValues = [
+            'profil' => asset('images/cust.png'),
+        ];
+        return view('Admin.customers.create', $defaultValues);
     }
 
     /**
@@ -31,11 +34,19 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         try {
-            customer::create($request->all());
+            $data = $request->all();
+            $data['password'] = Hash::make('sittok123');
+        
+        if (!$request->hasFile('profil')) {
+            // Jika tidak ada file gambar yang diunggah, set profil menjadi gambar default
+            $data['profil'] = 'images/cust.png';
+        }
+
+        customer::create($data);
 
             return redirect()->route('customers.index')->with('success', 'Data Customer Berhasil Ditambahkan');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Data Customer Gagal Ditambahkan!!!'. $e->getMessage());
+            return redirect()->back()->with('error', 'Data Customer Gagal Ditambahkan!!! silahkan isi semua field');
         }
     }
 
@@ -54,8 +65,6 @@ class CustomerController extends Controller
     public function edit(string $id_customer)
     {
         $customer = Customer::findOrFail($id_customer);
-        
-
         return view('Admin.customers.edit', compact('customer'));
     }
 
@@ -66,7 +75,6 @@ class CustomerController extends Controller
     {
         try {
             $customer = Customer::findOrFail($id_customer);
-
             $customer->update($request->all());
 
             return redirect()->route('customers.index')->with('success', 'Data Customer Berhasil Diupdate');
@@ -92,18 +100,20 @@ class CustomerController extends Controller
         }
     }
 
-    public function resetPassword(Request $request, string $id_customer)
+    public function resetPassword($id_customer)
     {
         try {
             $customer = Customer::findOrFail($id_customer);
-            
-            // Ubah password pengguna menjadi "customerpw123"
-            $customer->password = Hash::make('customerpw123');
+
+            // Set password customer to "sittok123"
+            $customer->password = Hash::make('sittok123');
             $customer->save();
 
-            return redirect()->back()->with('success', 'Password Customer Berhasil Diatur Ulang.');
+            return redirect()->back()->with('success', 'Password Customer has been reset.');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Gagal Mengatur Ulang Password Customer!!!');
+            return redirect()->back()->with('error', 'Failed to reset password for the customer.');
         }
     }
+
+
 }

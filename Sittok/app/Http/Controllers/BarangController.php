@@ -32,8 +32,42 @@ class BarangController extends Controller
     public function create()
     {
         $kategoris=kategori::orderBy('created_at', 'DESC')->get();
-        return view('Admin.barang.create', compact('kategoris'));
+        $defaultHarga = 0;
+        $defaultJumlahBarang = 0;
+
+        return view('Admin.barang.create', compact('kategoris', 'defaultHarga', 'defaultJumlahBarang'));
     }
+
+    public function store(Request $request)
+    {
+        try {
+            $request->validate([
+                'merk_barang' => 'required',
+                'deskripsi' => 'required',
+                'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'id_kategori' => 'required',
+            ]);
+
+            $input = $request->all();
+            
+            $input['jumlah_barang'] = 0;
+            $input['harga'] = 0;
+
+            if ($image = $request->file('gambar')) {
+                $destinationPath = 'images/';
+                $profileImage = date('YmdHis') .".".$image->getClientOriginalExtension();
+                $image->move($destinationPath, $profileImage);
+                $input['gambar'] = "images/$profileImage";
+            }
+
+            Barang::create($input);
+
+            return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Ditambahkan');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data Barang Gagal Ditambahkan!!!' . $e->getMessage());
+        }
+    }
+
 
 
     /**
@@ -49,34 +83,7 @@ class BarangController extends Controller
         return view('Admin.barang.show', compact('barang'));
     }
 
-    public function store(Request $request)
-    {
-        try{
-            $request->validate([
-                'merk_barang' => 'required',
-                'jumlah_barang' => 'required',
-                'harga' => 'required',
-                'deskripsi' => 'required',
-                'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'id_kategori' => 'required',
-            ]);
-    
-            $input = $request->all();
-    
-            if ($image = $request->file('gambar')) {
-                $destinationPath = 'images/';
-                $profileImage = date('YmdHis') .".".$image->getClientOriginalExtension();
-                $image->move($destinationPath, $profileImage);
-                $input['gambar'] = "images/$profileImage";
-            }
-    
-            barang::create($input);
 
-        return redirect()->route('barang.index')->with('success', 'Data Barang Berhasil Ditambahkan');
-    }catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Data Barang Gagal Ditambahkan!!!' . $e->getMessage());
-        }
-    }
 
 
     /**

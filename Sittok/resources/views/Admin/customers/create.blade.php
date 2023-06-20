@@ -120,15 +120,9 @@
                       </div>
                     </div>
 
-                    <div class="form-group row">
-                      <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="form-group">
                         <label for="txt_nama">Alamat Customer</label>
                         <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat Customer">
-                      </div>
-                      <div class="col-sm-6">
-                        <label for="txt_nama">Password Customer</label>
-                        <input type="password" class="form-control" name="password" placeholder="Masukkan Password Customer">
-                      </div>
                     </div>
                     <div class="form-group row" style="position: relative; float: left; ">
                       <div class="px-3" style="width: 150px;">
