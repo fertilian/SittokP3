@@ -15,7 +15,37 @@ class PaymenTableSeeder extends Seeder
         \App\Models\Paymen::create([
             'jenis_paymen' => 'Brimo',
             'no_paymen' => '89892387809',
-            'icon' => 'images/brimo.jpg',
+            'icon' => 'images/brimo.png',
+        ]);
+
+        \App\Models\Paymen::create([
+            'jenis_paymen' => 'Gopay',
+            'no_paymen' => '081234582780',
+            'icon' => 'images/gopay.png',
+        ]);
+
+        \App\Models\Paymen::create([
+            'jenis_paymen' => 'Mandiri',
+            'no_paymen' => '89892387809',
+            'icon' => 'images/mandiri.png',
+        ]);
+
+        \App\Models\Paymen::create([
+            'jenis_paymen' => 'Dana',
+            'no_paymen' => '081234582780',
+            'icon' => 'images/dana.png',
+        ]);
+
+        \App\Models\Paymen::create([
+            'jenis_paymen' => 'Shopeepay',
+            'no_paymen' => '081234582780',
+            'icon' => 'images/ShopeePay.png',
+        ]);
+
+        \App\Models\Paymen::create([
+            'jenis_paymen' => 'Ovo',
+            'no_paymen' => '081234582780',
+            'icon' => 'images/ovo.png',
         ]);
     }
 }
