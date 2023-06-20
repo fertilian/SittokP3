@@ -8,7 +8,7 @@ use App\Http\Controllers\api\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
-|--------------------------------------------------------------------------
+|----------------------------------------------------------------------cd ----
 |
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
@@ -21,7 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('login', [AuthController::class, 'login']);
-Route::post('register', [AuthController::class, 'register']);
+Route::post('register', [AuthController::class, 'register']); 
 Route::post('get-data-barang', [AuthController::class, 'getDataBarang']);
 Route::post('getDataKategori', [AuthController::class, 'getDataKategori']);
 Route::post('addData', [AuthController::class, 'addData']);
