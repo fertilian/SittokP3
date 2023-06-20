@@ -39,7 +39,6 @@ Route::controller(CustomAuthController::class)->group(function () {
     Route::post('loginn', 'loginPost');
 });
 
-Route::middleware(['auth'])->group(function () {
     Route::resource('/home', AdminController::class);
     Route::resource('/user', UserController::class);
     Route::resource('/supplier', SupplierController::class);
@@ -50,4 +49,3 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/barangku', BarangkuController::class);
 
     Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
-});

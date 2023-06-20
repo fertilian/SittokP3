@@ -17,10 +17,10 @@ class CustomAuthController extends Controller
 
     public function loginPost(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
 
         if (Auth::attempt($credentials)) {
             return redirect('/home')->with('success', 'Login Berhasil');
