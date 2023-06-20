@@ -132,7 +132,7 @@
                           </tfoot>
                           <tr>
                               <td colspan="3" class="text-left">Total Keseluruhan</td>
-                              <td>{{ $jual->detilJual->sum('jumlah') }}</td>
+                              <td>Rp. {{ number_format($jual->detilJual->sum('jumlah'), 0, ',', '.') }}</td>
                           </tr>
                         </table>
                         <p>Bukti Pembayaran : </p>
