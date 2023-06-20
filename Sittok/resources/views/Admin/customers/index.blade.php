@@ -90,7 +90,6 @@
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Customer</h6>
-                  <a href = "{{ route('customers.create')}}" class = "btn btn-outline-primary btn-xs mb-0">+</a>
                 </div>
                 <div class="card-body">
                             <div class="table-responsive">
@@ -125,7 +124,6 @@
                                            
                                             <td>
                                             <a href="{{ route('customers.show', $customer->id_customer)}}" class="btn btn-warning btn-circle " style="width: 40px;"><i class="fas fa-info"></i></a>
-                                            <a href="{{ route('customers.edit', $customer->id_customer)}}" class="btn btn-primary btn-circle" style="width: 40px; "><i class="fas fa-pen"></i></a>
                                             <form action="{{ route('customers.destroy', $customer->id_customer) }}" method="POST" type="button" style="width: 40px;" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
                                                 @csrf
                                                 @method('DELETE')

@@ -127,11 +127,7 @@
                                           <td>
                                           
                                             <a href="{{ route('user.edit', $user->id)}}" class="btn btn-primary btn-circle "><i class="fas fa-pen"></i></a>
-                                            <form action="{{ route('user.destroy', $user->id) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Ingin Menghapus Data ini?')">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger m-0"><i class="fas fa-trash"></i></button>
-                                            </form>
+                                          
                                           </td> 
                                         </tr>
                                       @endforeach

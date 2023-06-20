@@ -124,8 +124,8 @@
                             <tr>
                               <td class="align-middle">{{ $detilJual->barang->merk_barang }}</td>
                               <td class="align-middle">{{ $detilJual->qty }}</td>
-                              <td class="align-middle">{{ $detilJual->harga }}</td>
-                              <td class="align-middle">{{ $detilJual->jumlah }}</td>
+                              <td class="align-middle">Rp. {{ number_format($detilJual->harga, 0, ',', '.') }}</td>
+                              <td class="align-middle">Rp. {{ number_format($detilJual->jumlah, 0, ',', '.') }}</td>
                              
                             </tr>
                             @endforeach
@@ -137,7 +137,7 @@
                         </table>
                         <p>Bukti Pembayaran : </p>
                         @if ($jual->bukti_bayar)
-                            <img class="gambar" src="/{{ $jual->bukti_bayar }}" alt="Gambar Bayar">
+                            <img class="gambar" src="/{{ $jual->bukti_bayar }}" alt="Gambar Bayar" width="300px">
                         @else
                             <p style="color: red;"><strong>Not Found!!! Transaksi Belum Dibayar</strong></p>
                         @endif
