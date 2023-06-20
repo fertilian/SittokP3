@@ -7,6 +7,7 @@ use App\Models\Jual;
 use App\Models\Barang;
 use App\Models\Customer;
 use App\Models\Keranjang;
+use App\Models\DetileJual;
 class JualController extends Controller
 {
     /**
@@ -76,11 +77,11 @@ class JualController extends Controller
      */
     public function show($id_jual)
     {
-        $jual = Jual::with('keranjang.barang', 'keranjang.customer')->findOrFail($id_jual);
+        $jual = Jual::with('detilJual.barang')->findOrFail($id_jual);
 
-        
-
-        return view('Admin.jual.show', compact('jual'));
+        $detilJual = $jual->detilJual ?? [];
+    
+        return view('Admin.jual.show', compact('jual', 'detilJual'));
     }
 
     /**

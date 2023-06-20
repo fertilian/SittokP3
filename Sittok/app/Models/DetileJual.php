@@ -24,4 +24,18 @@ class DetileJual extends Model
     
     protected $primaryKey = 'id_detil_jual';
 
+    public function jual()
+    {
+        return $this->belongsTo(Jual::class, 'id_jual');
+    }
+
+    public function barang()
+    {
+        return $this->belongsTo(Barang::class, 'id_barang');
+    }
+
+    public function keranjang()
+    {
+        return $this->belongsTo(Keranjang::class, 'id_keranjang');
+    }
 }

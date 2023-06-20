@@ -33,7 +33,11 @@ class Jual extends Model
     {
         return $this->belongsTo(Customer::class, 'id_customer');
     }
-
+    public function detilJual()
+    {
+        return $this->hasMany(DetileJual::class, 'id_jual');
+    }
+    
 
     public function barang()
 {

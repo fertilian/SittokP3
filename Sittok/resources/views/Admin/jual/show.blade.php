@@ -54,6 +54,19 @@
                 <img class="img-profile rounded-circle" src="../assets/img/boy.png" style="max-width: 60px">
                 
               </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                <h6 style="color: purple;">{{ Auth::user()->user_fullname }}</h6>
+                </a>
+                <a class="dropdown-item" href="{{ route('user.edit', ['user' => auth()->user()->id]) }}">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="{{ route('loginn')}}" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" 
+                  class="dropdown-item">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a>
+              </div>
             </li>
           </ul>
         </nav>
@@ -80,15 +93,21 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Jual</h6>
                   </div>
                   <div class="container">
-                        <p>Tanggal Transaksi : {{ $jual->created_at}} | {{ $jual->customer->nama_customer}} </p>
+                        <p>Data Transaksi : </p>
+                        <ul>
+                            <li>Tanggal Transaksi :{{ $jual->created_at}}</li>
+                            <li>Nama Customer :  {{ $jual->customer->nama_customer}} </li>
+                            <li>No HP Customer :  {{ $jual->customer->no_telp_customer}} </li>
+                        </ul>
                         
                         <p>Data Penerima : </p>
                         <ul>
-                            <li>Nama Lengkap : {{ $jual->nama_lengkap}}</li>
+                            <li>Nama : {{ $jual->nama_lengkap}}</li>
                             <li>Alamat : {{ $jual->alamat}}</li>
-                            <li>No Telp : {{ $jual->nohp}}</li>
+                            <li>No HP : {{ $jual->nohp}}</li>
                         </ul>
 
+                        <p>Data Pesanan : </p>
                         <table  class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                           <thead>
                             <tr>
@@ -100,15 +119,28 @@
                             </tr>
                           </thead>
                           <tbody>
+
+                          @foreach ($jual->detilJual as $detilJual)
                             <tr>
-                              <td class="align-middle"></td>
-                              <td class="align-middle"></td>
-                              <td class="align-middle"></td>
-                              <td class="align-middle"></td>
+                              <td class="align-middle">{{ $detilJual->barang->merk_barang }}</td>
+                              <td class="align-middle">{{ $detilJual->qty }}</td>
+                              <td class="align-middle">{{ $detilJual->harga }}</td>
+                              <td class="align-middle">{{ $detilJual->jumlah }}</td>
                              
                             </tr>
+                            @endforeach
                           </tfoot>
+                          <tr>
+                              <td colspan="3" class="text-left">Total Keseluruhan</td>
+                              <td>{{ $jual->detilJual->sum('jumlah') }}</td>
+                          </tr>
                         </table>
+                        <p>Bukti Pembayaran : </p>
+                        @if ($jual->bukti_bayar)
+                            <img class="gambar" src="/{{ $jual->bukti_bayar }}" alt="Gambar Bayar">
+                        @else
+                            <p style="color: red;"><strong>Not Found!!! Transaksi Belum Dibayar</strong></p>
+                        @endif
                         <br>
                         <div style="width: 125px; float: right; margin-left: 500px;margin-bottom: 30px;" >
                           <a href="{{ route('jual.index')}}" class="btn btn-secondary btn-user btn-block">Kembali</a>

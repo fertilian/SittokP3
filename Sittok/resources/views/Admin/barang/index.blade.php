@@ -63,7 +63,7 @@
                 <a class="dropdown-item" href="#">
                 <h6 style="color: purple;">{{ Auth::user()->user_fullname }}</h6>
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ route('user.edit', ['user' => auth()->user()->id]) }}">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Settings
                 </a>

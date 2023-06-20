@@ -75,6 +75,19 @@
                 <img class="img-profile rounded-circle" src="../assets/img/boy.png" style="max-width: 60px">
                 
               </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                <h6 style="color: purple;">{{ Auth::user()->user_fullname }}</h6>
+                </a>
+                <a class="dropdown-item" href="{{ route('user.edit', ['user' => auth()->user()->id]) }}">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="{{ route('loginn')}}" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" 
+                  class="dropdown-item">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a>
+              </div>
             </li>
           </ul>
         </nav>

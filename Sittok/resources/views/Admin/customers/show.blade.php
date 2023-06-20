@@ -90,6 +90,19 @@
                 <img class="img-profile rounded-circle" src="../assets/img/boy.png" style="max-width: 60px">
                 
               </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                <h6 style="color: purple;">{{ Auth::user()->user_fullname }}</h6>
+                </a>
+                <a class="dropdown-item" href="{{ route('user.edit', ['user' => auth()->user()->id]) }}">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="{{ route('loginn')}}" onclick="return confirm('Apakah anda yakin ingin keluar dari halaman ini?')" 
+                  class="dropdown-item">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Logout</a>
+              </div>
             </li>
           </ul>
         </nav>
@@ -116,8 +129,11 @@
                   <h6 class="m-0 font-weight-bold text-primary">Data Master Customer</h6>
                   </div>
                   <div class="container">
-                    <img class="gambar" src="/{{ $customer->profil}}" alt="Gambar Barang">
-                   
+                  @if ($customer->profil)
+                      <img class="gambar" src="/{{ $customer->profil }}" alt="Gambar Customer">
+                  @else
+                      <img class="gambar" src="{{ asset('images/cust.png') }}" alt="Default Gambar">
+                  @endif
 
                     <div class="detail-barang">
                         <h1>{{ $customer->nama_customer}}</h1>
