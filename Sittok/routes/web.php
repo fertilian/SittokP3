@@ -38,7 +38,6 @@ Route::controller(CustomAuthController::class)->group(function () {
     Route::get('loginn', 'loginn')->name('loginn');
     Route::post('loginn', 'loginPost');
 });
-
     Route::resource('/home', AdminController::class);
     Route::resource('/user', UserController::class);
     Route::resource('/supplier', SupplierController::class);
@@ -49,5 +48,6 @@ Route::controller(CustomAuthController::class)->group(function () {
     Route::resource('/barangku', BarangkuController::class);
     Route::resource('/jual', JualController::class);
     Route::resource('/beli', BeliController::class);
-    
+
+
     Route::post('/barang', [BarangController::class, 'store'])->name('barang.store');
