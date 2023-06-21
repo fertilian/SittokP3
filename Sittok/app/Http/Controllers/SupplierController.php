@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
 class SupplierController extends Controller
@@ -11,8 +11,9 @@ class SupplierController extends Controller
      */
     public function index()
     {
+        $user = User::first();
         $suppliers=supplier::orderBy('created_at', 'DESC')->get();
-        return view('Admin.supplier.index', compact('suppliers'));
+        return view('Admin.supplier.index', compact('suppliers', 'user'));
     }
 
     /**
@@ -20,7 +21,8 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        return view('Admin.supplier.create');
+        $user = User::first();
+        return view('Admin.supplier.create', compact('user'));
     }
 
     /**
@@ -42,7 +44,7 @@ class SupplierController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
@@ -51,8 +53,8 @@ class SupplierController extends Controller
     public function edit(string $id_supplier)
     {
         $supplier = Supplier::findOrFail($id_supplier);
-
-        return view('Admin.supplier.edit', compact('supplier'));
+        $user = User::first();
+        return view('Admin.supplier.edit', compact('supplier', 'user'));
     }
 
     /**

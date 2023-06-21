@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+
 class UserController extends Controller
 {
     /**
@@ -11,8 +12,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users=user::orderBy('created_at', 'DESC')->get();
-        return view('Admin.user.index', compact('users'));
+        $users = User::orderBy('created_at', 'DESC')->get();
+        $user = User::first(); // Get the first user from the collection
+        
+        return view('Admin.user.index', compact('users', 'user'));
     }
 
     /**
@@ -45,8 +48,7 @@ class UserController extends Controller
     public function edit(string $id)
     {
         $user = User::findOrFail($id);
-
-        return view('Admin.user.edit', compact('user'));
+        return view('Admin.user.edit', ['user' => $user]);
     }
 
     /**
@@ -54,11 +56,42 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+        try {
+            $user = User::findOrFail($id);
 
-        $user->update($request->all());
+            $request->validate([
+                'email' => 'required',
+                'alamat' => 'required',
+                'telp' => 'required',
+                'poto' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'user_fullname' => 'required',
+            ]);
 
-        return redirect()->route('user.index')->with('success', 'Data User Berhasil Diupdate');
+            $input = $request->all();
+
+            if ($request->filled('password')) {
+                $input['password'] = bcrypt($request->input('password'));
+            } else {
+                // Retain the existing password
+                unset($input['password']);
+            }
+
+            if ($request->hasFile('poto')) {
+                $image = $request->file('poto');
+                $destinationPath = 'images/';
+                $profileImage = date('YmdHis') . '.' . $image->getClientOriginalExtension();
+                $image->move('images/', $profileImage);
+                $input['poto'] = "images/$profileImage";
+            } else {
+                // Retain the existing image path
+                $input['poto'] = $user->poto;
+            }
+
+            $user->update($input);
+            return redirect()->route('user.index')->with('success', 'Data User Berhasil Diupdate');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Data User Gagal Diupdate!!! Silahkan isi semua field. ' . $e->getMessage());
+        }
     }
 
     /**
@@ -66,10 +99,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $users = user::findOrFail($id);
-
-        $users->delete();
-
+        $user = User::findOrFail($id);
+        $user->delete();
         return redirect()->route('user.index')->with('success', 'Data User Berhasil Dihapus');
     }
 }

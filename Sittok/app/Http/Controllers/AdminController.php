@@ -6,6 +6,7 @@ use App\Models\Customer;
 use App\Models\Supplier;
 use App\Models\Jual;
 use App\Models\Beli;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -46,8 +47,8 @@ class AdminController extends Controller
         // Mengambil data status dan total dari objek penjualan
         $status = $jual->pluck('status');
         $total = $jual->pluck('total');
-
-        return view ('Admin.index', compact('status', 'total', 'income', 'jumlahPesananPending', 'sum', 'pengeluaran'));
+        $user = User::first();
+        return view ('Admin.index', compact('status', 'total', 'income', 'jumlahPesananPending', 'sum', 'pengeluaran', 'user'));
        
         
     }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\User;
 use App\Models\Barang;
 use App\Models\Kategori;
 use NumberFormatter;
@@ -15,13 +15,13 @@ class BarangController extends Controller
     public function index()
     {
         $barangs = Barang::orderBy('created_at', 'DESC')->get();
-
+        $user = User::first();
         foreach ($barangs as $barang) {
             $formattedHarga = 'Rp. ' . number_format($barang->harga, 0, ',', '.');
             $barang->formatted_harga = $formattedHarga;
         }
 
-        return view('Admin.barang.index', compact('barangs'));
+        return view('Admin.barang.index', compact('barangs', 'user'));
     }
 
     
@@ -31,16 +31,18 @@ class BarangController extends Controller
      */
     public function create()
     {
+        $user = User::first();
         $kategoris=kategori::orderBy('created_at', 'DESC')->get();
         $defaultHarga = 0;
         $defaultJumlahBarang = 0;
 
-        return view('Admin.barang.create', compact('kategoris', 'defaultHarga', 'defaultJumlahBarang'));
+        return view('Admin.barang.create', compact('kategoris', 'defaultHarga', 'defaultJumlahBarang', 'user'));
     }
 
     public function store(Request $request)
     {
         try {
+
             $request->validate([
                 'merk_barang' => 'required',
                 'deskripsi' => 'required',
@@ -75,12 +77,13 @@ class BarangController extends Controller
      */
     public function show(string $id_barang)
     {
+        $user = User::first();
         $barang = Barang::findOrFail($id_barang);
 
         $formattedHarga = 'Rp. ' . number_format($barang->harga, 0, ',', '.');
         $barang->formatted_harga = $formattedHarga;
          
-        return view('Admin.barang.show', compact('barang'));
+        return view('Admin.barang.show', compact('barang', 'user'));
     }
 
 
@@ -93,8 +96,8 @@ class BarangController extends Controller
     {
         $barang = Barang::findOrFail($id_barang);
         $kategoris=Kategori::orderBy('created_at', 'DESC')->get();
-
-        return view('Admin.barang.edit', compact('barang', 'kategoris'));
+        $user = User::first();
+        return view('Admin.barang.edit', compact('barang', 'kategoris', 'user'));
     }
 
     /**

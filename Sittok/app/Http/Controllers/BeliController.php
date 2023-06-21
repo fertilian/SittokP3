@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Beli;
 use App\Models\Supplier;
 use App\Models\Barang;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 class BeliController extends Controller
 {
@@ -15,7 +16,7 @@ class BeliController extends Controller
     public function index()
     {
         $belis = Beli::orderBy('created_at', 'DESC')->get();
-
+        $user = User::first();
         foreach ($belis as $beli) {
             $formattedHarga = 'Rp. ' . number_format($beli->harga_beli, 0, ',', '.');
             $beli->formatted_harga = $formattedHarga;
@@ -25,7 +26,7 @@ class BeliController extends Controller
                 ->get();
         }
 
-        return view('Admin.beli.index', compact('belis', 'totalPembelian'));
+        return view('Admin.beli.index', compact('belis', 'totalPembelian', 'user'));
     }
 
     /**
@@ -35,7 +36,8 @@ class BeliController extends Controller
     {
         $barangs = Barang::orderBy('created_at', 'DESC')->get();
         $suppliers = Supplier::orderBy('created_at', 'DESC')->get();
-        return view('Admin.beli.create', compact('barangs', 'suppliers'));
+        $user = User::first();
+        return view('Admin.beli.create', compact('barangs', 'suppliers', 'user'));
     }
 
     /**
@@ -99,8 +101,8 @@ class BeliController extends Controller
 
         // Format total menjadi mata uang
         $formattedTotal = 'Rp. ' . number_format($total, 0, ',', '.');
-        
-        return view('Admin.beli.show', compact('beli', 'formattedTotal'));
+        $user = User::first();
+        return view('Admin.beli.show', compact('beli', 'formattedTotal', 'user'));
     }
 
 
@@ -111,11 +113,12 @@ class BeliController extends Controller
     {
        
         $beli = Beli::findOrFail($id);
+        $user = User::first();
         $beli->created_at = date('Y-m-d');
         $barangs=barang::orderBy('created_at', 'DESC')->get();
         $suppliers=supplier::orderBy('created_at', 'DESC')->get();
 
-        return view('Admin.beli.edit', compact('beli', 'barangs', 'suppliers'));
+        return view('Admin.beli.edit', compact('beli', 'barangs', 'suppliers', 'user'));
     }
 
     /**
