@@ -102,7 +102,7 @@
       </div> 
       <div class="col-sm-6">
           <label for="exampleInputEmail1">Password</label>
-          <input type="password" name="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Password">
+          <input type="password" name="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Masukkan Password" value="{{ $user->email }}" readonly>
       </div>
     </div> 
     <div class="form-group row">
